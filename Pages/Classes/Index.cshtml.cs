@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using CoursePlanner.Data;
 using CoursePlanner.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CoursePlanner
 {
@@ -21,9 +22,34 @@ namespace CoursePlanner
 
         public IList<Class> Class { get;set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+        // Requires using Microsoft.AspNetCore.Mvc.Rendering;
+        public SelectList Subjects { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string ClassSubject { get; set; }
+
         public async Task OnGetAsync()
         {
-            Class = await _context.Class.ToListAsync();
+            IQueryable<string> subjectQuery = from m in _context.Class
+                                            orderby m.SubjectId
+                                            select m.SubjectId;
+
+            var classes = from m in _context.Class
+                         select m;
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                classes = classes.Where(s => s.Description.Contains(SearchString));
+                // ex: SearchString= Opera & s.Description= Operating System
+            }
+
+            if (!string.IsNullOrEmpty(ClassSubject))
+            {
+                classes = classes.Where(x => x.SubjectId == ClassSubject);
+            }
+
+            Subjects = new SelectList(await subjectQuery.Distinct().ToListAsync());
+            Class = await classes.ToListAsync();
         }
     }
 }
