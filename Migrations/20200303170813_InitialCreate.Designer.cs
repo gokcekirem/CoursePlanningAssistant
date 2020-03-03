@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoursePlanner.Migrations
 {
     [DbContext(typeof(CoursePlannerContext))]
-    [Migration("20200227151531_InitialCreate")]
+    [Migration("20200303170813_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,8 +54,11 @@ namespace CoursePlanner.Migrations
                     b.Property<int>("InstructorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SubjectId")
+                    b.Property<string>("Prerequisite")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubjectId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Term")
                         .HasColumnType("nvarchar(max)");
@@ -64,6 +67,12 @@ namespace CoursePlanner.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ClassId");
+
+                    b.HasIndex("CareerId");
+
+                    b.HasIndex("InstructorId");
+
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Class");
                 });
@@ -110,6 +119,10 @@ namespace CoursePlanner.Migrations
 
                     b.HasKey("SectionId");
 
+                    b.HasIndex("ClassId");
+
+                    b.HasIndex("StatusId");
+
                     b.ToTable("Section");
                 });
 
@@ -139,6 +152,40 @@ namespace CoursePlanner.Migrations
                     b.HasKey("SubjectId");
 
                     b.ToTable("Subject");
+                });
+
+            modelBuilder.Entity("CoursePlanner.Models.Class", b =>
+                {
+                    b.HasOne("CoursePlanner.Models.Career", "Career")
+                        .WithMany("Classes")
+                        .HasForeignKey("CareerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoursePlanner.Models.Instructor", "Instructor")
+                        .WithMany("Classes")
+                        .HasForeignKey("InstructorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoursePlanner.Models.Subject", "Subject")
+                        .WithMany("Classes")
+                        .HasForeignKey("SubjectId");
+                });
+
+            modelBuilder.Entity("CoursePlanner.Models.Section", b =>
+                {
+                    b.HasOne("CoursePlanner.Models.Class", "Class")
+                        .WithMany("Sections")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoursePlanner.Models.Status", "Status")
+                        .WithMany("Sections")
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

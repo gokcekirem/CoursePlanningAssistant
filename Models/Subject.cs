@@ -9,5 +9,7 @@ namespace CoursePlanner.Models
     {
         public string SubjectId { get; set; } // Comp
         public string Description { get; set; } //  Computer Engineering
+
+        public ICollection<Class> Classes { get; set; }
     }
 }
