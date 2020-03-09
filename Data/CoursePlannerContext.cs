@@ -12,6 +12,11 @@ namespace CoursePlanner.Data
         public CoursePlannerContext (DbContextOptions<CoursePlannerContext> options)
             : base(options)
         {
+            /*Models.Instructor entity = new Models.Instructor();
+            entity.Name = "Ozakar, Baris";
+            entity.IsPrimary = false;
+            Instructor.Add(entity);
+            SaveChanges();*/
         }
 
         public DbSet<CoursePlanner.Models.Class> Class { get; set; }
