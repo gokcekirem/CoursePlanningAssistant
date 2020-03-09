@@ -14,25 +14,15 @@ namespace CoursePlanner.Data
         public CoursePlannerContext (DbContextOptions<CoursePlannerContext> options)
             : base(options)
         {
-            /*Instructor entity = new Instructor();
-          entity.Name = "Ozakar, Baris";
-          entity.IsPrimary = false;
-          Instructor.Add(entity);
-          SaveChanges();*/
             String filePath = @"KUSIS_Class_Data\dataWithCourseCode.xlsx";
             FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read);
-            // Auto-detect format, supports:
-            //  - Binary Excel files (2.0-2003 format; *.xls)
-            //  - OpenXml Excel files (2007 format; *.xlsx)
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             IExcelDataReader reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
             int counter = 0;
-            // List<String> liste = new List<String>();
             while (reader.Read())
             {
                 counter++;
 
-                //ilk satır başlık olduğu için 2.satırdan okumaya başlıyorum.
                 if (counter >= 2 && counter <= 4)
                 {
                     Instructor newInst = new Instructor();
@@ -62,7 +52,6 @@ namespace CoursePlanner.Data
                 }
             }
 
-            //Okuma bitiriliyor.
             reader.Close();
             SaveChanges();
         }
