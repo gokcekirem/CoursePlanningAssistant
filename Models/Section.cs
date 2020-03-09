@@ -20,6 +20,10 @@ namespace CoursePlanner.Models
         public int StatusId { get; set; }
         public Status Status { get; set; }
 
+        public int Capacity { get; set; }
+
+        public int RemainingSeats { get; set; }
+
         public string Times { get; set; }
         public string Room { get; set; }
     }

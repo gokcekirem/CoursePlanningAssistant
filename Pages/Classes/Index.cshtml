@@ -28,7 +28,7 @@
                 @Html.DisplayNameFor(model => model.Class[0].Instructor.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Class[0].SubjectId)
+                @Html.DisplayNameFor(model => model.Class[0].Subject)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Class[0].Code)
@@ -56,7 +56,7 @@
                     @Html.DisplayFor(modelItem => item.Instructor.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Subject.Description)
+                    @Html.DisplayFor(modelItem => item.Subject)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Code)

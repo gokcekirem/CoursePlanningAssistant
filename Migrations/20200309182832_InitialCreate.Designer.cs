@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoursePlanner.Migrations
 {
     [DbContext(typeof(CoursePlannerContext))]
-    [Migration("20200303170813_InitialCreate")]
+    [Migration("20200309182832_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,8 +57,8 @@ namespace CoursePlanner.Migrations
                     b.Property<string>("Prerequisite")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Term")
                         .HasColumnType("nvarchar(max)");
@@ -71,8 +71,6 @@ namespace CoursePlanner.Migrations
                     b.HasIndex("CareerId");
 
                     b.HasIndex("InstructorId");
-
-                    b.HasIndex("SubjectId");
 
                     b.ToTable("Class");
                 });
@@ -102,7 +100,13 @@ namespace CoursePlanner.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
                     b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RemainingSeats")
                         .HasColumnType("int");
 
                     b.Property<string>("Room")
@@ -141,19 +145,6 @@ namespace CoursePlanner.Migrations
                     b.ToTable("Status");
                 });
 
-            modelBuilder.Entity("CoursePlanner.Models.Subject", b =>
-                {
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SubjectId");
-
-                    b.ToTable("Subject");
-                });
-
             modelBuilder.Entity("CoursePlanner.Models.Class", b =>
                 {
                     b.HasOne("CoursePlanner.Models.Career", "Career")
@@ -167,10 +158,6 @@ namespace CoursePlanner.Migrations
                         .HasForeignKey("InstructorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("CoursePlanner.Models.Subject", "Subject")
-                        .WithMany("Classes")
-                        .HasForeignKey("SubjectId");
                 });
 
             modelBuilder.Entity("CoursePlanner.Models.Section", b =>

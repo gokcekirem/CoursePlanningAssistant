@@ -24,7 +24,6 @@ namespace CoursePlanner.Data
         public DbSet<CoursePlanner.Models.Instructor> Instructor { get; set; }
         public DbSet<CoursePlanner.Models.Section> Section { get; set; }
         public DbSet<CoursePlanner.Models.Status> Status { get; set; }
-        public DbSet<CoursePlanner.Models.Subject> Subject { get; set; }
 
     }
 }

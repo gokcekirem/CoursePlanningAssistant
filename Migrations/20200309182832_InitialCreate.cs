@@ -47,25 +47,13 @@ namespace CoursePlanner.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subject",
-                columns: table => new
-                {
-                    SubjectId = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Subject", x => x.SubjectId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Class",
                 columns: table => new
                 {
                     ClassId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     InstructorId = table.Column<int>(nullable: false),
-                    SubjectId = table.Column<string>(nullable: true),
+                    Subject = table.Column<string>(nullable: true),
                     Code = table.Column<int>(nullable: false),
                     CareerId = table.Column<int>(nullable: false),
                     Term = table.Column<string>(nullable: true),
@@ -88,12 +76,6 @@ namespace CoursePlanner.Migrations
                         principalTable: "Instructor",
                         principalColumn: "InstructorId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Class_Subject_SubjectId",
-                        column: x => x.SubjectId,
-                        principalTable: "Subject",
-                        principalColumn: "SubjectId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -105,6 +87,8 @@ namespace CoursePlanner.Migrations
                     ClassId = table.Column<int>(nullable: false),
                     Type = table.Column<string>(nullable: true),
                     StatusId = table.Column<int>(nullable: false),
+                    Capacity = table.Column<int>(nullable: false),
+                    RemainingSeats = table.Column<int>(nullable: false),
                     Times = table.Column<string>(nullable: true),
                     Room = table.Column<string>(nullable: true)
                 },
@@ -136,11 +120,6 @@ namespace CoursePlanner.Migrations
                 column: "InstructorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Class_SubjectId",
-                table: "Class",
-                column: "SubjectId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Section_ClassId",
                 table: "Section",
                 column: "ClassId");
@@ -167,9 +146,6 @@ namespace CoursePlanner.Migrations
 
             migrationBuilder.DropTable(
                 name: "Instructor");
-
-            migrationBuilder.DropTable(
-                name: "Subject");
         }
     }
 }

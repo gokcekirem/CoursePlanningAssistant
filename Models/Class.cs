@@ -13,10 +13,7 @@ namespace CoursePlanner.Models
         [ForeignKey("Instructor")]
         public int InstructorId { get; set; }
         public Instructor Instructor { get; set; }
-
-        [ForeignKey("Subject")]
-        public string SubjectId { get; set; } // Comp
-        public Subject Subject { get; set; }
+        public string Subject { get; set; } // Comp
 
         public int Code { get; set; } // 130
 
