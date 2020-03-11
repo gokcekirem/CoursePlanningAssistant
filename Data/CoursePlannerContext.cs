@@ -11,7 +11,7 @@ namespace CoursePlanner.Data
 {
     public class CoursePlannerContext : DbContext
     {
-        public CoursePlannerContext (DbContextOptions<CoursePlannerContext> options)
+        public CoursePlannerContext(DbContextOptions<CoursePlannerContext> options)
             : base(options)
         {
             String filePath = @"KUSIS_Class_Data\dataWithCourseCode.xlsx";
@@ -19,41 +19,25 @@ namespace CoursePlanner.Data
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             IExcelDataReader reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
             int counter = 0;
+
+            // getting all status
+            getAllStatus(false);
+
             while (reader.Read())
             {
                 counter++;
-
-                if (counter >= 2 && counter <= 4)
+                if (counter >= 2 && counter <= 3788)
                 {
-                    Instructor newInst = new Instructor();
-                    newInst.Name = reader.GetString(29);
-                    if(string.Compare(reader.GetString(28), "PI") == 0)
-                    {
-                        newInst.IsPrimary = true;
-                    }
-                    else
-                    {
-                        newInst.IsPrimary = false;
-                    }
-                    Instructor.Add(newInst);
-                    /*
-                    Class newClass = new Class();
-                    newClass.InstructorId = 1;
-                    newClass.Subject = reader.GetString(1);
-                    Console.WriteLine(reader.GetString(2));
-                    newClass.Code = 1;
-                    newClass.CareerId = 1;
-                    newClass.Term = reader.GetString(31);
-                    newClass.Units = 1;
-                    newClass.Description = reader.GetString(5);
-                    newClass.Prerequisite = "5";
-                    Class.Add(newClass);
-                    */
+                    // getting all the careers
+                    getAllCareers(false, reader);
+
+                    // getting all instructors
+                    getAllInstructors(false, reader);
+
                 }
             }
 
             reader.Close();
-            SaveChanges();
         }
 
         public DbSet<CoursePlanner.Models.Class> Class { get; set; }
@@ -62,5 +46,80 @@ namespace CoursePlanner.Data
         public DbSet<CoursePlanner.Models.Section> Section { get; set; }
         public DbSet<CoursePlanner.Models.Status> Status { get; set; }
 
+        private void getAllCareers(bool boo, IExcelDataReader reader)
+        {
+            if (boo)
+            {
+                string career_name = reader.GetString(10);
+                if (!Career.Any(o => o.Description.Equals(career_name)))
+                {
+                    Career c = new Career();
+                    c.Description = career_name;
+                    Career.Add(c);
+                    SaveChanges();
+                }
+            }
+        }
+
+        private void getAllInstructors(bool boo, IExcelDataReader reader)
+        {
+            if (boo)
+            {
+                string instructor_name = reader.GetString(29);
+                if (!Instructor.Any(o => o.Name.Equals(instructor_name)))
+                {
+                    Instructor newInst = new Instructor();
+                    newInst.Name = instructor_name;
+                    if (string.Compare(reader.GetString(28), "PI") == 0)
+                    {
+                        newInst.IsPrimary = true;
+                    }
+                    else
+                    {
+                        newInst.IsPrimary = false;
+                    }
+                    Instructor.Add(newInst);
+                    SaveChanges();
+                }
+            }
+        }
+
+        private void getAllStatus(bool boo)
+        {
+            if (boo)
+            {
+                // At the moment, all the sections are avaiblable
+                Status s1 = new Status();
+                Status s2 = new Status();
+                Status s3 = new Status();
+                Status s4 = new Status();
+                s1.Description = "A"; // Available status: this one exists like this in our db
+                s2.Description = "Not offered";
+                s3.Description = "Full";
+                s4.Description = "Waitlist";
+                Status.Add(s1);
+                Status.Add(s2);
+                Status.Add(s3);
+                Status.Add(s4);
+                SaveChanges();
+            }
+        }
+
+        private void getAllClasses(bool boo)
+        {
+            if (boo)
+            {
+                Console.WriteLine("Im not implemented yet");
+            }
+        }
+
+        private void getAllSections(bool boo)
+        {
+            if (boo)
+            {
+                Console.WriteLine("Im not implemented yet");
+            }
+        }
     }
 }
+
