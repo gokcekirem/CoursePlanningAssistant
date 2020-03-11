@@ -27,12 +27,18 @@ namespace CoursePlanner.Data
             {
                 counter++;
                 if (counter >= 2 && counter <= 3788)
-                {
+                { 
                     // getting all the careers
                     getAllCareers(false, reader);
 
                     // getting all instructors
                     getAllInstructors(false, reader);
+
+                    // get all classes
+                    getAllClasses(false, reader);
+
+                    //get all sections 
+                    getAllSections(false, reader);
 
                 }
             }
@@ -105,19 +111,85 @@ namespace CoursePlanner.Data
             }
         }
 
-        private void getAllClasses(bool boo)
+        private void getAllClasses(bool boo, IExcelDataReader reader)
         {
             if (boo)
             {
-                Console.WriteLine("Im not implemented yet");
+                string class_description = reader.GetString(5);
+
+                if (!Class.Any(o => o.Description.Equals(class_description)))
+
+                {
+                    Class newClass = new Class();
+
+                    string instructor = reader.GetString(29);
+                    Instructor i = Instructor.Where(s => s.Name.Equals(instructor)).FirstOrDefault<Instructor>();
+                    newClass.InstructorId = i.InstructorId;
+
+                    newClass.Subject = reader.GetString(1);
+                    newClass.Code = Int32.Parse(reader.GetString(2));
+
+                    string career = reader.GetString(10);
+                    Career c = Career.Where(s => s.Description.Equals(career)).FirstOrDefault<Career>();
+                    newClass.CareerId = c.CareerId;
+
+                    newClass.Term = "Fall 2019";
+                    newClass.Description = class_description;
+
+                    Class.Add(newClass);
+                    SaveChanges();
+                }
             }
         }
 
-        private void getAllSections(bool boo)
+        private void getAllSections(bool boo, IExcelDataReader reader)
         {
             if (boo)
             {
-                Console.WriteLine("Im not implemented yet");
+                Section newSection = new Section();
+
+                string class_description = reader.GetString(5);
+                Class c = Class.Where(s => s.Description.Equals(class_description)).FirstOrDefault<Class>();
+
+                newSection.ClassId = c.ClassId;
+                newSection.Type = reader.GetString(0);
+                newSection.StatusId = 1; // 'A'
+                newSection.Capacity = Convert.ToInt32((reader.GetDouble(22)));
+                newSection.RemainingSeats = Convert.ToInt32((reader.GetDouble(22))) - Convert.ToInt32((reader.GetDouble(8)));
+
+                string times = "";
+                if (reader.GetString(12).Equals("Y"))
+                {
+                    times = times + "Mon ";
+                }
+                if (reader.GetString(13).Equals("Y"))
+                {
+                    times = times + "Tue ";
+                }
+                if (reader.GetString(14).Equals("Y"))
+                {
+                    times = times + "Wed ";
+                }
+                if (reader.GetString(15).Equals("Y"))
+                {
+                    times = times + "Thu ";
+                }
+                if (reader.GetString(16).Equals("Y"))
+                {
+                    times = times + "Fri ";
+                }
+
+                if (reader.GetDateTime(23) != null || reader.GetDateTime(24) != null)
+                {
+                    times = times + reader.GetDateTime(23).Hour + ":" + reader.GetDateTime(23).Minute + "-" + reader.GetDateTime(24).Hour + ":" + reader.GetDateTime(24).Minute;
+
+                }
+                newSection.Times = times;
+
+                newSection.Room = reader.GetString(20);
+
+                Section.Add(newSection);
+                SaveChanges();
             }
         }
     }
