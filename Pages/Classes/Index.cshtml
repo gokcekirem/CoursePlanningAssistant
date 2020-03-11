@@ -12,14 +12,15 @@
 </p>
 
 <form>
-    <p>
+    <div class="input-group mb-3">
         <select asp-for="ClassSubject" asp-items="Model.Subjects">
             <option value="">All</option>
         </select>
-        Title: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
+        <input type="text" id="className" class="btn btn-outline-primary" asp-for="SearchString" placeholder="Enter class name" />
+        <input type="submit" class="btn btn-outline-primary" value="Filter">
+    </div>
 </form>
+
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 
