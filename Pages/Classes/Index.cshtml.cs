@@ -51,5 +51,10 @@ namespace CoursePlanner
             Subjects = new SelectList(await subjectQuery.Distinct().ToListAsync());
             Class = await classes.ToListAsync();
         }
+        public IActionResult OnGetSearch(string term)
+        {
+            var classes = _context.Class.Where(c => c.Description.Contains(term)).Select(c => c.Description).ToList();
+            return new JsonResult(classes);
+        }
     }
 }

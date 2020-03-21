@@ -12,14 +12,29 @@
 </p>
 
 <form>
-    <p>
+    <div class="input-group mb-3">
         <select asp-for="ClassSubject" asp-items="Model.Subjects">
             <option value="">All</option>
         </select>
-        Title: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
+        <input type="text" id="className" class="btn btn-outline-primary" asp-for="SearchString" placeholder="Enter class name" />
+        <input type="submit" class="btn btn-outline-primary" value="Filter">
+    </div>
 </form>
+
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#className").autocomplete({
+                source: '@Url.Page("index", "search")'
+            });
+        });
+    </script>
+}
 
 <table class="table">
     <thead>
@@ -49,35 +64,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Class) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstructorId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubjectId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CareerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Term)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Units)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ClassId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ClassId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ClassId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Class)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstructorId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubjectId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CareerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Term)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Units)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ClassId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ClassId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ClassId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
