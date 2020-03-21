@@ -26,10 +26,13 @@ namespace CoursePlanner.Data
             while (reader.Read())
             {
                 counter++;
-                if (counter >= 2 && counter <= 3788)
+                if (counter >= 2 && counter <= 3788) // from 2 to 3788
                 { 
                     // getting all the careers
                     getAllCareers(false, reader);
+
+                    // getting the status
+                    getAllStatus(false);
 
                     // getting all instructors
                     getAllInstructors(false, reader);
@@ -158,28 +161,35 @@ namespace CoursePlanner.Data
                 newSection.RemainingSeats = Convert.ToInt32((reader.GetDouble(22))) - Convert.ToInt32((reader.GetDouble(8)));
 
                 string times = "";
-                if (reader.GetString(12).Equals("Y"))
+                
+                if (reader.GetValue(12) != null)
                 {
-                    times = times + "Mon ";
+                    if (reader.GetString(12).Equals("Y"))
+                    {
+                        times = times + "Mon ";
+                    }
+                    if (reader.GetString(13).Equals("Y"))
+                    {
+                        times = times + "Tue ";
+                    }
+                    if (reader.GetString(14).Equals("Y"))
+                    {
+                        times = times + "Wed ";
+                    }
+                    if (reader.GetString(15).Equals("Y"))
+                    {
+                        times = times + "Thu ";
+                    }
+                    if (reader.GetString(16).Equals("Y"))
+                    {
+                        times = times + "Fri ";
+                    }
                 }
-                if (reader.GetString(13).Equals("Y"))
-                {
-                    times = times + "Tue ";
-                }
-                if (reader.GetString(14).Equals("Y"))
-                {
-                    times = times + "Wed ";
-                }
-                if (reader.GetString(15).Equals("Y"))
-                {
-                    times = times + "Thu ";
-                }
-                if (reader.GetString(16).Equals("Y"))
-                {
-                    times = times + "Fri ";
-                }
+                
 
-                if (reader.GetDateTime(23) != null || reader.GetDateTime(24) != null)
+                //
+
+                if (reader.GetValue(23) != null || reader.GetValue(24) != null)
                 {
                     times = times + reader.GetDateTime(23).Hour + ":" + reader.GetDateTime(23).Minute + "-" + reader.GetDateTime(24).Hour + ":" + reader.GetDateTime(24).Minute;
 
