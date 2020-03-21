@@ -32,8 +32,8 @@ namespace CoursePlanner
         public async Task OnGetAsync()
         {
             IQueryable<string> subjectQuery = from m in _context.Class
-                                            orderby m.SubjectId
-                                            select m.SubjectId;
+                                            orderby m.Subject
+                                            select m.Subject;
 
             var classes = from m in _context.Class
                          select m;
@@ -45,7 +45,7 @@ namespace CoursePlanner
 
             if (!string.IsNullOrEmpty(ClassSubject))
             {
-                classes = classes.Where(x => x.SubjectId == ClassSubject);
+                classes = classes.Where(x => x.Subject == ClassSubject);
             }
 
             Subjects = new SelectList(await subjectQuery.Distinct().ToListAsync());

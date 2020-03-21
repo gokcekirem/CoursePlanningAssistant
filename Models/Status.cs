@@ -9,5 +9,7 @@ namespace CoursePlanner.Models
     {
         public int StatusId { get; set; }
         public string Description { get; set; }
+
+        public ICollection<Section> Sections { get; set; }
     }
 }

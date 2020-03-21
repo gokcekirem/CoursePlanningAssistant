@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoursePlanner.Migrations
 {
     [DbContext(typeof(CoursePlannerContext))]
-    [Migration("20200227151531_InitialCreate")]
+    [Migration("20200309182832_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,10 @@ namespace CoursePlanner.Migrations
                     b.Property<int>("InstructorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SubjectId")
+                    b.Property<string>("Prerequisite")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Term")
@@ -64,6 +67,10 @@ namespace CoursePlanner.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ClassId");
+
+                    b.HasIndex("CareerId");
+
+                    b.HasIndex("InstructorId");
 
                     b.ToTable("Class");
                 });
@@ -93,7 +100,13 @@ namespace CoursePlanner.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
                     b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RemainingSeats")
                         .HasColumnType("int");
 
                     b.Property<string>("Room")
@@ -109,6 +122,10 @@ namespace CoursePlanner.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SectionId");
+
+                    b.HasIndex("ClassId");
+
+                    b.HasIndex("StatusId");
 
                     b.ToTable("Section");
                 });
@@ -128,17 +145,34 @@ namespace CoursePlanner.Migrations
                     b.ToTable("Status");
                 });
 
-            modelBuilder.Entity("CoursePlanner.Models.Subject", b =>
+            modelBuilder.Entity("CoursePlanner.Models.Class", b =>
                 {
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.HasOne("CoursePlanner.Models.Career", "Career")
+                        .WithMany("Classes")
+                        .HasForeignKey("CareerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasOne("CoursePlanner.Models.Instructor", "Instructor")
+                        .WithMany("Classes")
+                        .HasForeignKey("InstructorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.HasKey("SubjectId");
+            modelBuilder.Entity("CoursePlanner.Models.Section", b =>
+                {
+                    b.HasOne("CoursePlanner.Models.Class", "Class")
+                        .WithMany("Sections")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.ToTable("Subject");
+                    b.HasOne("CoursePlanner.Models.Status", "Status")
+                        .WithMany("Sections")
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

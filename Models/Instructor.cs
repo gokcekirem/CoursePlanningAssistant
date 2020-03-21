@@ -11,5 +11,6 @@ namespace CoursePlanner.Models
         public string Name { get; set; }
         public Boolean IsPrimary { get; set; }
 
+        public ICollection<Class> Classes { get; set; }
     }
 }
