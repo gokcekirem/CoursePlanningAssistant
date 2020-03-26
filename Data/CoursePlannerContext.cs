@@ -31,9 +31,6 @@ namespace CoursePlanner.Data
                     // getting all the careers
                     getAllCareers(false, reader);
 
-                    // getting the status
-                    getAllStatus(false);
-
                     // getting all instructors
                     getAllInstructors(false, reader);
 
