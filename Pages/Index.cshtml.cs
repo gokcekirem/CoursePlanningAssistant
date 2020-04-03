@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 
 namespace CoursePlanner.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+
+        public JsonResult json;
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -19,7 +22,7 @@ namespace CoursePlanner.Pages
 
         public void OnGet()
         {
-
+            //Fill json here
         }
     }
 }
