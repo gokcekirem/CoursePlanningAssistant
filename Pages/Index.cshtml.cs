@@ -51,33 +51,61 @@ namespace CoursePlanner.Pages
                 Console.WriteLine(chosenClassSectionTimes.ToList()[i]);
             }
 
+            //Initially we need the allSections list, however, as we make choices we will only need to use the noConflict list
+            var allSections = from m in _context.Section
+                              select m;
+            List<Section> allSectionsList = new List<Section>(allSections);
 
-            List<Tuple<Section, String, DateTime, DateTime>> times;
-            var allRemainingSectionsID = from m in _context.Section
-                                       select m.SectionId;
+            Console.WriteLine(allSectionsList[0].Times);
+            Console.WriteLine(allSectionsList[2].Times);
 
-            var start1 = DateTime.Parse("10:00");
-            var end1 = DateTime.Parse("11:30");
+            Section section1 = allSectionsList[0];
+            Section section2 = allSectionsList[2];
 
-            var start2 = DateTime.Parse("10:0");
-            var end2 = DateTime.Parse("11:45");
+            //for (int i = 0; i < allSectionsList.ToList().Count(); i++)
+            //{
+            //    var days = new String(allSectionsList[i].Times.Where(Char.IsLetter).ToArray());
+            //    var startTime = DateTime.Parse("10:00");
 
-            var section1 = Tuple.Create(101, "Sat Thu", start1, end1);
-            var section2 = Tuple.Create(101, "Mon Wed", start2, end2);
+            //}            
+
+            //var start1 = DateTime.Parse("10:00");
+            //var end1 = DateTime.Parse("11:30");
+
+            //var start2 = DateTime.Parse("10:0");
+            //var end2 = DateTime.Parse("11:45");
+
+            //var section1 = Tuple.Create(101, "Sat Thu", start1, end1);
+            //var section2 = Tuple.Create(101, "Mon Wed", start2, end2);
 
             Console.WriteLine(Collides(section1, section2));
             //var allAvailableSections = from m in _context.Section
             //                           where m.ClassId == 
+
         }
 
-        public bool Collides(Tuple<int, String, DateTime, DateTime> section1, Tuple<int, String, DateTime, DateTime> section2)
+        public bool Collides(Section section1, Section section2)
         {
-            var intersection = section1.Item2.Split(" ").Intersect(section2.Item2.Split(" "));
+            var days1 = new String(section1.Times.Where(Char.IsLetter).ToArray());
+            var days2 = new String(section2.Times.Where(Char.IsLetter).ToArray());
+
+            var hours1 = section1.Times.Split(" ");
+            //var hours1 = section1.Times.ToList().Except(days1.ToList()).ToString().Split("-");
+            var hours2 = section2.Times.ToList().Except(days2.ToList()).ToString().Split("-");
+
+            Console.WriteLine(hours1);
+
+            var start1 = DateTime.Parse(hours1[0]);
+            var end1 = DateTime.Parse(hours1[1]);
+            var start2 = DateTime.Parse(hours2[0]);
+            var end2 = DateTime.Parse(hours2[1]);
+
+            var intersection = days1.Intersect(days2);
             if (intersection.Count() == 0)
             {
                 return false;
             }
-            if ((section1.Item3 < section2.Item4) && (section1.Item4 > section2.Item3))
+            if ((start1 < end2) && (end1 > start2))
             {
                 return true;
             }
