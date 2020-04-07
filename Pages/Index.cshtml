@@ -18,6 +18,8 @@
 </figure>
 
 <script>
+    var selectedCourses = [];
+
     var json = [{
         name: 'HUMS',
         data: [{
@@ -97,6 +99,8 @@
         },
         plotOptions: {
             packedbubble: {
+                //allowPointSelect: true,
+                //selected: false,
                 minSize: '0%',
                 maxSize: '200%',
                 zMin: 0,
@@ -115,6 +119,52 @@
                         color: 'black',
                         textOutline: 'none',
                         fontWeight: 'normal'
+                    }
+                },
+                point: {
+                    //selected: false,
+                    events: {
+                        click: function (e) {
+
+                            var course = {
+                                name: this.series.name, code: this.name, color: this.color
+                            };
+                            var len = selectedCourses.length;
+                            //if its not selected, select it
+                            if (this.color != 'white') {
+                                selectedCourses[len] = course;
+                                this.update({ color: 'white' });
+                                //this.update({ selected: 'true' });
+                                console.log(
+                                    "Selected course: " + selectedCourses[len].name + selectedCourses[len].code
+                                    + " tot:" + (len + 1));
+                            } else { // if its selected, deselect it
+                                var temp = [];
+                                var t = 0;
+                                for (var i = 0; i < len; i++) {
+                                    if (selectedCourses[i].name == course.name && selectedCourses[i].code == course.code) {
+
+                                        //this.update({ selected: 'false' });
+                                        this.update({ color: selectedCourses[i].color });
+                                        console.log("Deselecting");
+                                        // skipping this one
+
+                                    } else {
+                                        temp[t] = selectedCourses[i];
+                                        t++;
+                                    }
+                                }
+                                selectedCourses = temp;
+                            }
+
+                            console.log("\nShowing the selected courses:\n");
+                            if (selectedCourses.length > 0) {
+                                for (var i = 0; i < selectedCourses.length; i++) {
+                                    console.log(selectedCourses[i].name + selectedCourses[i].code);
+                                }
+                            }
+
+                        }
                     }
                 }
             }
