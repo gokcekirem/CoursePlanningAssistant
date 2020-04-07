@@ -1,0 +1,78 @@
+[
+  {
+    "name": "HUMS",
+    "data": [
+      {
+        "name": 118,
+        "value": 40
+      },
+      {
+        "name": 110,
+        "value": 24
+      },
+      {
+        "name": 104,
+        "value": 30
+      }
+    ]
+  },
+  {
+    "name": "COMP",
+    "data": [
+      {
+        "name": 131,
+        "value": 60
+      },
+      {
+        "name": 437,
+        "value": 20
+      },
+      {
+        "name": 132,
+        "value": 60
+      },
+      {
+        "name": 106,
+        "value": 40
+      },
+      {
+        "name": 200,
+        "value": 60
+      },
+      {
+        "name": 202,
+        "value": 50
+      }
+    ]
+  },
+  {
+    "name": "ASIU",
+    "data": [
+      {
+        "name": 100,
+        "value": 40
+      },
+      {
+        "name": 110,
+        "value": 30
+      },
+      {
+        "name": 104,
+        "value": 30
+      }
+    ]
+  },
+  {
+    "name": "ENGR",
+    "data": [
+      {
+        "name": 200,
+        "value": 80
+      },
+      {
+        "name": 401,
+        "value": 40
+      }
+    ]
+  }
+]
