@@ -1,12 +1,10 @@
-﻿using System;
+﻿using CoursePlanner.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using CoursePlanner.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
 
 namespace CoursePlanner.Pages
@@ -45,22 +43,11 @@ namespace CoursePlanner.Pages
                                where chosenClassAllSectionsID.ToList().Contains(m.SectionId)
                                select m;
 
-            //foreach (Section sect in chosenClassAllSections)
-            //{
-            //    Console.WriteLine(sect.SectionId);
-            //    Console.WriteLine(sect.Type);
-            //}
-
-            //for (int i=0; i<chosenClassSectionTimes.ToList().Count(); i++)
-            //{
-            //    Console.WriteLine(chosenClassSectionTimes.Count());
-            //    Console.WriteLine(chosenClassSectionTimes.ToList()[i]);
-            //}
-
-            //Initially we need the allSections list, however, as we make choices we will only need to use the noConflict list
+            //Initially we need the allSections list, however, as we make choices we will only need to use the availableSectionsList list
             var allSections = from m in _context.Section
                               select m;
             List<Section> allSectionsList = new List<Section>(allSections);
+            List<Section> availableSectionsList = allSectionsList;
             List<Section> chosenClassAllSectionsList = new List<Section>(chosenClassAllSections);
 
             Section section1 = allSectionsList[385];
@@ -68,52 +55,27 @@ namespace CoursePlanner.Pages
 
             var groupedSections = chosenClassAllSectionsList.GroupBy(sect => sect.Type);
 
-            //foreach (var group in groupedSections)
-            //{
-            //    Console.WriteLine("Sections from " + group.Key + ":");
-            //    foreach (var sect in group)
-            //    {
-            //        Console.WriteLine("* " + sect.SectionId);
-            //    }
-            //}
-
-
-
-            foreach (Section remainingSection in allSectionsList)
+            foreach (Section remainingSection in availableSectionsList)
             {
                 foreach (var group in groupedSections)
                 {
-                    bool oneNoCollision = false;
+                    bool validSectionForGroup = false;
                     foreach (var sect in group)
                     {
                         if (!Collides(sect, remainingSection))
                         {
-                            oneNoCollision = true;
+                            validSectionForGroup = true;
+                            break;
                         }
+                    }     
+                    if (!validSectionForGroup)
+                    {
+                        availableSectionsList.Remove(remainingSection);
                     }
                 }
             }
 
-            //for (int i = 0; i < allSectionsList.ToList().Count(); i++)
-            //{
-            //    var days = new String(allSectionsList[i].Times.Where(Char.IsLetter).ToArray());
-            //    var startTime = DateTime.Parse("10:00");
-
-            //}            
-
-            //var start1 = DateTime.Parse("10:00");
-            //var end1 = DateTime.Parse("11:30");
-
-            //var start2 = DateTime.Parse("10:0");
-            //var end2 = DateTime.Parse("11:45");
-
-            //var section1 = Tuple.Create(101, "Sat Thu", start1, end1);
-            //var section2 = Tuple.Create(101, "Mon Wed", start2, end2);
-
-            //Console.WriteLine(Collides(section1, section2));
             Console.WriteLine(Collides(section1, section2));
-            //var allAvailableSections = from m in _context.Section
-            //                           where m.ClassId == 
 
         }
 
@@ -154,46 +116,5 @@ namespace CoursePlanner.Pages
             }
             return false;
         }
-
-        //public async void OnPostScheduleAsync()
-        //{
-        //    var allSections = from m in _context.Section
-        //                      where m.StatusId == 1
-        //                      select m;
-        //    var chosenSections = from m in _context.Section
-        //                         where m.StatusId == 0
-        //                         select m;
-
-        //    List<Section> noConflict = new List<Section>(allSections);
-        //    TimeSpan elapsed = DateTime.Parse(endTime).Subtract(DateTime.Parse(startTime));
-        //    //t1.start_time < t2.end_time AND t1.end_time > t2.start_time
-
-        //    Console.WriteLine($"Time elapsed: {elapsed}");
-        //    foreach (Section section in chosenSections)
-        //    {
-        //        DateTime start1 = DateTime.Parse(section.Times.Substring(0, 5));
-        //        DateTime end1 = DateTime.Parse(section.Times.Substring(6, 5));
-        //        Console.WriteLine("SectionId: " + section.SectionId + " Section Times: " + start1 + " " + end1);
-        //        foreach (Section section2 in allSections)
-        //        {
-        //            DateTime start2 = DateTime.Parse(section2.Times.Substring(0, 5));
-        //            DateTime end2 = DateTime.Parse(section2.Times.Substring(6, 5));
-        //            Console.WriteLine("SectionId: " + section2.SectionId + " section times: " + start2 + " " + end2);
-        //            if ((start1 < end2) && (end1 > start2))
-        //            {
-        //                noConflict.Remove(section2);
-        //            }
-        //        }
-        //    }
-        //    Console.WriteLine("Printing all non-conflicting section selections...");
-        //    foreach (Section section in noConflict)
-        //    {
-        //        Console.WriteLine("SectionId: " + section.SectionId + " Section Times: " + section.Times);
-        //    }
-
-        //    var classes = from m in _context.Class
-        //                  select m;
-        //    Class = await classes.ToListAsync();
-        //}
     }
 }
