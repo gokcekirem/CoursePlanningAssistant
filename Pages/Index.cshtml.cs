@@ -25,7 +25,8 @@ namespace CoursePlanner.Pages
 
         public void OnGet()
         {
-            var currentChoice = Tuple.Create("COMP", 317);
+     
+            var currentChoice = Tuple.Create("COMP", 491);
             ArrayList choices = new ArrayList();
             choices.Add(currentChoice);
             //Console.WriteLine(currentChoice);
@@ -47,7 +48,7 @@ namespace CoursePlanner.Pages
             var allSections = from m in _context.Section
                               select m;
             List<Section> allSectionsList = new List<Section>(allSections);
-            List<Section> availableSectionsList = allSectionsList;
+            List<Section> availableSectionsList = new List<Section>(allSectionsList);
             List<Section> chosenClassAllSectionsList = new List<Section>(chosenClassAllSections);
 
             //Section section1 = allSectionsList[385];
@@ -79,9 +80,55 @@ namespace CoursePlanner.Pages
                     }
                 }
             }
-            Console.WriteLine("After one iterative selection of COMP 317, the available section count was " + availableSectionsList.Count());
+            Console.WriteLine("After one iterative selection of " + currentChoice.Item1 + " " + currentChoice.Item2 + " " + ", the available section count is " + availableSectionsList.Count());
 
             //Console.WriteLine(Collides(section1, section2));
+
+            //Initially we need the allClasses list, however, as we make choices we will only need to use the availableClassesList list
+            var allClasses = from m in _context.Class
+                             select m;
+            List<Class> allClassesList = new List<Class>(allClasses);
+            List<Class> availableClassesList = new List<Class>(allClassesList);
+            List<Class> availableClassesListCopy = new List<Class>(availableClassesList);
+
+            Console.WriteLine("Before selection, the available class count was " + availableClassesList.Count());
+
+            foreach (Class remainingClass in availableClassesListCopy)
+            {
+               
+                var classAllSectionsID = from m in _context.Section
+                                               where m.ClassId == remainingClass.ClassId
+                                               select m.SectionId;
+                var classAllSections = from m in _context.Section
+                                             where classAllSectionsID.ToList().Contains(m.SectionId)
+                                             select m;
+                List<Section> classAllSectionsList = new List<Section>(classAllSections);
+
+                var groupedClassSections = classAllSectionsList.GroupBy(sect => sect.Type);
+
+                foreach (var group in groupedClassSections)
+                {
+                    bool validSectionForGroup = false;
+                    foreach (var sect in group)
+                    {
+                        if (availableSectionsList.Contains(sect))
+                        {
+                            validSectionForGroup = true;
+                            break;
+                        }
+                    }
+                    if (!validSectionForGroup)
+                    {
+                        Console.WriteLine("All the " + group.Key + " sections of " + remainingClass.Subject + " " + remainingClass.Code + " was removed as it collided with previous choices.");
+                        Console.WriteLine("Deleting classID " + remainingClass.ClassId + " with Code: " + remainingClass.Subject + " " + remainingClass.Code + " from the available classes list...");
+                        availableClassesList.Remove(remainingClass);
+                        break;
+                    }
+                }
+            }
+
+            Console.WriteLine("After one iterative selection, the available class count is " + availableClassesList.Count());
+
 
         }
 
@@ -122,6 +169,7 @@ namespace CoursePlanner.Pages
             }
             if ((start1 < end2) && (end1 > start2))
             {
+                Console.WriteLine("There was a collision.");
                 return true;
             }
             return false;
