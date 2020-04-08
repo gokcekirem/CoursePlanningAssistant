@@ -50,37 +50,47 @@ namespace CoursePlanner.Pages
             List<Section> availableSectionsList = allSectionsList;
             List<Section> chosenClassAllSectionsList = new List<Section>(chosenClassAllSections);
 
-            Section section1 = allSectionsList[385];
-            Section section2 = allSectionsList[214];
+            //Section section1 = allSectionsList[385];
+            //Section section2 = allSectionsList[214];
 
             var groupedSections = chosenClassAllSectionsList.GroupBy(sect => sect.Type);
-
-            foreach (Section remainingSection in availableSectionsList)
+            List<Section> availableSectionsListCopy = new List<Section>(availableSectionsList); 
+            Console.WriteLine("Before selection, the available section count was " + availableSectionsList.Count());
+            foreach (Section remainingSection in availableSectionsListCopy)
             {
                 foreach (var group in groupedSections)
                 {
                     bool validSectionForGroup = false;
                     foreach (var sect in group)
                     {
+                        Console.WriteLine("Looking for collision in " + remainingSection.SectionId);
                         if (!Collides(sect, remainingSection))
                         {
                             validSectionForGroup = true;
                             break;
                         }
-                    }     
+                    }
                     if (!validSectionForGroup)
                     {
+                        Console.WriteLine("All the " + group.Key + " sections of the chosen class and this section collided.");
+                        Console.WriteLine("Deleting sectionID " + remainingSection.SectionId + " because of collision");
                         availableSectionsList.Remove(remainingSection);
+                        break;
                     }
                 }
             }
+            Console.WriteLine("After one iterative selection of COMP 317, the available section count was " + availableSectionsList.Count());
 
-            Console.WriteLine(Collides(section1, section2));
+            //Console.WriteLine(Collides(section1, section2));
 
         }
 
         public bool Collides(Section section1, Section section2)
         {
+            if (section2.Times == "" || section2.Times == "0:0-0:0" || section2.Times == "Fri ")  //These are bad data
+            {
+                return false;
+            }
             var split1 = section1.Times.Split(" ").ToList();
 
             var hours1 = split1.Last();
@@ -97,10 +107,10 @@ namespace CoursePlanner.Pages
 
             var days2 = split2;
 
+            
             var splithours1 = hours1.Split("-").ToList();
             var start1 = DateTime.Parse(splithours1[0]);
             var end1 = DateTime.Parse(splithours1[1]);
-
             var splithours2 = hours2.Split("-").ToList();
             var start2 = DateTime.Parse(splithours2[0]);
             var end2 = DateTime.Parse(splithours2[1]);
