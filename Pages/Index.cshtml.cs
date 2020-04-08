@@ -37,13 +37,19 @@ namespace CoursePlanner.Pages
                               where m.Code == currentChoice.Item2
                               select m.ClassId;
             
-            var allSectionsID = from m in _context.Section
+            var chosenClassAllSectionsID = from m in _context.Section
                               where m.ClassId == chosenClassID.ToList()[0]
                               select m.SectionId;
 
-            var chosenClassSectionTimes = from m in _context.Section
-                               where allSectionsID.ToList().Contains(m.SectionId)
-                               select m.Times;
+            var chosenClassAllSections = from m in _context.Section
+                               where chosenClassAllSectionsID.ToList().Contains(m.SectionId)
+                               select m;
+
+            //foreach (Section sect in chosenClassAllSections)
+            //{
+            //    Console.WriteLine(sect.SectionId);
+            //    Console.WriteLine(sect.Type);
+            //}
 
             //for (int i=0; i<chosenClassSectionTimes.ToList().Count(); i++)
             //{
@@ -55,12 +61,38 @@ namespace CoursePlanner.Pages
             var allSections = from m in _context.Section
                               select m;
             List<Section> allSectionsList = new List<Section>(allSections);
-
-            //Console.WriteLine(allSectionsList[0].Times);
-            //Console.WriteLine(allSectionsList[2].Times);
+            List<Section> chosenClassAllSectionsList = new List<Section>(chosenClassAllSections);
 
             Section section1 = allSectionsList[385];
             Section section2 = allSectionsList[214];
+
+            var groupedSections = chosenClassAllSectionsList.GroupBy(sect => sect.Type);
+
+            //foreach (var group in groupedSections)
+            //{
+            //    Console.WriteLine("Sections from " + group.Key + ":");
+            //    foreach (var sect in group)
+            //    {
+            //        Console.WriteLine("* " + sect.SectionId);
+            //    }
+            //}
+
+
+
+            foreach (Section remainingSection in allSectionsList)
+            {
+                foreach (var group in groupedSections)
+                {
+                    bool oneNoCollision = false;
+                    foreach (var sect in group)
+                    {
+                        if (!Collides(sect, remainingSection))
+                        {
+                            oneNoCollision = true;
+                        }
+                    }
+                }
+            }
 
             //for (int i = 0; i < allSectionsList.ToList().Count(); i++)
             //{
