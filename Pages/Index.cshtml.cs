@@ -27,10 +27,10 @@ namespace CoursePlanner.Pages
 
         public void OnGet()
         {
-            var currentChoice = Tuple.Create("COMP", 131);
+            var currentChoice = Tuple.Create("COMP", 317);
             ArrayList choices = new ArrayList();
             choices.Add(currentChoice);
-            Console.WriteLine(currentChoice);
+            //Console.WriteLine(currentChoice);
 
             var chosenClassID = from m in _context.Class
                               where m.Subject == currentChoice.Item1
@@ -45,22 +45,22 @@ namespace CoursePlanner.Pages
                                where allSectionsID.ToList().Contains(m.SectionId)
                                select m.Times;
 
-            for (int i=0; i<chosenClassSectionTimes.ToList().Count(); i++)
-            {
-                Console.WriteLine(chosenClassSectionTimes.Count());
-                Console.WriteLine(chosenClassSectionTimes.ToList()[i]);
-            }
+            //for (int i=0; i<chosenClassSectionTimes.ToList().Count(); i++)
+            //{
+            //    Console.WriteLine(chosenClassSectionTimes.Count());
+            //    Console.WriteLine(chosenClassSectionTimes.ToList()[i]);
+            //}
 
             //Initially we need the allSections list, however, as we make choices we will only need to use the noConflict list
             var allSections = from m in _context.Section
                               select m;
             List<Section> allSectionsList = new List<Section>(allSections);
 
-            Console.WriteLine(allSectionsList[0].Times);
-            Console.WriteLine(allSectionsList[2].Times);
+            //Console.WriteLine(allSectionsList[0].Times);
+            //Console.WriteLine(allSectionsList[2].Times);
 
-            Section section1 = allSectionsList[0];
-            Section section2 = allSectionsList[2];
+            Section section1 = allSectionsList[385];
+            Section section2 = allSectionsList[214];
 
             //for (int i = 0; i < allSectionsList.ToList().Count(); i++)
             //{
@@ -78,6 +78,7 @@ namespace CoursePlanner.Pages
             //var section1 = Tuple.Create(101, "Sat Thu", start1, end1);
             //var section2 = Tuple.Create(101, "Mon Wed", start2, end2);
 
+            //Console.WriteLine(Collides(section1, section2));
             Console.WriteLine(Collides(section1, section2));
             //var allAvailableSections = from m in _context.Section
             //                           where m.ClassId == 
@@ -86,19 +87,29 @@ namespace CoursePlanner.Pages
 
         public bool Collides(Section section1, Section section2)
         {
-            var days1 = new String(section1.Times.Where(Char.IsLetter).ToArray());
-            var days2 = new String(section2.Times.Where(Char.IsLetter).ToArray());
+            var split1 = section1.Times.Split(" ").ToList();
 
-            var hours1 = section1.Times.Split(" ");
-            //var hours1 = section1.Times.ToList().Except(days1.ToList()).ToString().Split("-");
-            var hours2 = section2.Times.ToList().Except(days2.ToList()).ToString().Split("-");
+            var hours1 = split1.Last();
 
-            Console.WriteLine(hours1);
+            split1.Remove(hours1);
 
-            var start1 = DateTime.Parse(hours1[0]);
-            var end1 = DateTime.Parse(hours1[1]);
-            var start2 = DateTime.Parse(hours2[0]);
-            var end2 = DateTime.Parse(hours2[1]);
+            var days1 = split1;
+
+            var split2 = section2.Times.Split(" ").ToList();
+
+            var hours2 = split2.Last();
+
+            split2.Remove(hours2);
+
+            var days2 = split2;
+
+            var splithours1 = hours1.Split("-").ToList();
+            var start1 = DateTime.Parse(splithours1[0]);
+            var end1 = DateTime.Parse(splithours1[1]);
+
+            var splithours2 = hours2.Split("-").ToList();
+            var start2 = DateTime.Parse(splithours2[0]);
+            var end2 = DateTime.Parse(splithours2[1]);
 
             var intersection = days1.Intersect(days2);
             if (intersection.Count() == 0)
