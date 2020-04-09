@@ -23,6 +23,8 @@ namespace CoursePlanner.Pages
             _logger = logger;
         }
 
+        //List<Class> availableClassesListForTimetables = new List<Class>();
+
         public void OnGet()
         {
      
@@ -90,6 +92,7 @@ namespace CoursePlanner.Pages
             List<Class> allClassesList = new List<Class>(allClasses);
             List<Class> availableClassesList = new List<Class>(allClassesList);
             List<Class> availableClassesListCopy = new List<Class>(availableClassesList);
+            
 
             Console.WriteLine("Before selection, the available class count was " + availableClassesList.Count());
 
@@ -128,7 +131,7 @@ namespace CoursePlanner.Pages
             }
 
             Console.WriteLine("After one iterative selection, the available class count is " + availableClassesList.Count());
-
+            //availableClassesListForTimetables = availableClassesList;
 
         }
 
@@ -174,5 +177,14 @@ namespace CoursePlanner.Pages
             }
             return false;
         }
+
+        public void OnPostMakeTimetables()
+        {
+            Console.WriteLine("This button works: ");
+            //Console.WriteLine(availableClassesListForTimetables.Count());
+        }
     }
 }
+
+
+
