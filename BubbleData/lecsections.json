@@ -1,0 +1,1917 @@
+[
+  {
+    "name": "ACCT",
+    "Code": 321,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "ACCT",
+    "Code": 501,
+    "data": [ { "value": 8 } ]
+  },
+  {
+    "name": "ACWR",
+    "Code": 101,
+    "data": [ { "value": 20 } ]
+  },
+  {
+    "name": "ACCT",
+    "Code": 201,
+    "data": [ { "value": 94 } ]
+  },
+  {
+    "name": "ACCT",
+    "Code": 202,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ACWR",
+    "Code": 103,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "ACWR",
+    "Code": 104,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "ALIS",
+    "Code": 100,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "ACWR",
+    "Code": 106,
+    "data": [ { "value": 16 } ]
+  },
+  {
+    "name": "ARBC",
+    "Code": 201,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "ARBC",
+    "Code": 202,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "ARBC",
+    "Code": 301,
+    "data": [ { "value": 14 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 201,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 315,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 318,
+    "data": [ { "value": 1 } ]
+  },
+  {
+    "name": "ACWR",
+    "Code": 107,
+    "data": [ { "value": 11 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 407,
+    "data": [ { "value": 11 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 422,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 461,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 502,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 526,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 527,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 550,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "ARTS",
+    "Code": 201,
+    "data": [ { "value": 68 } ]
+  },
+  {
+    "name": "ARTS",
+    "Code": 350,
+    "data": [ { "value": 72 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 100,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 102,
+    "data": [ { "value": 8 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 104,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 115,
+    "data": [ { "value": 1 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 118,
+    "data": [ { "value": 20 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 121,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "BUSA",
+    "Code": 499,
+    "data": [ { "value": 23 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 109,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 111,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 201,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 300,
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 301,
+    "data": [ { "value": 101 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 302,
+    "data": [ { "value": 1 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 303,
+    "data": [ { "value": 16 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 402,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 403,
+    "data": [ { "value": 16 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 405,
+    "data": [ { "value": 37 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 415,
+    "data": [ { "value": 41 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 418,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 501,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 502,
+    "data": [ { "value": 20 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 510,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 101,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 103,
+    "data": [ { "value": 1 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 201,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 206,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 503,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 301,
+    "data": [ { "value": 5 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 303,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 502,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 504,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 515,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "CHIN",
+    "Code": 202,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "CMKT",
+    "Code": 501,
+    "data": [ { "value": 38 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 110,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 410,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "CMSE",
+    "Code": 501,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 111,
+    "data": [ { "value": 5 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 130,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "CPAP",
+    "Code": 100,
+    "data": [ { "value": 93 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 131,
+    "data": [ { "value": 76 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 198,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 303,
+    "data": [ { "value": 43 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 317,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 442,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "COMM",
+    "Code": 202,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 450,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 550,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 551,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "CSHS",
+    "Code": 504,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "CSHS",
+    "Code": 557,
+    "data": [ { "value": 6 } ]
+  },
+  {
+    "name": "DASC",
+    "Code": 501,
+    "data": [ { "value": 35 } ]
+  },
+  {
+    "name": "DASC",
+    "Code": 521,
+    "data": [ { "value": 185 } ]
+  },
+  {
+    "name": "DTES",
+    "Code": 551,
+    "data": [ { "value": 23 } ]
+  },
+  {
+    "name": "ECIR",
+    "Code": 313,
+    "data": [ { "value": 36 } ]
+  },
+  {
+    "name": "ECIR",
+    "Code": 410,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 100,
+    "data": [ { "value": 58 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 101,
+    "data": [ { "value": 32 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 201,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 311,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 321,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 333,
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 202,
+    "data": [ { "value": 6 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 345,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 451,
+    "data": [ { "value": 35 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 481,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 499,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 360,
+    "data": [ { "value": 116 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 370,
+    "data": [ { "value": 102 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 430,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 501,
+    "data": [ { "value": 5 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 507,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 503,
+    "data": [ { "value": 2 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 511,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 513,
+    "data": [ { "value": 3 } ]
+  },
+  {
+    "name": "EFIN",
+    "Code": 301,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "EFIN",
+    "Code": 403,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 3525,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 3526,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 3527,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "EFIN",
+    "Code": 304,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 3528,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 4018,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 4019,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 4020,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 4025,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 5505,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 5506,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 5509,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 8806,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 198,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 202,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 204,
+    "data": [ { "value": 126 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 301,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 310,
+    "data": [ { "value": 41 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 312,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 339,
+    "data": [ { "value": 6 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 402,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 201,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 405,
+    "data": [ { "value": 35 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 421,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 418,
+    "data": [ { "value": 36 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 430,
+    "data": [ { "value": 32 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 438,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 442,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 450,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 518,
+    "data": [ { "value": 39 } ]
+  },
+  {
+    "name": "ENGR",
+    "Code": 200,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ENGR",
+    "Code": 400,
+    "data": [ { "value": 1 } ]
+  },
+  {
+    "name": "ENGR",
+    "Code": 429,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "EQUR",
+    "Code": 121,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "ENGR",
+    "Code": 201,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "ETHC",
+    "Code": 105,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "ETHC",
+    "Code": 109,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "ETHC",
+    "Code": 113,
+    "data": [ { "value": 20 } ]
+  },
+  {
+    "name": "EXCH",
+    "Code": 301,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "FREN",
+    "Code": 201,
+    "data": [ { "value": 5 } ]
+  },
+  {
+    "name": "FREN",
+    "Code": 202,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "GERM",
+    "Code": 201,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "GERM",
+    "Code": 301,
+    "data": [ { "value": 14 } ]
+  },
+  {
+    "name": "GERM",
+    "Code": 302,
+    "data": [ { "value": 14 } ]
+  },
+  {
+    "name": "GERM",
+    "Code": 401,
+    "data": [ { "value": 20 } ]
+  },
+  {
+    "name": "GREK",
+    "Code": 401,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 103,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 203,
+    "data": [ { "value": 1 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 300,
+    "data": [ { "value": 78 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 309,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 311,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 402,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 410,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 501,
+    "data": [ { "value": 11 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 104,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "GERM",
+    "Code": 202,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 109,
+    "data": [ { "value": 23 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 129,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 130,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 131,
+    "data": [ { "value": 109 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 114,
+    "data": [ { "value": 2 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 120,
+    "data": [ { "value": 2 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 100,
+    "data": [ { "value": 35 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 198,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 201,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 343,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 420,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 363,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 430,
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 440,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 473,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 475,
+    "data": [ { "value": 36 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 483,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 371,
+    "data": [ { "value": 23 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 501,
+    "data": [ { "value": 9 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 503,
+    "data": [ { "value": 9 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 564,
+    "data": [ { "value": 14 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 101,
+    "data": [ { "value": 6 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 201,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 203,
+    "data": [ { "value": 43 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 204,
+    "data": [ { "value": 37 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 301,
+    "data": [ { "value": 16 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 325,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 330,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 374,
+    "data": [ { "value": 103 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 375,
+    "data": [ { "value": 46 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 380,
+    "data": [ { "value": 16 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 401,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 421,
+    "data": [ { "value": 38 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 447,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 450,
+    "data": [ { "value": 61 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 499,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 601,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "ISP",
+    "Code": 450,
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 475,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 501,
+    "data": [ { "value": 14 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 504,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 531,
+    "data": [ { "value": 3 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 550,
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 600,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "ITAL",
+    "Code": 201,
+    "data": [ { "value": 11 } ]
+  },
+  {
+    "name": "ITAL",
+    "Code": 301,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "LANG",
+    "Code": 290,
+    "data": [ { "value": 8 } ]
+  },
+  {
+    "name": "LATN",
+    "Code": 401,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 111,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 201,
+    "data": [ { "value": 67 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 205,
+    "data": [ { "value": 61 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 207,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 221,
+    "data": [ { "value": 85 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 301,
+    "data": [ { "value": 41 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 303,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 305,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "ITAL",
+    "Code": 202,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 325,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 328,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 407,
+    "data": [ { "value": 11 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 409,
+    "data": [ { "value": 67 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 410,
+    "data": [ { "value": 23 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 425,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 403,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 430,
+    "data": [ { "value": 14 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 433,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 101,
+    "data": [ { "value": 6 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 201,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 210,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 303,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 316,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 357,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 441,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 499,
+    "data": [ { "value": 5 } ]
+  },
+  {
+    "name": "MASE",
+    "Code": 510,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MASE",
+    "Code": 515,
+    "data": [ { "value": 3 } ]
+  },
+  {
+    "name": "MASE",
+    "Code": 518,
+    "data": [ { "value": 3 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 101,
+    "data": [ { "value": 58 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 102,
+    "data": [ { "value": 37 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 107,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 201,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 106,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 202,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 204,
+    "data": [ { "value": 72 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 205,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 211,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 301,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 310,
+    "data": [ { "value": 23 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 320,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 404,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 203,
+    "data": [ { "value": 54 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 205,
+    "data": [ { "value": 2 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 206,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 207,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 208,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 210,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 213,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 221,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 303,
+    "data": [ { "value": 58 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 311,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 319,
+    "data": [ { "value": 5 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 323,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 326,
+    "data": [ { "value": 20 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 327,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 342,
+    "data": [ { "value": 38 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 301,
+    "data": [ { "value": 85 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 354,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 430,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 432,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 433,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 200,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 300,
+    "data": [ { "value": 78 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 301,
+    "data": [ { "value": 8 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 409,
+    "data": [ { "value": 16 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 406,
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 420,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 423,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 501,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 201,
+    "data": [ { "value": 38 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 203,
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 350,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 401,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 408,
+    "data": [ { "value": 35 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 409,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 432,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 411,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 421,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 427,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 443,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 444,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 462,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "MEDI",
+    "Code": 101,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "MEDI",
+    "Code": 110,
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "MEDI",
+    "Code": 120,
+    "data": [ { "value": 6 } ]
+  },
+  {
+    "name": "MFIN",
+    "Code": 202,
+    "data": [ { "value": 63 } ]
+  },
+  {
+    "name": "MFIN",
+    "Code": 662,
+    "data": [ { "value": 9 } ]
+  },
+  {
+    "name": "MGIS",
+    "Code": 301,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 335,
+    "data": [ { "value": 2 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 351,
+    "data": [ { "value": 39 } ]
+  },
+  {
+    "name": "MFIN",
+    "Code": 304,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 411,
+    "data": [ { "value": 11 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 421,
+    "data": [ { "value": 8 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 671,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 901,
+    "data": [ { "value": 98 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 911,
+    "data": [ { "value": 98 } ]
+  },
+  {
+    "name": "MKTG",
+    "Code": 302,
+    "data": [ { "value": 35 } ]
+  },
+  {
+    "name": "OPSM",
+    "Code": 501,
+    "data": [ { "value": 38 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 432,
+    "data": [ { "value": 91 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 445,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 513,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "MKTG",
+    "Code": 551,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "MKTG",
+    "Code": 665,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "NURS",
+    "Code": 101,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "MKTG",
+    "Code": 432,
+    "data": [ { "value": 90 } ]
+  },
+  {
+    "name": "OPSM",
+    "Code": 302,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 101,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 213,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 338,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 404,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 450,
+    "data": [ { "value": 41 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 500,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 101,
+    "data": [ { "value": 5 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 102,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 123,
+    "data": [ { "value": 58 } ]
+  },
+  {
+    "name": "OPSM",
+    "Code": 305,
+    "data": [ { "value": 39 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 205,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 312,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 401,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 414,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 501,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 503,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 550,
+    "data": [ { "value": 16 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 100,
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 201,
+    "data": [ { "value": 38 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 205,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 204,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 301,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 208,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 302,
+    "data": [ { "value": 14 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 210,
+    "data": [ { "value": 82 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 301,
+    "data": [ { "value": 16 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 305,
+    "data": [ { "value": 19 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 306,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 357,
+    "data": [ { "value": 23 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 372,
+    "data": [ { "value": 5 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 402,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 434,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 550,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 552,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "QMBU",
+    "Code": 301,
+    "data": [ { "value": 14 } ]
+  },
+  {
+    "name": "QMBU",
+    "Code": 310,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "RUSS",
+    "Code": 201,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "RUSS",
+    "Code": 202,
+    "data": [ { "value": 8 } ]
+  },
+  {
+    "name": "RUSS",
+    "Code": 301,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "SCIE",
+    "Code": 103,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "SCIE",
+    "Code": 108,
+    "data": [ { "value": 74 } ]
+  },
+  {
+    "name": "SCIE",
+    "Code": 459,
+    "data": [ { "value": 6 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 100,
+    "data": [ { "value": 8 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 211,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 220,
+    "data": [ { "value": 36 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 311,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 314,
+    "data": [ { "value": 52 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 542,
+    "data": [ { "value": 36 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 315,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 340,
+    "data": [ { "value": 3 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 354,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 355,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 402,
+    "data": [ { "value": 36 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 452,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 503,
+    "data": [ { "value": 23 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 552,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "SOSC",
+    "Code": 105,
+    "data": [ { "value": 7 } ]
+  },
+  {
+    "name": "SOSC",
+    "Code": 110,
+    "data": [ { "value": 16 } ]
+  },
+  {
+    "name": "SOSC",
+    "Code": 119,
+    "data": [ { "value": 1 } ]
+  },
+  {
+    "name": "SPAN",
+    "Code": 201,
+    "data": [ { "value": 6 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 501,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "SPAN",
+    "Code": 202,
+    "data": [ { "value": 9 } ]
+  },
+  {
+    "name": "SPAN",
+    "Code": 302,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "TECH",
+    "Code": 514,
+    "data": [ { "value": 16 } ]
+  },
+  {
+    "name": "TLIT",
+    "Code": 202,
+    "data": [ { "value": 1 } ]
+  },
+  {
+    "name": "TLIT",
+    "Code": 240,
+    "data": [ { "value": 4 } ]
+  },
+  {
+    "name": "TURK",
+    "Code": 201,
+    "data": [ { "value": 13 } ]
+  },
+  {
+    "name": "TURK",
+    "Code": 300,
+    "data": [ { "value": 15 } ]
+  },
+  {
+    "name": "TURK",
+    "Code": 403,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "UNIV",
+    "Code": 121,
+    "data": [ { "value": 11 } ]
+  }
+]
