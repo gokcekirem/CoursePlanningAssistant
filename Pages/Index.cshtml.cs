@@ -27,12 +27,12 @@ namespace CoursePlanner.Pages
         public void OnGet()
         {
             //Fill json here
-            using (StreamReader file = System.IO.File.OpenText(@"BubbleData\bubble_data.json"))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                jarray = (JArray)serializer.Deserialize(file, typeof(JArray));
-                //Console.WriteLine(jarray);
-            }
+            //using (StreamReader file = System.IO.File.OpenText(@"BubbleData\bubble_data.json"))
+            //{
+            //    JsonSerializer serializer = new JsonSerializer();
+            //    jarray = (JArray)serializer.Deserialize(file, typeof(JArray));
+            //    Console.WriteLine(jarray);
+            //}
             //json = jarray;
 
         }
