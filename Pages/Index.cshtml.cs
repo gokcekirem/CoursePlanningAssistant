@@ -23,7 +23,11 @@ namespace CoursePlanner.Pages
             _logger = logger;
         }
 
-        //List<Class> availableClassesListForTimetables = new List<Class>();
+        public static bool firstTime = true;
+        public static int tableLength;
+        public static int looped = 0;
+        public static List<Tuple<String, int>> choicesUntouched = new List<Tuple<String, int>>();
+        public static List<List<Section>> allTables = new List<List<Section>>();
 
         public void OnGet()
         {
@@ -131,7 +135,7 @@ namespace CoursePlanner.Pages
             }
 
             Console.WriteLine("After one iterative selection, the available class count is " + availableClassesList.Count());
-            //availableClassesListForTimetables = availableClassesList;
+            
 
         }
 
@@ -178,13 +182,252 @@ namespace CoursePlanner.Pages
             return false;
         }
 
+
         public void OnPostMakeTimetables()
         {
-            Console.WriteLine("This button works: ");
-            //Console.WriteLine(availableClassesListForTimetables.Count());
+            //Console.WriteLine("This button works: ");
+
+            //List<List<Section>> allTables = new List<List<Section>>();
+            //List<List<Section>> solution = new List<List<Section>>();
+            //List<Section> aTable = new List<Section>();
+            //List<Tuple<String, int>> choices = new List<Tuple<String, int>>();
+            //choices.Add(Tuple.Create("COMP", 491));
+            //choices.Add(Tuple.Create("PHIL", 338));
+            //choicesUntouched = choices.ToList();
+            //MakeTimetablesHelper(choices, allTables, aTable);
+            //foreach (List<Section> table in allTables)
+            //{
+            //    foreach(Section sect in table)
+            //    {
+            //        Console.WriteLine("Section's class: " + sect.Class + "\nSection Times:" + sect.Times);
+            //    }
+            //}
+
+
+            //List<Tuple<String, int>> choices = new List<Tuple<String, int>>();
+            //choices.Add(Tuple.Create("COMP", 491));
+            //choices.Add(Tuple.Create("PHIL", 338));
+            //List<Section> allSections = new List<Section>();
+            //List<Section> allTables = new List<Section>();
+            //foreach (Tuple<String, int> choice in choices)
+            //{
+            //    AddSectionFor(allSections, choice);
+            //}
+            //foreach (Section section in allSections)
+            //{
+            //    List<Section> aTable = new List<Section>();
+            //    aTable.Add(section);
+            //    foreach(Section otherSection in allSections)
+            //    {
+            //        if(section.ClassId == otherSection.ClassId)
+            //        {
+            //            continue;
+            //        }
+            //        else
+            //        {
+            //            if(!Collides(section, otherSection))
+            //            {
+            //                aTable.Add(otherSection);
+            //            }
+            //        }
+            //    }
+            //}
+
+
+
+            List<Tuple<String, int>> choices = new List<Tuple<String, int>>();
+            choices.Add(Tuple.Create("COMP", 491));
+            choices.Add(Tuple.Create("PHIL", 338));
+
+            var chosenClassID = from m in _context.Class
+                                where m.Subject == choices[0].Item1
+                                where m.Code == choices[0].Item2
+                                select m.ClassId;
+
+            var chosenClassAllSectionsID = from m in _context.Section
+                                           where m.ClassId == chosenClassID.ToList()[0]
+                                           select m.SectionId;
+
+            var chosenClassAllSections = from m in _context.Section
+                                         where chosenClassAllSectionsID.ToList().Contains(m.SectionId)
+                                         select m;
+
+            List<Section> aTable = new List<Section>();
+
+            foreach (Section section in chosenClassAllSections)
+            {
+                aTable.Add(section);
+                Helper(choices, aTable);
+            }
+
+            Console.WriteLine(allTables.Count);
+
         }
+
+        //public void AddSectionFor(List<Section> sections, Tuple<String, int> choice)
+        //{
+        //    var chosenClassID = from m in _context.Class
+        //                        where m.Subject == choice.Item1
+        //                        where m.Code == choice.Item2
+        //                        select m.ClassId;
+
+        //    var chosenClassAllSectionsID = from m in _context.Section
+        //                                   where m.ClassId == chosenClassID.ToList()[0]
+        //                                   select m.SectionId;
+
+        //    var chosenClassAllSections = from m in _context.Section
+        //                                 where chosenClassAllSectionsID.ToList().Contains(m.SectionId)
+        //                                 select m;
+        //    foreach(Section section in chosenClassAllSections)
+        //    {
+        //        sections.Add(section);
+        //    }
+        //}
+
+
+        public void Helper(List<Tuple<String, int>> choices, List<Section> aTable)
+        {
+            //if (firstTime)
+            //{
+            //    firstTime = false;
+            //    tableLength = choices.Count();
+            //}
+
+            List<Section> aTableCopy = new List<Section>(aTable);
+
+            var chosenClassID = from m in _context.Class
+                                where m.Subject == choices[0].Item1
+                                where m.Code == choices[0].Item2
+                                select m.ClassId;
+
+            var chosenClassAllSectionsID = from m in _context.Section
+                                           where m.ClassId == chosenClassID.ToList()[0]
+                                           select m.SectionId;
+
+            var chosenClassAllSections = from m in _context.Section
+                                         where chosenClassAllSectionsID.ToList().Contains(m.SectionId)
+                                         select m;
+
+            
+            foreach (Section section in chosenClassAllSections)
+            {
+
+                    foreach(Section otherSection in aTableCopy)
+                    {
+                        if(!Collides(section, otherSection))
+                        {
+                            aTable.Add(section);
+                            choices.Remove(choices[0]);
+                            if (!choices.Any())
+                            {
+                                Helper(choices, aTable);
+                            }
+                            
+                        }
+                    }
+                }
+            if (aTable.Count() == tableLength)
+            {
+                allTables.Add(aTable);
+            }
+
+
+        }
+
+
+
     }
-}
+
+
+
+
+        //public void MakeTimetablesHelper(List<Tuple<String, int>> choices, List<List<Section>> allTables, List<Section> aTable)
+       // {
+            
+
+
+
+
+            //List<Section> aTableCopy = new List<Section>(aTable);
+            //looped++;
+            //Console.WriteLine("visitations:" + looped);
+            //if (firstTime)
+            //{
+            //    firstTime = false;
+            //    tableLength = choices.Count();
+            //    Console.WriteLine("a");
+            //}
+
+
+
+
+            //var chosenClassID = from m in _context.Class
+            //                    where m.Subject == choices[0].Item1
+            //                    where m.Code == choices[0].Item2
+            //                    select m.ClassId;
+
+            //var chosenClassAllSectionsID = from m in _context.Section
+            //                               where m.ClassId == chosenClassID.ToList()[0]
+            //                               select m.SectionId;
+
+            //var chosenClassAllSections = from m in _context.Section
+            //                             where chosenClassAllSectionsID.ToList().Contains(m.SectionId)
+            //                             select m;
+
+            //Console.WriteLine(choices.Count() + "out");
+            //if(!aTable.Any())
+            //{
+            //    foreach (var oneClassSect in chosenClassAllSections)
+            //    {
+            //        Console.WriteLine("t");
+            //        if (!choices.Any())
+            //        {
+            //            choices = choicesUntouched.ToList();
+            //        }
+            //        aTable.Add(oneClassSect);
+            //        choices.Remove(choices[0]);
+            //        Console.WriteLine(choices.Count() + "if");
+            //        MakeTimetablesHelper(choices, allTables, aTable);
+            //    }
+            //}
+            //else
+            //{
+            //    foreach (var sect in aTableCopy)
+            //    {
+            //        Console.WriteLine("b");
+            //        foreach (var oneClassSect in chosenClassAllSections)
+            //        {
+            //            Console.WriteLine("c");
+            //            if (!Collides(oneClassSect, sect))
+            //            {
+            //                Console.WriteLine("d");
+            //                aTable.Add(oneClassSect);
+            //                choices.Remove(choices[0]);
+            //                Console.WriteLine(choices.Count() + "else");
+            //                if (!choices.Any())
+            //                {
+            //                    if (aTable.Count() == tableLength)
+            //                    {
+            //                        allTables.Add(aTable);
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    MakeTimetablesHelper(choices, allTables, aTable);
+            //                }
+            //            }
+            //        }
+
+            //    }
+            //}
+
+
+            //Console.WriteLine("e");
+        //}
+
+
+    }
+
 
 
 
