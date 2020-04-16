@@ -1,0 +1,1864 @@
+[
+  {
+    "name": "ACCT",
+    "data": [
+      {
+        "name": 321,
+        "value": 22
+      },
+      {
+        "name": 501,
+        "value": 8
+      },
+      {
+        "name": 201,
+        "value": 94
+      },
+      {
+        "name": 202,
+        "value": 53
+      }
+    ]
+  },
+  {
+    "name": "ACWR",
+    "data": [
+      {
+        "name": 101,
+        "value": 20
+      },
+      {
+        "name": 103,
+        "value": 17
+      },
+      {
+        "name": 104,
+        "value": 15
+      },
+      {
+        "name": 106,
+        "value": 16
+      },
+      {
+        "name": 107,
+        "value": 11
+      }
+    ]
+  },
+  {
+    "name": "ALIS",
+    "data": [
+      {
+        "name": 100,
+        "value": 26
+      }
+    ]
+  },
+  {
+    "name": "ARBC",
+    "data": [
+      {
+        "name": 201,
+        "value": 7
+      },
+      {
+        "name": 202,
+        "value": 21
+      },
+      {
+        "name": 301,
+        "value": 14
+      }
+    ]
+  },
+  {
+    "name": "ARHA",
+    "data": [
+      {
+        "name": 201,
+        "value": 19
+      },
+      {
+        "name": 315,
+        "value": 17
+      },
+      {
+        "name": 318,
+        "value": 1
+      },
+      {
+        "name": 407,
+        "value": 11
+      },
+      {
+        "name": 422,
+        "value": 25
+      },
+      {
+        "name": 461,
+        "value": 15
+      },
+      {
+        "name": 502,
+        "value": 33
+      },
+      {
+        "name": 526,
+        "value": 19
+      },
+      {
+        "name": 527,
+        "value": 18
+      },
+      {
+        "name": 550,
+        "value": 7
+      }
+    ]
+  },
+  {
+    "name": "ARTS",
+    "data": [
+      {
+        "name": 201,
+        "value": 68
+      },
+      {
+        "name": 350,
+        "value": 72
+      }
+    ]
+  },
+  {
+    "name": "ASIU",
+    "data": [
+      {
+        "name": 100,
+        "value": 7
+      },
+      {
+        "name": 102,
+        "value": 8
+      },
+      {
+        "name": 104,
+        "value": 10
+      },
+      {
+        "name": 115,
+        "value": 1
+      },
+      {
+        "name": 118,
+        "value": 20
+      },
+      {
+        "name": 121,
+        "value": 27
+      },
+      {
+        "name": 109,
+        "value": 12
+      },
+      {
+        "name": 111,
+        "value": 7
+      }
+    ]
+  },
+  {
+    "name": "BUSA",
+    "data": [
+      {
+        "name": 499,
+        "value": 23
+      }
+    ]
+  },
+  {
+    "name": "CHBI",
+    "data": [
+      {
+        "name": 201,
+        "value": 21
+      },
+      {
+        "name": 300,
+        "value": 62
+      },
+      {
+        "name": 301,
+        "value": 101
+      },
+      {
+        "name": 302,
+        "value": 1
+      },
+      {
+        "name": 303,
+        "value": 16
+      },
+      {
+        "name": 402,
+        "value": 25
+      },
+      {
+        "name": 403,
+        "value": 16
+      },
+      {
+        "name": 405,
+        "value": 37
+      },
+      {
+        "name": 415,
+        "value": 41
+      },
+      {
+        "name": 418,
+        "value": 45
+      },
+      {
+        "name": 501,
+        "value": 10
+      },
+      {
+        "name": 502,
+        "value": 20
+      },
+      {
+        "name": 510,
+        "value": 18
+      },
+      {
+        "name": 503,
+        "value": 15
+      }
+    ]
+  },
+  {
+    "name": "CHEM",
+    "data": [
+      {
+        "name": 101,
+        "value": 17
+      },
+      {
+        "name": 103,
+        "value": 1
+      },
+      {
+        "name": 201,
+        "value": 18
+      },
+      {
+        "name": 206,
+        "value": 19
+      },
+      {
+        "name": 301,
+        "value": 5
+      },
+      {
+        "name": 303,
+        "value": 31
+      },
+      {
+        "name": 502,
+        "value": 13
+      },
+      {
+        "name": 504,
+        "value": 21
+      },
+      {
+        "name": 515,
+        "value": 24
+      },
+      {
+        "name": 410,
+        "value": 27
+      }
+    ]
+  },
+  {
+    "name": "CHIN",
+    "data": [
+      {
+        "name": 202,
+        "value": 4
+      }
+    ]
+  },
+  {
+    "name": "CMKT",
+    "data": [
+      {
+        "name": 501,
+        "value": 38
+      }
+    ]
+  },
+  {
+    "name": "CMSE",
+    "data": [
+      {
+        "name": 501,
+        "value": 21
+      }
+    ]
+  },
+  {
+    "name": "COMM",
+    "data": [
+      {
+        "name": 202,
+        "value": 13
+      }
+    ]
+  },
+  {
+    "name": "COMP",
+    "data": [
+      {
+        "name": 110,
+        "value": 31
+      },
+      {
+        "name": 111,
+        "value": 5
+      },
+      {
+        "name": 130,
+        "value": 19
+      },
+      {
+        "name": 131,
+        "value": 76
+      },
+      {
+        "name": 198,
+        "value": 12
+      },
+      {
+        "name": 303,
+        "value": 43
+      },
+      {
+        "name": 317,
+        "value": 26
+      },
+      {
+        "name": 442,
+        "value": 31
+      },
+      {
+        "name": 450,
+        "value": 34
+      },
+      {
+        "name": 550,
+        "value": 34
+      },
+      {
+        "name": 551,
+        "value": 26
+      }
+    ]
+  },
+  {
+    "name": "CPAP",
+    "data": [
+      {
+        "name": 100,
+        "value": 93
+      }
+    ]
+  },
+  {
+    "name": "CSHS",
+    "data": [
+      {
+        "name": 504,
+        "value": 26
+      },
+      {
+        "name": 557,
+        "value": 6
+      }
+    ]
+  },
+  {
+    "name": "DASC",
+    "data": [
+      {
+        "name": 501,
+        "value": 35
+      },
+      {
+        "name": 521,
+        "value": 185
+      }
+    ]
+  },
+  {
+    "name": "DTES",
+    "data": [
+      {
+        "name": 551,
+        "value": 23
+      }
+    ]
+  },
+  {
+    "name": "ECIR",
+    "data": [
+      {
+        "name": 313,
+        "value": 36
+      },
+      {
+        "name": 410,
+        "value": 53
+      }
+    ]
+  },
+  {
+    "name": "ECON",
+    "data": [
+      {
+        "name": 100,
+        "value": 58
+      },
+      {
+        "name": 101,
+        "value": 32
+      },
+      {
+        "name": 201,
+        "value": 4
+      },
+      {
+        "name": 311,
+        "value": 53
+      },
+      {
+        "name": 321,
+        "value": 28
+      },
+      {
+        "name": 333,
+        "value": 104
+      },
+      {
+        "name": 202,
+        "value": 6
+      },
+      {
+        "name": 345,
+        "value": 33
+      },
+      {
+        "name": 451,
+        "value": 35
+      },
+      {
+        "name": 481,
+        "value": 27
+      },
+      {
+        "name": 499,
+        "value": 28
+      },
+      {
+        "name": 360,
+        "value": 116
+      },
+      {
+        "name": 370,
+        "value": 102
+      },
+      {
+        "name": 430,
+        "value": 19
+      },
+      {
+        "name": 501,
+        "value": 5
+      },
+      {
+        "name": 507,
+        "value": 21
+      },
+      {
+        "name": 503,
+        "value": 2
+      },
+      {
+        "name": 511,
+        "value": 13
+      },
+      {
+        "name": 513,
+        "value": 3
+      }
+    ]
+  },
+  {
+    "name": "EFIN",
+    "data": [
+      {
+        "name": 301,
+        "value": 44
+      },
+      {
+        "name": 403,
+        "value": 4
+      },
+      {
+        "name": 304,
+        "value": 34
+      }
+    ]
+  },
+  {
+    "name": "ELC",
+    "data": [
+      {
+        "name": 3525,
+        "value": 13
+      },
+      {
+        "name": 3526,
+        "value": 13
+      },
+      {
+        "name": 3527,
+        "value": 13
+      },
+      {
+        "name": 3528,
+        "value": 13
+      },
+      {
+        "name": 4018,
+        "value": 27
+      },
+      {
+        "name": 4019,
+        "value": 27
+      },
+      {
+        "name": 4020,
+        "value": 27
+      },
+      {
+        "name": 4025,
+        "value": 27
+      },
+      {
+        "name": 5505,
+        "value": 30
+      },
+      {
+        "name": 5506,
+        "value": 30
+      },
+      {
+        "name": 5509,
+        "value": 30
+      },
+      {
+        "name": 8806,
+        "value": 30
+      }
+    ]
+  },
+  {
+    "name": "ELEC",
+    "data": [
+      {
+        "name": 198,
+        "value": 25
+      },
+      {
+        "name": 202,
+        "value": 21
+      },
+      {
+        "name": 204,
+        "value": 126
+      },
+      {
+        "name": 301,
+        "value": 44
+      },
+      {
+        "name": 310,
+        "value": 41
+      },
+      {
+        "name": 312,
+        "value": 31
+      },
+      {
+        "name": 339,
+        "value": 6
+      },
+      {
+        "name": 402,
+        "value": 19
+      },
+      {
+        "name": 201,
+        "value": 44
+      },
+      {
+        "name": 405,
+        "value": 35
+      },
+      {
+        "name": 421,
+        "value": 31
+      },
+      {
+        "name": 418,
+        "value": 36
+      },
+      {
+        "name": 430,
+        "value": 32
+      },
+      {
+        "name": 438,
+        "value": 28
+      },
+      {
+        "name": 442,
+        "value": 12
+      },
+      {
+        "name": 450,
+        "value": 31
+      },
+      {
+        "name": 518,
+        "value": 39
+      }
+    ]
+  },
+  {
+    "name": "ENGR",
+    "data": [
+      {
+        "name": 200,
+        "value": 31
+      },
+      {
+        "name": 400,
+        "value": 1
+      },
+      {
+        "name": 429,
+        "value": 34
+      },
+      {
+        "name": 201,
+        "value": 24
+      }
+    ]
+  },
+  {
+    "name": "EQUR",
+    "data": [
+      {
+        "name": 121,
+        "value": 15
+      }
+    ]
+  },
+  {
+    "name": "ETHC",
+    "data": [
+      {
+        "name": 105,
+        "value": 27
+      },
+      {
+        "name": 109,
+        "value": 10
+      },
+      {
+        "name": 113,
+        "value": 20
+      }
+    ]
+  },
+  {
+    "name": "EXCH",
+    "data": [
+      {
+        "name": 301,
+        "value": 12
+      }
+    ]
+  },
+  {
+    "name": "FREN",
+    "data": [
+      {
+        "name": 201,
+        "value": 5
+      },
+      {
+        "name": 202,
+        "value": 18
+      }
+    ]
+  },
+  {
+    "name": "GERM",
+    "data": [
+      {
+        "name": 201,
+        "value": 10
+      },
+      {
+        "name": 301,
+        "value": 14
+      },
+      {
+        "name": 302,
+        "value": 14
+      },
+      {
+        "name": 401,
+        "value": 20
+      },
+      {
+        "name": 202,
+        "value": 15
+      }
+    ]
+  },
+  {
+    "name": "GREK",
+    "data": [
+      {
+        "name": 401,
+        "value": 17
+      }
+    ]
+  },
+  {
+    "name": "HIST",
+    "data": [
+      {
+        "name": 103,
+        "value": 13
+      },
+      {
+        "name": 203,
+        "value": 1
+      },
+      {
+        "name": 300,
+        "value": 78
+      },
+      {
+        "name": 309,
+        "value": 22
+      },
+      {
+        "name": 311,
+        "value": 17
+      },
+      {
+        "name": 402,
+        "value": 45
+      },
+      {
+        "name": 410,
+        "value": 18
+      },
+      {
+        "name": 501,
+        "value": 11
+      }
+    ]
+  },
+  {
+    "name": "HUMS",
+    "data": [
+      {
+        "name": 104,
+        "value": 10
+      },
+      {
+        "name": 109,
+        "value": 23
+      },
+      {
+        "name": 129,
+        "value": 4
+      },
+      {
+        "name": 130,
+        "value": 7
+      },
+      {
+        "name": 131,
+        "value": 109
+      },
+      {
+        "name": 114,
+        "value": 2
+      },
+      {
+        "name": 120,
+        "value": 2
+      }
+    ]
+  },
+  {
+    "name": "INDR",
+    "data": [
+      {
+        "name": 100,
+        "value": 35
+      },
+      {
+        "name": 198,
+        "value": 17
+      },
+      {
+        "name": 201,
+        "value": 25
+      },
+      {
+        "name": 343,
+        "value": 19
+      },
+      {
+        "name": 420,
+        "value": 18
+      },
+      {
+        "name": 363,
+        "value": 33
+      },
+      {
+        "name": 430,
+        "value": 66
+      },
+      {
+        "name": 440,
+        "value": 13
+      },
+      {
+        "name": 473,
+        "value": 45
+      },
+      {
+        "name": 475,
+        "value": 36
+      },
+      {
+        "name": 483,
+        "value": 26
+      },
+      {
+        "name": 371,
+        "value": 23
+      },
+      {
+        "name": 501,
+        "value": 9
+      },
+      {
+        "name": 503,
+        "value": 9
+      },
+      {
+        "name": 564,
+        "value": 14
+      }
+    ]
+  },
+  {
+    "name": "INTL",
+    "data": [
+      {
+        "name": 101,
+        "value": 6
+      },
+      {
+        "name": 201,
+        "value": 10
+      },
+      {
+        "name": 203,
+        "value": 43
+      },
+      {
+        "name": 204,
+        "value": 37
+      },
+      {
+        "name": 301,
+        "value": 16
+      },
+      {
+        "name": 325,
+        "value": 15
+      },
+      {
+        "name": 330,
+        "value": 12
+      },
+      {
+        "name": 374,
+        "value": 103
+      },
+      {
+        "name": 375,
+        "value": 46
+      },
+      {
+        "name": 380,
+        "value": 16
+      },
+      {
+        "name": 401,
+        "value": 33
+      },
+      {
+        "name": 421,
+        "value": 38
+      },
+      {
+        "name": 447,
+        "value": 4
+      },
+      {
+        "name": 450,
+        "value": 61
+      },
+      {
+        "name": 499,
+        "value": 31
+      },
+      {
+        "name": 601,
+        "value": 25
+      },
+      {
+        "name": 475,
+        "value": 27
+      },
+      {
+        "name": 501,
+        "value": 14
+      },
+      {
+        "name": 504,
+        "value": 21
+      },
+      {
+        "name": 531,
+        "value": 3
+      },
+      {
+        "name": 550,
+        "value": 62
+      },
+      {
+        "name": 600,
+        "value": 13
+      }
+    ]
+  },
+  {
+    "name": "ISP",
+    "data": [
+      {
+        "name": 450,
+        "value": 66
+      }
+    ]
+  },
+  {
+    "name": "ITAL",
+    "data": [
+      {
+        "name": 201,
+        "value": 11
+      },
+      {
+        "name": 301,
+        "value": 10
+      },
+      {
+        "name": 202,
+        "value": 10
+      }
+    ]
+  },
+  {
+    "name": "LANG",
+    "data": [
+      {
+        "name": 290,
+        "value": 8
+      }
+    ]
+  },
+  {
+    "name": "LATN",
+    "data": [
+      {
+        "name": 401,
+        "value": 29
+      }
+    ]
+  },
+  {
+    "name": "LAW",
+    "data": [
+      {
+        "name": 111,
+        "value": 17
+      },
+      {
+        "name": 201,
+        "value": 67
+      },
+      {
+        "name": 205,
+        "value": 61
+      },
+      {
+        "name": 207,
+        "value": 19
+      },
+      {
+        "name": 221,
+        "value": 85
+      },
+      {
+        "name": 301,
+        "value": 41
+      },
+      {
+        "name": 303,
+        "value": 48
+      },
+      {
+        "name": 305,
+        "value": 44
+      },
+      {
+        "name": 325,
+        "value": 18
+      },
+      {
+        "name": 328,
+        "value": 19
+      },
+      {
+        "name": 407,
+        "value": 11
+      },
+      {
+        "name": 409,
+        "value": 67
+      },
+      {
+        "name": 410,
+        "value": 23
+      },
+      {
+        "name": 425,
+        "value": 26
+      },
+      {
+        "name": 403,
+        "value": 34
+      },
+      {
+        "name": 430,
+        "value": 14
+      },
+      {
+        "name": 433,
+        "value": 30
+      }
+    ]
+  },
+  {
+    "name": "LITR",
+    "data": [
+      {
+        "name": 101,
+        "value": 6
+      },
+      {
+        "name": 201,
+        "value": 17
+      },
+      {
+        "name": 210,
+        "value": 15
+      },
+      {
+        "name": 303,
+        "value": 17
+      },
+      {
+        "name": 316,
+        "value": 12
+      },
+      {
+        "name": 357,
+        "value": 13
+      },
+      {
+        "name": 441,
+        "value": 30
+      },
+      {
+        "name": 499,
+        "value": 5
+      }
+    ]
+  },
+  {
+    "name": "MASE",
+    "data": [
+      {
+        "name": 510,
+        "value": 30
+      },
+      {
+        "name": 515,
+        "value": 3
+      },
+      {
+        "name": 518,
+        "value": 3
+      }
+    ]
+  },
+  {
+    "name": "MATH",
+    "data": [
+      {
+        "name": 101,
+        "value": 58
+      },
+      {
+        "name": 102,
+        "value": 37
+      },
+      {
+        "name": 107,
+        "value": 34
+      },
+      {
+        "name": 201,
+        "value": 48
+      },
+      {
+        "name": 106,
+        "value": 53
+      },
+      {
+        "name": 202,
+        "value": 13
+      },
+      {
+        "name": 204,
+        "value": 72
+      },
+      {
+        "name": 205,
+        "value": 21
+      },
+      {
+        "name": 211,
+        "value": 15
+      },
+      {
+        "name": 301,
+        "value": 22
+      },
+      {
+        "name": 310,
+        "value": 23
+      },
+      {
+        "name": 320,
+        "value": 18
+      },
+      {
+        "name": 404,
+        "value": 19
+      },
+      {
+        "name": 203,
+        "value": 54
+      }
+    ]
+  },
+  {
+    "name": "MAVA",
+    "data": [
+      {
+        "name": 205,
+        "value": 2
+      },
+      {
+        "name": 206,
+        "value": 4
+      },
+      {
+        "name": 207,
+        "value": 12
+      },
+      {
+        "name": 208,
+        "value": 25
+      },
+      {
+        "name": 210,
+        "value": 13
+      },
+      {
+        "name": 213,
+        "value": 7
+      },
+      {
+        "name": 221,
+        "value": 4
+      },
+      {
+        "name": 303,
+        "value": 58
+      },
+      {
+        "name": 311,
+        "value": 27
+      },
+      {
+        "name": 319,
+        "value": 5
+      },
+      {
+        "name": 323,
+        "value": 17
+      },
+      {
+        "name": 326,
+        "value": 20
+      },
+      {
+        "name": 327,
+        "value": 12
+      },
+      {
+        "name": 342,
+        "value": 38
+      },
+      {
+        "name": 301,
+        "value": 85
+      },
+      {
+        "name": 354,
+        "value": 25
+      },
+      {
+        "name": 430,
+        "value": 7
+      },
+      {
+        "name": 432,
+        "value": 10
+      },
+      {
+        "name": 433,
+        "value": 29
+      },
+      {
+        "name": 406,
+        "value": 42
+      },
+      {
+        "name": 420,
+        "value": 15
+      }
+    ]
+  },
+  {
+    "name": "MBGE",
+    "data": [
+      {
+        "name": 200,
+        "value": 7
+      },
+      {
+        "name": 300,
+        "value": 78
+      },
+      {
+        "name": 301,
+        "value": 8
+      },
+      {
+        "name": 409,
+        "value": 16
+      },
+      {
+        "name": 423,
+        "value": 28
+      },
+      {
+        "name": 501,
+        "value": 7
+      },
+      {
+        "name": 432,
+        "value": 27
+      }
+    ]
+  },
+  {
+    "name": "MECH",
+    "data": [
+      {
+        "name": 201,
+        "value": 38
+      },
+      {
+        "name": 203,
+        "value": 47
+      },
+      {
+        "name": 350,
+        "value": 27
+      },
+      {
+        "name": 401,
+        "value": 13
+      },
+      {
+        "name": 408,
+        "value": 35
+      },
+      {
+        "name": 409,
+        "value": 31
+      },
+      {
+        "name": 411,
+        "value": 21
+      },
+      {
+        "name": 421,
+        "value": 27
+      },
+      {
+        "name": 427,
+        "value": 34
+      },
+      {
+        "name": 443,
+        "value": 24
+      },
+      {
+        "name": 444,
+        "value": 21
+      },
+      {
+        "name": 462,
+        "value": 29
+      }
+    ]
+  },
+  {
+    "name": "MEDI",
+    "data": [
+      {
+        "name": 101,
+        "value": 31
+      },
+      {
+        "name": 110,
+        "value": 47
+      },
+      {
+        "name": 120,
+        "value": 6
+      }
+    ]
+  },
+  {
+    "name": "MFIN",
+    "data": [
+      {
+        "name": 202,
+        "value": 63
+      },
+      {
+        "name": 662,
+        "value": 9
+      },
+      {
+        "name": 304,
+        "value": 34
+      }
+    ]
+  },
+  {
+    "name": "MGIS",
+    "data": [
+      {
+        "name": 301,
+        "value": 24
+      }
+    ]
+  },
+  {
+    "name": "MGMT",
+    "data": [
+      {
+        "name": 335,
+        "value": 2
+      },
+      {
+        "name": 351,
+        "value": 39
+      },
+      {
+        "name": 411,
+        "value": 11
+      },
+      {
+        "name": 421,
+        "value": 8
+      },
+      {
+        "name": 671,
+        "value": 22
+      },
+      {
+        "name": 901,
+        "value": 98
+      },
+      {
+        "name": 911,
+        "value": 98
+      },
+      {
+        "name": 432,
+        "value": 91
+      },
+      {
+        "name": 445,
+        "value": 31
+      },
+      {
+        "name": 513,
+        "value": 17
+      }
+    ]
+  },
+  {
+    "name": "MKTG",
+    "data": [
+      {
+        "name": 302,
+        "value": 35
+      },
+      {
+        "name": 551,
+        "value": 18
+      },
+      {
+        "name": 665,
+        "value": 4
+      },
+      {
+        "name": 432,
+        "value": 90
+      }
+    ]
+  },
+  {
+    "name": "NURS",
+    "data": [
+      {
+        "name": 101,
+        "value": 18
+      }
+    ]
+  },
+  {
+    "name": "OPSM",
+    "data": [
+      {
+        "name": 501,
+        "value": 38
+      },
+      {
+        "name": 302,
+        "value": 44
+      },
+      {
+        "name": 305,
+        "value": 39
+      }
+    ]
+  },
+  {
+    "name": "PHIL",
+    "data": [
+      {
+        "name": 101,
+        "value": 22
+      },
+      {
+        "name": 213,
+        "value": 27
+      },
+      {
+        "name": 338,
+        "value": 22
+      },
+      {
+        "name": 404,
+        "value": 4
+      },
+      {
+        "name": 450,
+        "value": 41
+      },
+      {
+        "name": 500,
+        "value": 18
+      }
+    ]
+  },
+  {
+    "name": "PHYS",
+    "data": [
+      {
+        "name": 101,
+        "value": 5
+      },
+      {
+        "name": 102,
+        "value": 34
+      },
+      {
+        "name": 123,
+        "value": 58
+      },
+      {
+        "name": 205,
+        "value": 10
+      },
+      {
+        "name": 312,
+        "value": 28
+      },
+      {
+        "name": 401,
+        "value": 12
+      },
+      {
+        "name": 414,
+        "value": 26
+      },
+      {
+        "name": 501,
+        "value": 22
+      },
+      {
+        "name": 503,
+        "value": 24
+      },
+      {
+        "name": 550,
+        "value": 16
+      },
+      {
+        "name": 301,
+        "value": 15
+      }
+    ]
+  },
+  {
+    "name": "PSYC",
+    "data": [
+      {
+        "name": 100,
+        "value": 42
+      },
+      {
+        "name": 201,
+        "value": 38
+      },
+      {
+        "name": 205,
+        "value": 7
+      },
+      {
+        "name": 204,
+        "value": 53
+      },
+      {
+        "name": 208,
+        "value": 13
+      },
+      {
+        "name": 302,
+        "value": 14
+      },
+      {
+        "name": 210,
+        "value": 82
+      },
+      {
+        "name": 301,
+        "value": 16
+      },
+      {
+        "name": 305,
+        "value": 19
+      },
+      {
+        "name": 306,
+        "value": 107
+      },
+      {
+        "name": 357,
+        "value": 23
+      },
+      {
+        "name": 372,
+        "value": 5
+      },
+      {
+        "name": 402,
+        "value": 28
+      },
+      {
+        "name": 434,
+        "value": 22
+      },
+      {
+        "name": 550,
+        "value": 30
+      },
+      {
+        "name": 552,
+        "value": 29
+      },
+      {
+        "name": 542,
+        "value": 36
+      }
+    ]
+  },
+  {
+    "name": "QMBU",
+    "data": [
+      {
+        "name": 301,
+        "value": 14
+      },
+      {
+        "name": 310,
+        "value": 31
+      }
+    ]
+  },
+  {
+    "name": "RUSS",
+    "data": [
+      {
+        "name": 201,
+        "value": 10
+      },
+      {
+        "name": 202,
+        "value": 8
+      },
+      {
+        "name": 301,
+        "value": 24
+      }
+    ]
+  },
+  {
+    "name": "SCIE",
+    "data": [
+      {
+        "name": 103,
+        "value": 10
+      },
+      {
+        "name": 108,
+        "value": 74
+      },
+      {
+        "name": 459,
+        "value": 6
+      }
+    ]
+  },
+  {
+    "name": "SOCI",
+    "data": [
+      {
+        "name": 100,
+        "value": 8
+      },
+      {
+        "name": 211,
+        "value": 12
+      },
+      {
+        "name": 220,
+        "value": 36
+      },
+      {
+        "name": 311,
+        "value": 18
+      },
+      {
+        "name": 314,
+        "value": 52
+      },
+      {
+        "name": 315,
+        "value": 7
+      },
+      {
+        "name": 340,
+        "value": 3
+      },
+      {
+        "name": 354,
+        "value": 31
+      },
+      {
+        "name": 355,
+        "value": 13
+      },
+      {
+        "name": 402,
+        "value": 36
+      },
+      {
+        "name": 452,
+        "value": 29
+      },
+      {
+        "name": 503,
+        "value": 23
+      },
+      {
+        "name": 552,
+        "value": 13
+      },
+      {
+        "name": 501,
+        "value": 4
+      }
+    ]
+  },
+  {
+    "name": "SOSC",
+    "data": [
+      {
+        "name": 105,
+        "value": 7
+      },
+      {
+        "name": 110,
+        "value": 16
+      },
+      {
+        "name": 119,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "name": "SPAN",
+    "data": [
+      {
+        "name": 201,
+        "value": 6
+      },
+      {
+        "name": 202,
+        "value": 9
+      },
+      {
+        "name": 302,
+        "value": 25
+      }
+    ]
+  },
+  {
+    "name": "TECH",
+    "data": [
+      {
+        "name": 514,
+        "value": 16
+      }
+    ]
+  },
+  {
+    "name": "TLIT",
+    "data": [
+      {
+        "name": 202,
+        "value": 1
+      },
+      {
+        "name": 240,
+        "value": 4
+      }
+    ]
+  },
+  {
+    "name": "TURK",
+    "data": [
+      {
+        "name": 201,
+        "value": 13
+      },
+      {
+        "name": 300,
+        "value": 15
+      },
+      {
+        "name": 403,
+        "value": 12
+      }
+    ]
+  },
+  {
+    "name": "UNIV",
+    "data": [
+      {
+        "name": 121,
+        "value": 0
+      }
+    ]
+  }
+]
