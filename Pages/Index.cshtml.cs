@@ -15,9 +15,7 @@ namespace CoursePlanner.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public JsonResult json;
-
-        public JArray jarray;
+        public List<string> selectedCourses;
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -26,15 +24,51 @@ namespace CoursePlanner.Pages
 
         public void OnGet()
         {
-            //Fill json here
-            //using (StreamReader file = System.IO.File.OpenText(@"BubbleData\bubble_data.json"))
-            //{
-            //    JsonSerializer serializer = new JsonSerializer();
-            //    jarray = (JArray)serializer.Deserialize(file, typeof(JArray));
-            //    Console.WriteLine(jarray);
-            //}
-            //json = jarray;
 
         }
+
+        public ActionResult OnPostSend()
+        {
+            string sPostValue1 = "";
+            string sPostValue2 = "";
+            string sPostValue3 = "";
+            {
+                MemoryStream stream = new MemoryStream();
+                Request.Body.CopyTo(stream);
+                stream.Position = 0;
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string requestBody = reader.ReadToEnd();
+                    if (requestBody.Length > 0)
+                    {
+                        var obj = JsonConvert.DeserializeObject<PostData>(requestBody);
+                        if (obj != null)
+                        {
+                            sPostValue1 = obj.Item1;
+                            sPostValue2 = obj.Item2;
+                            sPostValue3 = obj.Item3;
+                        }
+                    }
+                }
+            }
+            List<string> lstString = new List<string>
+            {
+                sPostValue1,
+                sPostValue2,
+                sPostValue3
+            };
+
+            selectedCourses = lstString;
+            Console.WriteLine(selectedCourses[1]);
+
+            return new JsonResult(lstString);
+        }
+    }
+
+    public class PostData
+    {
+        public string Item1 { get; set; }
+        public string Item2 { get; set; }
+        public string Item3 { get; set; }
     }
 }
