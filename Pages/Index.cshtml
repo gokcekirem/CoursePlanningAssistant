@@ -2581,12 +2581,13 @@
             packedbubble: {
                 //allowPointSelect: true,
                 //selected: false,
-                minSize: '0%',
-                maxSize: '200%',
+                minSize: '10%',
+                maxSize: '150%',
                 zMin: 0,
                 zMax: 1000,
                 layoutAlgorithm: {
                     gravitationalConstant: 0.05,
+                    friction: -0.9,
                     splitSeries: true,
                     seriesInteraction: false,
                     dragBetweenSeries: false,
