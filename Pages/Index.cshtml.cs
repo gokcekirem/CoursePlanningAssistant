@@ -25,11 +25,17 @@ namespace CoursePlanner.Pages
 
         public void OnGet()
         {
-     
+            Dictionary<string, List<string>> collisionDictionary = new Dictionary<string, List<string>>();
+
             var currentChoice = Tuple.Create("COMP", 491);
+            var currentChoiceCode = currentChoice.Item1 + currentChoice.Item2;
+
             ArrayList choices = new ArrayList();
             choices.Add(currentChoice);
+            
             //Console.WriteLine(currentChoice);
+
+
 
             var chosenClassID = from m in _context.Class
                               where m.Subject == currentChoice.Item1
@@ -121,6 +127,15 @@ namespace CoursePlanner.Pages
                     {
                         Console.WriteLine("All the " + group.Key + " sections of " + remainingClass.Subject + " " + remainingClass.Code + " was removed as it collided with previous choices.");
                         Console.WriteLine("Deleting classID " + remainingClass.ClassId + " with Code: " + remainingClass.Subject + " " + remainingClass.Code + " from the available classes list...");
+                        var remainingClassCode = remainingClass.Subject + remainingClass.Code;
+                        if (collisionDictionary.ContainsKey(remainingClassCode))
+                        {
+                            collisionDictionary[remainingClassCode].Add(currentChoiceCode);
+                        }
+                        else
+                        {
+                            collisionDictionary.Add(remainingClassCode, new List<string>(new string[] { currentChoiceCode }));
+                        }
                         availableClassesList.Remove(remainingClass);
                         break;
                     }
@@ -128,7 +143,20 @@ namespace CoursePlanner.Pages
             }
 
             Console.WriteLine("After one iterative selection, the available class count is " + availableClassesList.Count());
+            Console.WriteLine("Printing remaining classes...");
+            foreach(Class avail in availableClassesList)
+            {
+                Console.WriteLine(avail.Subject + " " + avail.Code);
+            }
 
+            foreach (KeyValuePair<string, List<string>> kvp in collisionDictionary)
+            {
+                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                foreach (string asd in kvp.Value)
+                {
+                    Console.WriteLine(asd);
+                }
+            }
 
         }
 
