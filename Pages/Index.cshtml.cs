@@ -26,6 +26,8 @@ namespace CoursePlanner.Pages
 
         private readonly ILogger<IndexModel> _logger;
 
+        public List<Course> selectedCourses;
+
         Dictionary<string, List<string>> collisionDictionary = new Dictionary<string, List<string>>();
 
         bool listsInitialized = false;
@@ -54,14 +56,6 @@ namespace CoursePlanner.Pages
 
         public void OnGet()
         {
-            //Fill json here
-            //using (StreamReader file = System.IO.File.OpenText(@"BubbleData\bubble_data.json"))
-            //{
-            //    JsonSerializer serializer = new JsonSerializer();
-            //    jarray = (JArray)serializer.Deserialize(file, typeof(JArray));
-            //    Console.WriteLine(jarray);
-            //}
-            //json = jarray;
 
             //Dictionary<string, List<string>> collisionDictionary = new Dictionary<string, List<string>>();
 
@@ -465,6 +459,21 @@ namespace CoursePlanner.Pages
             }
             return chosenClassAllSectionsList;
         }
+
+        public void OnPostSelectedCourses([FromBody]List<Course> sc)
+        {
+            Console.WriteLine("\n\n\n\nWriting sc:");
+            selectedCourses = sc;
+            if (selectedCourses.Count > 0)
+                Console.WriteLine(selectedCourses[0].Name + selectedCourses[0].Code);
+        }
+    }
+
+    public class Course
+    {
+        public string Name { get; set; }
+        public int Code { get; set; }
+        public string Color { get; set; }
     }
 }
 
