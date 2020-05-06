@@ -37,17 +37,14 @@ namespace CoursePlanner.Pages
         ArrayList choices;
 
         public IndexModel(ILogger<IndexModel> logger, CoursePlanner.Data.CoursePlannerContext context)
-
-        public JsonResult json;
-
-        public JArray jarray;
-
-        public IndexModel(ILogger<IndexModel> logger)
-
         {
             _context = context;
             _logger = logger;
         }
+        public JsonResult json;
+
+        public JArray jarray;
+
 
         public static bool firstTime = true;
         public static int tableLength;
