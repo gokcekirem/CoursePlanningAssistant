@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -13,8 +13,13 @@
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <figure class="highcharts-figure">
-    <div id="container" align="left" style="width:1300px; height: 650px"></div>
+  <div id="container" align="left" style="width:1300px; height: 650px"></div>
 </figure>
+
+<form method="post">
+    <input type="submit" value="Show Timetables" asp-page-handler="MakeTimetables" />
+</form>
+
 
 <script>
     var selectedCourses = [];
