@@ -28,12 +28,15 @@ namespace CoursePlanner.Pages
 
         public List<Course> selectedCourses;
 
+
+        public CoursePlanner.Scheduler.Scheduler scheduler;
         
 
         public IndexModel(ILogger<IndexModel> logger, CoursePlanner.Data.CoursePlannerContext context)
         {
             _context = context;
             _logger = logger;
+            scheduler = Scheduler.Scheduler.SchedulerInstance(context); ;
         }
 
         public static bool firstTime = true;
@@ -209,7 +212,7 @@ namespace CoursePlanner.Pages
                 bool intersects = false;
                 foreach (Section tableSection in currentTableForLoop)
                 {
-                    if (Collides(section, tableSection))
+                    if (scheduler.Collides(section, tableSection))
                     {
                         intersects = true;
                         break;
@@ -270,7 +273,7 @@ namespace CoursePlanner.Pages
             if (selectedCourses.Count() > 0)
             {
                 Console.WriteLine(selectedCourses[l - 1].Name + selectedCourses[l - 1].Code);
-                ClassSelected(selectedCourses[l - 1].Name + selectedCourses[l - 1].Code);
+                scheduler.ClassSelected(selectedCourses[l - 1].Name + selectedCourses[l - 1].Code, _context);
             }
         }
     }

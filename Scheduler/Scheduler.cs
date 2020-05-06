@@ -19,12 +19,7 @@ namespace CoursePlanner.Scheduler
 {
     public class Scheduler
     {
-
-        private readonly CoursePlanner.Data.CoursePlannerContext _context;
-
-        private Dictionary<string, List<string>> collisionDictionary = new Dictionary<string, List<string>>();
-
-        private bool listsInitialized = false;
+        private Dictionary<string, List<string>> collisionDictionary;
 
         private List<Section> allSectionsList;
         private List<Section> availableSectionsList;
@@ -32,53 +27,59 @@ namespace CoursePlanner.Scheduler
         private List<Class> availableClassesList;
         private ArrayList choices;
 
-        public Scheduler(CoursePlanner.Data.CoursePlannerContext context)
+        private static Scheduler instance = null;
+       
+        private Scheduler(CoursePlanner.Data.CoursePlannerContext context)
         {
-            _context = context;
+
+            initializeLists(context);
         }
 
-        public void initializeLists()
+        public static Scheduler SchedulerInstance(CoursePlanner.Data.CoursePlannerContext context)
         {
+            if (instance == null)
+            {
+                instance = new Scheduler(context);
+            }
+            return instance;
+        }
 
+        public void initializeLists(CoursePlanner.Data.CoursePlannerContext context)
+        {
+          
             choices = new ArrayList();
-            var allSections = from m in _context.Section
+            collisionDictionary = new Dictionary<string, List<string>>();
+            var allSections = from m in context.Section
                               select m;
             allSectionsList = new List<Section>(allSections);
             availableSectionsList = new List<Section>(allSectionsList);
 
-            var allClasses = from m in _context.Class
+            var allClasses = from m in context.Class
                              select m;
             allClassesList = new List<Class>(allClasses);
             availableClassesList = new List<Class>(allClassesList);
         }
 
-        public void ClassSelected(string classChoice)
+        public void ClassSelected(string classChoice, CoursePlanner.Data.CoursePlannerContext context)
         {
             var currentChoice = Tuple.Create(classChoice.Substring(0, classChoice.Length - 3), Int32.Parse(classChoice.Substring(classChoice.Length - 3)));
 
             var currentChoiceCode = classChoice;
 
-            if (!listsInitialized)
-            {
-                Console.WriteLine("baris kardesimiz merka etmis buraya giri yo mu");
-                initializeLists();
-                listsInitialized = true;
-            }
-
-            choices.Add(currentChoice);
+            instance.choices.Add(currentChoice);
 
             //Console.WriteLine(currentChoice);
 
-            var chosenClassID = from m in _context.Class
+            var chosenClassID = from m in context.Class
                                 where m.Subject == currentChoice.Item1
                                 where m.Code == currentChoice.Item2
                                 select m.ClassId;
 
-            var chosenClassAllSectionsID = from m in _context.Section
+            var chosenClassAllSectionsID = from m in context.Section
                                            where m.ClassId == chosenClassID.ToList()[0]
                                            select m.SectionId;
 
-            var chosenClassAllSections = from m in _context.Section
+            var chosenClassAllSections = from m in context.Section
                                          where chosenClassAllSectionsID.ToList().Contains(m.SectionId)
                                          select m;
 
@@ -125,10 +126,10 @@ namespace CoursePlanner.Scheduler
             foreach (Class remainingClass in availableClassesListCopy)
             {
 
-                var classAllSectionsID = from m in _context.Section
+                var classAllSectionsID = from m in context.Section
                                          where m.ClassId == remainingClass.ClassId
                                          select m.SectionId;
-                var classAllSections = from m in _context.Section
+                var classAllSections = from m in context.Section
                                        where classAllSectionsID.ToList().Contains(m.SectionId)
                                        select m;
                 List<Section> classAllSectionsList = new List<Section>(classAllSections);
@@ -229,7 +230,7 @@ namespace CoursePlanner.Scheduler
 
         public void resetChoices()
         {
-            listsInitialized = false;
+            instance = null;
         }
 
     }
