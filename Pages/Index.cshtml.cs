@@ -1,5 +1,6 @@
 ﻿using CoursePlanner.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections;
@@ -13,7 +14,7 @@ namespace CoursePlanner.Pages
     public class IndexModel : PageModel
     {
         private readonly CoursePlanner.Data.CoursePlannerContext _context;
-        
+
 
         private readonly ILogger<IndexModel> _logger;
 
@@ -33,10 +34,15 @@ namespace CoursePlanner.Pages
             _logger = logger;
         }
 
-        //List<Class> availableClassesListForTimetables = new List<Class>();
+        public static bool firstTime = true;
+        public static int tableLength;
+        public static int looped = 0;
+        public static List<Tuple<String, int>> choicesUntouched = new List<Tuple<String, int>>();
+        public static List<List<Section>> allTables = new List<List<Section>>();
 
         public void OnGet()
         {
+
             //Dictionary<string, List<string>> collisionDictionary = new Dictionary<string, List<string>>();
 
             //var currentChoice = Tuple.Create("COMP", 491);
@@ -216,13 +222,6 @@ namespace CoursePlanner.Pages
             return false;
         }
 
-        public void OnPostMakeTimetables()
-        {
-            Console.WriteLine("This button works: ");
-            //Console.WriteLine(availableClassesListForTimetables.Count());
-        }
-
-
         public void ClassSelected(string classChoice)
         {
             var currentChoice = Tuple.Create(classChoice.Substring(0, classChoice.Length-3), Int32.Parse(classChoice.Substring(classChoice.Length-3)));
@@ -261,8 +260,7 @@ namespace CoursePlanner.Pages
             var chosenClassAllSections = from m in _context.Section
                                          where chosenClassAllSectionsID.ToList().Contains(m.SectionId)
                                          select m;
-            
-            
+
             List<Section> chosenClassAllSectionsList = new List<Section>(chosenClassAllSections);
 
 
@@ -353,6 +351,7 @@ namespace CoursePlanner.Pages
                 Console.WriteLine(avail.Subject + " " + avail.Code);
             }
 
+
             foreach (KeyValuePair<string, List<string>> kvp in collisionDictionary)
             {
                 Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
@@ -367,8 +366,88 @@ namespace CoursePlanner.Pages
         {
             listsInitialized = false;
         }
+
+        public void OnPostMakeTimetables()
+        {
+            List<Tuple<String, int>> choices = new List<Tuple<String, int>>();
+            choices.Add(Tuple.Create("ECON", 100));
+            choices.Add(Tuple.Create("INDR", 100));
+            choices.Add(Tuple.Create("ASIU", 102));
+
+            List<Tuple<String, int>> choicesForRecursion = new List<Tuple<String, int>>(choices);
+            List<Section> chosenClassAllSectionsList = RemoveFaultySections(choicesForRecursion[0]);
+            choicesForRecursion.Remove(choicesForRecursion[0]);
+            foreach (Section section in chosenClassAllSectionsList)
+            {
+                List<Section> currentTable = new List<Section>();
+                currentTable.Add(section);
+                MakeTimetables(choicesForRecursion, currentTable, 0, choicesForRecursion.Count() - 1);
+            }
+        }
+
+        public void MakeTimetables(List<Tuple<String, int>> choices, List<Section> currentTable, int depth, int choicesLastIndex)
+        {
+            List<Section> chosenClassAllSectionsList = RemoveFaultySections(choices[depth]);
+            List<Section> currentTableForLoop = new List<Section>(currentTable);
+            foreach (Section section in chosenClassAllSectionsList)
+            {
+                bool intersects = false;
+                foreach (Section tableSection in currentTableForLoop)
+                {
+                    if (Collides(section, tableSection))
+                    {
+                        intersects = true;
+                        break;
+                    }
+                }
+                if (!intersects)
+                {
+                    List<Section> currentTableToPassDown = new List<Section>(currentTable);
+                    currentTableToPassDown.Add(section);
+                    if (depth < choicesLastIndex)
+                    {
+                        MakeTimetables(choices, currentTableToPassDown, depth + 1, choicesLastIndex);
+                    }
+                    else
+                    {
+                        Console.WriteLine("---------------");
+                        foreach (Section selected in currentTableToPassDown)
+                        {
+                            Console.WriteLine(selected.ClassId + ": " + selected.Times);
+                        }
+                    }
+                }
+            }
+        }
+
+        public List<Section> RemoveFaultySections(Tuple<String, int> choice)
+        {
+            var chosenClassID = from m in _context.Class
+                                where m.Subject == choice.Item1
+                                where m.Code == choice.Item2
+                                select m.ClassId;
+
+            var chosenClassAllSectionsID = from m in _context.Section
+                                           where m.ClassId == chosenClassID.ToList()[0]
+                                           select m.SectionId;
+
+            var chosenClassAllSections = from m in _context.Section
+                                         where chosenClassAllSectionsID.ToList().Contains(m.SectionId)
+                                         select m;
+            List<Section> chosenClassAllSectionsList = new List<Section>(chosenClassAllSections);
+            foreach (Section section in chosenClassAllSections)
+            {
+                if (section.Times == "" || section.Times == "0:0-0:0" || section.Times == "Fri ")  //These are bad data
+                {
+                    chosenClassAllSectionsList.Remove(section);
+                    Console.WriteLine("Removed: " + section);
+                }
+            }
+            return chosenClassAllSectionsList;
+        }
     }
 }
+
 
 
 
