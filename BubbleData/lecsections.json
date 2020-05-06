@@ -1,0 +1,2381 @@
+[
+  {
+    "name": "ACCT",
+    "Code": 321,
+    "Prerequisite": "  ACCT202 AND MFIN202",
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "ACCT",
+    "Code": 501,
+    "data": [ { "value": 67 } ]
+  },
+  {
+    "name": "ACWR",
+    "Code": 101,
+    "data": [ { "value": 40 } ]
+  },
+  {
+    "name": "ACCT",
+    "Code": 201,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "ACCT",
+    "Code": 202,
+    "Prerequisite": "  ACCT201",
+    "data": [ { "value": 70 } ]
+  },
+  {
+    "name": "ACWR",
+    "Code": 103,
+    "Prerequisite": "  ACWR101",
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "ACWR",
+    "Code": 104,
+    "Prerequisite": "  ACWR101",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "ALIS",
+    "Code": 100,
+    "data": [ { "value": 50 } ]
+  },
+  {
+    "name": "ACWR",
+    "Code": 106,
+    "Prerequisite": "  ACWR101",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ARBC",
+    "Code": 201,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ARBC",
+    "Code": 202,
+    "Prerequisite": "  ARBC201",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ARBC",
+    "Code": 301,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 121,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 201,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 315,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 318,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "ACWR",
+    "Code": 107,
+    "Prerequisite": "  ACWR101",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 407,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 422,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 440,
+    "Prerequisite": "  ARHA121",
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 461,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 502,
+    "data": [ { "value": 50 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 526,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 527,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "ARHA",
+    "Code": 550,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "ARTS",
+    "Code": 201,
+    "data": [ { "value": 90 } ]
+  },
+  {
+    "name": "ARTS",
+    "Code": 301,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "ARTS",
+    "Code": 350,
+    "data": [ { "value": 90 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 100,
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 102,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 104,
+    "data": [ { "value": 40 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 109,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 111,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 121,
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "BUSA",
+    "Code": 499,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 115,
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 118,
+    "data": [ { "value": 50 } ]
+  },
+  {
+    "name": "ASIU",
+    "Code": 119,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 201,
+    "Prerequisite": "  CHEM102",
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 300,
+    "Prerequisite": "  CHEM102 OR MBGE101",
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 301,
+    "Prerequisite": "  MATH203 OR MATH203 OR MATH204 AND CHBI201",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 302,
+    "Prerequisite": "  CHBI301",
+    "data": [ { "value": 40 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 303,
+    "Prerequisite": "  CHBI301",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 402,
+    "Prerequisite": "  CHBI303 AND CHBI308 AND ENGR201",
+    "data": [ { "value": 40 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 403,
+    "Prerequisite": "  CHBI303 AND CHBI308",
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 405,
+    "Prerequisite": "  CHEM102",
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 415,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 418,
+    "Prerequisite": "  MBGE300 OR CHBI300",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 501,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 502,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 502,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 504,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 515,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "CHIN",
+    "Code": 201,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "CHIN",
+    "Code": 202,
+    "Prerequisite": "  CHIN201",
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "CMKT",
+    "Code": 501,
+    "data": [ { "value": 98 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 510,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 101,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 103,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "CHBI",
+    "Code": 503,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 201,
+    "Prerequisite": "  CHEM102",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 206,
+    "data": [ { "value": 75 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 301,
+    "Prerequisite": "  CHEM102",
+    "data": [ { "value": 60 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 303,
+    "Prerequisite": "  CHEM102 AND MATH107",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "CHEM",
+    "Code": 410,
+    "Prerequisite": "  CHEM302",
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "CMSE",
+    "Code": 501,
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "COMM",
+    "Code": 202,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 106,
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 110,
+    "data": [ { "value": 75 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 130,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 131,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 111,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 132,
+    "Prerequisite": "  COMP131 OR COMP130",
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 198,
+    "Prerequisite": "  COMP132",
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 200,
+    "Prerequisite": "  COMP106",
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 301,
+    "Prerequisite": "  COMP200",
+    "data": [ { "value": 75 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 302,
+    "Prerequisite": "  COMP132 OR COMP202",
+    "data": [ { "value": 70 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 317,
+    "Prerequisite": "  ELEC204",
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 319,
+    "Prerequisite": "  COMP202 OR COMP132",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 341,
+    "Prerequisite": "  ENGR200 OR ENGR201 OR MATH201 OR MATH211 OR MATH202",
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 442,
+    "Prerequisite": "  COMP341",
+    "data": [ { "value": 40 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 303,
+    "Prerequisite": "  ELEC204",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 450,
+    "Prerequisite": "  ENGR200 AND MATH107  COMP341 OR COMP421",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "CPAP",
+    "Code": 100,
+    "data": [ { "value": 105 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 491,
+    "Prerequisite": "  COMP202 AND COMP302",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 550,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "COMP",
+    "Code": 551,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "CSHS",
+    "Code": 504,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "DASC",
+    "Code": 521,
+    "data": [ { "value": 231 } ]
+  },
+  {
+    "name": "CSHS",
+    "Code": 557,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "DASC",
+    "Code": 501,
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "DTES",
+    "Code": 551,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "ECIR",
+    "Code": 313,
+    "Prerequisite": "  INTL203",
+    "data": [ { "value": 60 } ]
+  },
+  {
+    "name": "ECIR",
+    "Code": 410,
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 101,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 102,
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 201,
+    "Prerequisite": "  ECON101 OR ECON100",
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 100,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 202,
+    "Prerequisite": "  ECON102",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 311,
+    "Prerequisite": "  ECON201 OR ECON201 AND MATH201 OR ENGR200 OR ENGR201 OR MATH211 AND CPAP100 OR CPAP150 OR CPAP101",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 321,
+    "Prerequisite": "  ECON201",
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 333,
+    "Prerequisite": "  ECON100 OR ECON110 OR ECON201 OR ECON201 OR ECON101",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 345,
+    "Prerequisite": "  ECON201",
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 360,
+    "Prerequisite": "  ECON202 OR ECON202",
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 451,
+    "Prerequisite": "  ECON101 AND ECON102",
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 481,
+    "Prerequisite": "  ECON202",
+    "data": [ { "value": 70 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 499,
+    "Prerequisite": "  ECON201 OR ECON201 AND ECON202 OR ECON202 AND ECON311",
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 370,
+    "Prerequisite": "  ECON202 OR ECON202",
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 430,
+    "Prerequisite": "  ECON201 OR ECON201 AND ECON333",
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 501,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 503,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 1035,
+    "data": [ { "value": 20 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 507,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 513,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "EFIN",
+    "Code": 301,
+    "Prerequisite": "  MFIN202",
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 1036,
+    "data": [ { "value": 20 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 1037,
+    "data": [ { "value": 20 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 2003,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 2007,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 2017,
+    "data": [ { "value": 22 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 3525,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 3526,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 3527,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 3528,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 4018,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 4019,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 4020,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 4025,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ECON",
+    "Code": 511,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "EFIN",
+    "Code": 304,
+    "Prerequisite": "  MFIN202",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 1038,
+    "data": [ { "value": 20 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 5506,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 5505,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 5509,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ELC",
+    "Code": 8806,
+    "data": [ { "value": 53 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 198,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "EFIN",
+    "Code": 403,
+    "Prerequisite": "  MFIN202",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 201,
+    "Prerequisite": "  MATH107 AND MATH106",
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 204,
+    "data": [ { "value": 231 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 202,
+    "Prerequisite": "  MATH106 AND MATH107",
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 301,
+    "Prerequisite": "  ELEC201 AND ELEC202",
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 310,
+    "Prerequisite": "  ELEC202 AND ELEC201",
+    "data": [ { "value": 91 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 312,
+    "Prerequisite": "  PHYS302 OR ELEC206",
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 339,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 402,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 405,
+    "Prerequisite": "  ELEC301 OR ELEC304",
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 418,
+    "Prerequisite": "  MATH106 AND MATH107",
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 421,
+    "Prerequisite": "  ELEC206 OR PHYS302",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 430,
+    "data": [ { "value": 32 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 438,
+    "Prerequisite": "  ELEC421 OR ELEC429",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 442,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 450,
+    "Prerequisite": "  ELEC410  ELEC406",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ENGR",
+    "Code": 200,
+    "Prerequisite": "  MATH106 OR MATH106",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "ELEC",
+    "Code": 518,
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "ENGR",
+    "Code": 201,
+    "Prerequisite": " OR MATH106 OR MATH106",
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "ENGR",
+    "Code": 400,
+    "Prerequisite": "  MATH203 OR MATH203",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "ENGR",
+    "Code": 429,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "EQUR",
+    "Code": 101,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "ETHC",
+    "Code": 105,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "EQUR",
+    "Code": 121,
+    "data": [ { "value": 75 } ]
+  },
+  {
+    "name": "ETHC",
+    "Code": 108,
+    "data": [ { "value": 70 } ]
+  },
+  {
+    "name": "ETHC",
+    "Code": 109,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "EXCH",
+    "Code": 301,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "FREN",
+    "Code": 201,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "ETHC",
+    "Code": 113,
+    "data": [ { "value": 60 } ]
+  },
+  {
+    "name": "FREN",
+    "Code": 202,
+    "Prerequisite": "  FREN201",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "GERM",
+    "Code": 201,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "GERM",
+    "Code": 202,
+    "Prerequisite": "  GERM201",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "GERM",
+    "Code": 301,
+    "Prerequisite": "  GERM202",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 103,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 203,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 217,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 300,
+    "Prerequisite": "  ACWR101",
+    "data": [ { "value": 231 } ]
+  },
+  {
+    "name": "GERM",
+    "Code": 302,
+    "Prerequisite": "  GERM301",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "GERM",
+    "Code": 401,
+    "Prerequisite": "  GERM302",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "GREK",
+    "Code": 401,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 309,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 311,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 316,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 402,
+    "data": [ { "value": 60 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 410,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "HIST",
+    "Code": 501,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 102,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 104,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 105,
+    "data": [ { "value": 40 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 109,
+    "data": [ { "value": 65 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 129,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 130,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 131,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 114,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 120,
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "HUMS",
+    "Code": 132,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 100,
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 198,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 201,
+    "Prerequisite": "  MATH106",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 363,
+    "Prerequisite": "  INDR262 AND INDR201",
+    "data": [ { "value": 60 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 420,
+    "Prerequisite": "  INDR262",
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 343,
+    "Prerequisite": "  ENGR200 OR ENGR201 AND INDR262",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 430,
+    "Prerequisite": "  ENGR200 OR ENGR201 OR MATH201",
+    "data": [ { "value": 75 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 440,
+    "Prerequisite": "  INDR262",
+    "data": [ { "value": 50 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 473,
+    "Prerequisite": "  ENGR200",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 475,
+    "Prerequisite": "  ENGR200",
+    "data": [ { "value": 40 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 481,
+    "Prerequisite": "  INDR372",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 483,
+    "Prerequisite": "  ENGR200 AND INDR262 AND INDR372",
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 371,
+    "Prerequisite": "  INDR262",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 501,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 503,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "INDR",
+    "Code": 564,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 101,
+    "data": [ { "value": 65 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 201,
+    "Prerequisite": "  INTL101 AND MATH201 OR ENGR200 OR ENGR201 AND CPAP150 OR CPAP101 OR COMP100 OR CPAP100",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 203,
+    "Prerequisite": "  INTL101",
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 204,
+    "Prerequisite": "  INTL101",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 301,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 307,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 325,
+    "Prerequisite": "  INTL101 OR SOCI100 AND INTL204 OR INTL204",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 330,
+    "Prerequisite": "  INTL203 OR INTL204",
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 374,
+    "Prerequisite": "  INTL203",
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 375,
+    "Prerequisite": "  INTL101 AND INTL203 AND INTL204",
+    "data": [ { "value": 60 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 401,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 450,
+    "Prerequisite": "  INTL101",
+    "data": [ { "value": 65 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 380,
+    "Prerequisite": "  INTL203 AND INTL313 AND INTL204",
+    "data": [ { "value": 65 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 421,
+    "Prerequisite": "  SOCI100 OR SOCI101 OR SOCI102 OR SOCI103 AND SOCI201 OR SOCI202 OR SOCI204 OR SOCI204 OR SOCI206 OR SOCI208",
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 447,
+    "Prerequisite": "  INTL330  INTL203 OR INTL204 OR INTL204",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 475,
+    "Prerequisite": "  INTL101 AND INTL204",
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 499,
+    "Prerequisite": "  INTL101 AND INTL201 AND INTL203 AND INTL204 AND INTL301 AND INTL308",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 601,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "ISP",
+    "Code": 450,
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 504,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 501,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 531,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 550,
+    "data": [ { "value": 65 } ]
+  },
+  {
+    "name": "INTL",
+    "Code": 600,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "ITAL",
+    "Code": 201,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "ITAL",
+    "Code": 202,
+    "Prerequisite": "  ITAL201",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "ITAL",
+    "Code": 301,
+    "Prerequisite": "  ITAL202",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "LANG",
+    "Code": 290,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "LATN",
+    "Code": 401,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 103,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 105,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 111,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 201,
+    "data": [ { "value": 75 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 205,
+    "Prerequisite": "  LAW105",
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 207,
+    "Prerequisite": "  LAW103",
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 221,
+    "Prerequisite": "  LAW104",
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 301,
+    "Prerequisite": "  LAW105",
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 303,
+    "Prerequisite": "  LAW206 AND LAW205",
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 305,
+    "Prerequisite": "  LAW205",
+    "data": [ { "value": 75 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 325,
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 328,
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 403,
+    "Prerequisite": "  LAW304",
+    "data": [ { "value": 75 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 407,
+    "Prerequisite": "  LAW105 AND LAW205",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 409,
+    "Prerequisite": "  LAW303 AND LAW304",
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 410,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 425,
+    "Prerequisite": "  LAW210 AND LAW306",
+    "data": [ { "value": 65 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 101,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 201,
+    "data": [ { "value": 32 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 210,
+    "data": [ { "value": 27 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 303,
+    "Prerequisite": "  LITR111",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 316,
+    "Prerequisite": "  LITR216",
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 357,
+    "data": [ { "value": 32 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 441,
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "LITR",
+    "Code": 499,
+    "Prerequisite": "  LITR442 OR LITR442",
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "MASE",
+    "Code": 510,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "MASE",
+    "Code": 515,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MASE",
+    "Code": 518,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 101,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 102,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 103,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 106,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 107,
+    "Prerequisite": "  MATH106 OR MATH106  MATH107",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 201,
+    "Prerequisite": "  MATH100 OR MATH101 OR MATH106",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 430,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "LAW",
+    "Code": 433,
+    "Prerequisite": "  LAW205",
+    "data": [ { "value": 70 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 202,
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 204,
+    "data": [ { "value": 91 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 203,
+    "Prerequisite": "  MATH106 OR MATH106",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 205,
+    "Prerequisite": "  MATH103",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 211,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 301,
+    "Prerequisite": "  MATH208",
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 310,
+    "Prerequisite": "  MATH205",
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 320,
+    "Prerequisite": "  MATH107",
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "MATH",
+    "Code": 404,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 102,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 104,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 205,
+    "Prerequisite": "  MAVA104",
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 206,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 207,
+    "Prerequisite": "  MAVA104",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 208,
+    "Prerequisite": "  MAVA200",
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 210,
+    "Prerequisite": "  MAVA200",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 213,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 221,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 301,
+    "Prerequisite": "  MKTG201 AND MATH201 OR MATH211 OR ENGR200 OR ENGR201",
+    "data": [ { "value": 91 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 303,
+    "Prerequisite": "  MKTG201",
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 307,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 311,
+    "Prerequisite": "  MAVA208 AND MAVA200",
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 316,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 319,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 323,
+    "Prerequisite": "  MAVA210 OR MAVA210 OR MAVA210 AND MAVA200",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 326,
+    "Prerequisite": "  MAVA208 AND MAVA200 OR MAVA200",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 327,
+    "Prerequisite": "  MAVA104 AND MAVA207",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 342,
+    "Prerequisite": "  PSYC100",
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 406,
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 418,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 420,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 430,
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 432,
+    "data": [ { "value": 25 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 433,
+    "Prerequisite": "  MAVA311",
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 101,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "MAVA",
+    "Code": 354,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 200,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 203,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 300,
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 301,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 343,
+    "Prerequisite": "  MBGE101",
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 409,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 423,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 432,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "MBGE",
+    "Code": 501,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 201,
+    "Prerequisite": "  PHYS101 AND MATH106",
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 203,
+    "data": [ { "value": 105 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 303,
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 350,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 401,
+    "Prerequisite": "  MECH201 OR MECH201 OR MECH201 AND MECH206 AND MECH301 AND MECH302 AND MECH304",
+    "data": [ { "value": 60 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 408,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 409,
+    "Prerequisite": "  MECH202 OR MECH202 AND MECH203 AND MECH204 AND MECH306",
+    "data": [ { "value": 32 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 411,
+    "Prerequisite": "  MATH203 OR MATH203 AND MATH204",
+    "data": [ { "value": 32 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 421,
+    "Prerequisite": "  MATH204 AND MECH301",
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 427,
+    "Prerequisite": "  MECH302 OR CHBI302",
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 443,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 462,
+    "Prerequisite": "  MECH202 OR MECH202",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MEDI",
+    "Code": 101,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "MEDI",
+    "Code": 110,
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "MECH",
+    "Code": 444,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "MEDI",
+    "Code": 120,
+    "data": [ { "value": 70 } ]
+  },
+  {
+    "name": "MFIN",
+    "Code": 202,
+    "Prerequisite": "  ECON100 OR ECON101 AND ACCT201 AND CPAP100 OR CPAP101 OR CPAP150 OR COMP100",
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "MFIN",
+    "Code": 304,
+    "Prerequisite": "  MFIN202",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 335,
+    "Prerequisite": "  ACCT202",
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 348,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 351,
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "MFIN",
+    "Code": 662,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "MGIS",
+    "Code": 301,
+    "Prerequisite": "  CPAP100 OR CPAP101 OR CPAP150 AND MATH201",
+    "data": [ { "value": 75 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 421,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 671,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 901,
+    "data": [ { "value": 98 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 911,
+    "data": [ { "value": 98 } ]
+  },
+  {
+    "name": "MKTG",
+    "Code": 302,
+    "Prerequisite": "  MKTG201",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 411,
+    "data": [ { "value": 60 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 432,
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 445,
+    "data": [ { "value": 60 } ]
+  },
+  {
+    "name": "MGMT",
+    "Code": 513,
+    "data": [ { "value": 67 } ]
+  },
+  {
+    "name": "MKTG",
+    "Code": 432,
+    "data": [ { "value": 104 } ]
+  },
+  {
+    "name": "OPSM",
+    "Code": 501,
+    "data": [ { "value": 98 } ]
+  },
+  {
+    "name": "MKTG",
+    "Code": 551,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "MKTG",
+    "Code": 665,
+    "data": [ { "value": 10 } ]
+  },
+  {
+    "name": "MUSC",
+    "Code": 200,
+    "data": [ { "value": 17 } ]
+  },
+  {
+    "name": "NURS",
+    "Code": 101,
+    "data": [ { "value": 50 } ]
+  },
+  {
+    "name": "OPSM",
+    "Code": 302,
+    "Prerequisite": "  MATH201 AND CPAP100 OR CPAP101 OR CPAP150 OR COMP100",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "OPSM",
+    "Code": 305,
+    "Prerequisite": "  OPSM301 OR OPSM302",
+    "data": [ { "value": 65 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 101,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 213,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 215,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 311,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 338,
+    "Prerequisite": "  PHIL101",
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 404,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 450,
+    "data": [ { "value": 50 } ]
+  },
+  {
+    "name": "PHIL",
+    "Code": 500,
+    "data": [ { "value": 21 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 101,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 102,
+    "data": [ { "value": 91 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 123,
+    "data": [ { "value": 91 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 205,
+    "Prerequisite": "  PHYS101",
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 301,
+    "Prerequisite": "  PHYS205 OR CHEM103",
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 312,
+    "Prerequisite": "  PHYS302 OR ELEC206",
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 401,
+    "Prerequisite": "  PHYS206 AND CHEM103",
+    "data": [ { "value": 33 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 414,
+    "Prerequisite": "  MATH203 AND MATH204",
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 501,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 503,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "PHYS",
+    "Code": 550,
+    "data": [ { "value": 24 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 100,
+    "data": [ { "value": 231 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 201,
+    "Prerequisite": "  PSYC100 AND CPAP100 OR CPAP101",
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 205,
+    "Prerequisite": "  PSYC100",
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 204,
+    "Prerequisite": "  PSYC100",
+    "data": [ { "value": 107 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 210,
+    "Prerequisite": "  CPAP100 OR CPAP150 AND PSYC100",
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 220,
+    "Prerequisite": "  PSYC100",
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 301,
+    "Prerequisite": "  PSYC201 AND MATH201 OR MATH202",
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 302,
+    "data": [ { "value": 50 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 206,
+    "Prerequisite": "  PSYC206  PSYC100  PSYC100",
+    "data": [ { "value": 47 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 208,
+    "Prerequisite": "  SOCI100 OR SOCI101 OR SOCI102 OR SOCI103",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 303,
+    "Prerequisite": "  PSYC305",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 306,
+    "Prerequisite": "  PSYC100",
+    "data": [ { "value": 231 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 357,
+    "Prerequisite": "  PSYC100",
+    "data": [ { "value": 42 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 372,
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 402,
+    "Prerequisite": "  PSYC100",
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 434,
+    "Prerequisite": "  PSYC100",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 501,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 521,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 542,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 550,
+    "data": [ { "value": 50 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 552,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "QMBU",
+    "Code": 301,
+    "Prerequisite": "  MATH201 OR ENGR201 OR ENGR200 OR MATH211 AND CPAP100 OR CPAP101 OR COMP100 OR CPAP150  CPAP100 OR CPAP101 OR CPAP150",
+    "data": [ { "value": 66 } ]
+  },
+  {
+    "name": "QMBU",
+    "Code": 310,
+    "Prerequisite": "  CPAP100 OR CPAP101 OR CPAP150 OR COMP100",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "RUSS",
+    "Code": 201,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "RUSS",
+    "Code": 202,
+    "Prerequisite": "  RUSS201",
+    "data": [ { "value": 32 } ]
+  },
+  {
+    "name": "RUSS",
+    "Code": 301,
+    "Prerequisite": "  RUSS202",
+    "data": [ { "value": 32 } ]
+  },
+  {
+    "name": "SCIE",
+    "Code": 103,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "SCIE",
+    "Code": 108,
+    "data": [ { "value": 154 } ]
+  },
+  {
+    "name": "SCIE",
+    "Code": 459,
+    "data": [ { "value": 12 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 100,
+    "data": [ { "value": 45 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 211,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 220,
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 301,
+    "Prerequisite": "  SOCI100 OR SOCI101 OR SOCI102 OR SOCI102 OR SOCI102 OR SOCI103 OR SOCI103 AND SOCI201 AND MATH202",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 311,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 312,
+    "Prerequisite": "  SOCI100  SOCI100",
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 314,
+    "data": [ { "value": 60 } ]
+  },
+  {
+    "name": "PSYC",
+    "Code": 305,
+    "Prerequisite": "  PSYC305  PSYC210",
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 315,
+    "data": [ { "value": 26 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 340,
+    "Prerequisite": "  SOCI100",
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 354,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 355,
+    "Prerequisite": "  SOCI100",
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 402,
+    "data": [ { "value": 62 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 452,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 503,
+    "data": [ { "value": 40 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 552,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "SOSC",
+    "Code": 105,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "SOSC",
+    "Code": 110,
+    "data": [ { "value": 70 } ]
+  },
+  {
+    "name": "SOSC",
+    "Code": 111,
+    "data": [ { "value": 28 } ]
+  },
+  {
+    "name": "SOSC",
+    "Code": 119,
+    "data": [ { "value": 44 } ]
+  },
+  {
+    "name": "SPAN",
+    "Code": 201,
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "TURK",
+    "Code": 100,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "SOCI",
+    "Code": 501,
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "SPAN",
+    "Code": 202,
+    "Prerequisite": "  SPAN201",
+    "data": [ { "value": 29 } ]
+  },
+  {
+    "name": "SPAN",
+    "Code": 301,
+    "Prerequisite": "  SPAN202",
+    "data": [ { "value": 18 } ]
+  },
+  {
+    "name": "SPAN",
+    "Code": 302,
+    "Prerequisite": "  SPAN301",
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "TECH",
+    "Code": 514,
+    "data": [ { "value": 48 } ]
+  },
+  {
+    "name": "TLIT",
+    "Code": 202,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "TLIT",
+    "Code": 217,
+    "data": [ { "value": 30 } ]
+  },
+  {
+    "name": "TLIT",
+    "Code": 240,
+    "data": [ { "value": 34 } ]
+  },
+  {
+    "name": "TURK",
+    "Code": 300,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "TURK",
+    "Code": 403,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "UNIV",
+    "Code": 121,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "TURK",
+    "Code": 201,
+    "data": [ { "value": 31 } ]
+  },
+  {
+    "name": "UNIV",
+    "Code": 123,
+    "data": [ { "value": 28 } ]
+  }
+]

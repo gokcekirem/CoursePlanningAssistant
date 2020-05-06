@@ -27,7 +27,7 @@ namespace CoursePlanner.Data
             {
                 counter++;
                 if (counter >= 2 && counter <= 3788) // from 2 to 3788
-                { 
+                {
                     // getting all the careers
                     getAllCareers(false, reader);
 
@@ -44,13 +44,77 @@ namespace CoursePlanner.Data
             }
 
             reader.Close();
+
+            // get prerequisites
+
+
+            String filePath2 = @"KUSIS_Class_Data\prerequisites.xlsx";
+            FileStream stream2 = File.Open(filePath2, FileMode.Open, FileAccess.Read);
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            IExcelDataReader reader2 = ExcelReaderFactory.CreateOpenXmlReader(stream2);
+            int counter2 = 0;
+
+            while (reader2.Read())
+            {
+                counter2++;
+                if (counter2 >= 2 && counter2 <= 1087) // from 2 to 1087
+                {
+                    // getting all prerequsites
+                    getAllPrerequisites(false, reader2);
+
+                }
+            }
         }
+
 
         public DbSet<CoursePlanner.Models.Class> Class { get; set; }
         public DbSet<CoursePlanner.Models.Career> Career { get; set; }
         public DbSet<CoursePlanner.Models.Instructor> Instructor { get; set; }
         public DbSet<CoursePlanner.Models.Section> Section { get; set; }
         public DbSet<CoursePlanner.Models.Status> Status { get; set; }
+
+        private void getAllPrerequisites(bool boo, IExcelDataReader reader2)
+        {
+            if (boo)
+            {
+                string type = reader2.GetString(9); //must be equal to 'PRE'
+
+                if (reader2.GetValue(3) != null && string.Compare(type, "PRE") == 0)
+                {
+                    string subject = reader2.GetString(3); // must not be empty
+                    int code = Int32.Parse(reader2.GetString(4));
+
+                    var classId = from m in Class
+                                  where m.Subject == subject
+                                  where m.Code == code
+                                  select m.ClassId;
+
+
+
+                    if (classId.ToList().Count > 0)
+                    {
+                        Class c = Class.Where(s => s.ClassId.Equals(classId.ToList()[0])).FirstOrDefault<Class>();
+
+                        string old = c.Prerequisite;
+
+                        string prereq_subject = reader2.GetString(5);
+                        int prereq_code = Int32.Parse(reader2.GetString(6));
+
+                        string conn = reader2.GetString(13);
+                        string parenth = reader2.GetString(14);
+
+                        string prereq_sentence = " " + conn + " " + prereq_subject + prereq_code;
+
+                        c.Prerequisite = old + prereq_sentence;
+
+                        SaveChanges();
+
+                        //Console.WriteLine("Line:" + counter2 + "\t" + subject + code + "\t" + c.Prerequisite + "\n");
+
+                    }
+                }
+            }
+        }
 
         private void getAllCareers(bool boo, IExcelDataReader reader)
         {
@@ -158,7 +222,7 @@ namespace CoursePlanner.Data
                 newSection.RemainingSeats = Convert.ToInt32((reader.GetDouble(22))) - Convert.ToInt32((reader.GetDouble(8)));
 
                 string times = "";
-                
+
                 if (reader.GetValue(12) != null)
                 {
                     if (reader.GetString(12).Equals("Y"))
@@ -182,7 +246,7 @@ namespace CoursePlanner.Data
                         times = times + "Fri ";
                     }
                 }
-                
+
 
                 //
 

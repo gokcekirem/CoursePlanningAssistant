@@ -1,12 +1,20 @@
-﻿using CoursePlanner.Models;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.Logging;
+
+using CoursePlanner.Models;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.Extensions.Logging;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CoursePlanner.Pages
 {
@@ -29,6 +37,13 @@ namespace CoursePlanner.Pages
         ArrayList choices;
 
         public IndexModel(ILogger<IndexModel> logger, CoursePlanner.Data.CoursePlannerContext context)
+
+        public JsonResult json;
+
+        public JArray jarray;
+
+        public IndexModel(ILogger<IndexModel> logger)
+
         {
             _context = context;
             _logger = logger;
@@ -42,6 +57,14 @@ namespace CoursePlanner.Pages
 
         public void OnGet()
         {
+            //Fill json here
+            //using (StreamReader file = System.IO.File.OpenText(@"BubbleData\bubble_data.json"))
+            //{
+            //    JsonSerializer serializer = new JsonSerializer();
+            //    jarray = (JArray)serializer.Deserialize(file, typeof(JArray));
+            //    Console.WriteLine(jarray);
+            //}
+            //json = jarray;
 
             //Dictionary<string, List<string>> collisionDictionary = new Dictionary<string, List<string>>();
 
