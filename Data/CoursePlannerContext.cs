@@ -14,57 +14,65 @@ namespace CoursePlanner.Data
         public CoursePlannerContext(DbContextOptions<CoursePlannerContext> options)
             : base(options)
         {
-            String filePath = @"KUSIS_Class_Data\dataWithCourseCode.xlsx";
-            FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read);
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            IExcelDataReader reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-            int counter = 0;
+            bool permisson = false; // keep it false if you are not going to write anything to the db
 
-            // getting all status
-            getAllStatus(false);
-
-            while (reader.Read())
+            if (permisson)
             {
-                counter++;
-                if (counter >= 2 && counter <= 3788) // from 2 to 3788
+                String filePath = @"KUSIS_Class_Data\dataWithCourseCode.xlsx";
+                FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read);
+                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                IExcelDataReader reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                int counter = 0;
+
+                // getting all status
+                getAllStatus(false);
+
+                while (reader.Read())
                 {
-                    // getting all the careers
-                    getAllCareers(false, reader);
+                    counter++;
+                    if (counter >= 2 && counter <= 3788) // from 2 to 3788
+                    {
+                        // getting all the careers
+                        getAllCareers(false, reader);
 
-                    // getting all instructors
-                    getAllInstructors(false, reader);
+                        // getting all instructors
+                        getAllInstructors(false, reader);
 
-                    // get all classes
-                    getAllClasses(false, reader);
+                        // get all classes
+                        getAllClasses(false, reader);
 
-                    //get all sections 
-                    getAllSections(false, reader);
+                        //get all sections 
+                        getAllSections(false, reader);
 
+                    }
                 }
-            }
 
-            reader.Close();
+                reader.Close();
 
-            // get prerequisites
+                // get prerequisites
 
 
-            String filePath2 = @"KUSIS_Class_Data\prerequisites.xlsx";
-            FileStream stream2 = File.Open(filePath2, FileMode.Open, FileAccess.Read);
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            IExcelDataReader reader2 = ExcelReaderFactory.CreateOpenXmlReader(stream2);
-            int counter2 = 0;
+                String filePath2 = @"KUSIS_Class_Data\prerequisites.xlsx";
+                FileStream stream2 = File.Open(filePath2, FileMode.Open, FileAccess.Read);
+                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                IExcelDataReader reader2 = ExcelReaderFactory.CreateOpenXmlReader(stream2);
+                int counter2 = 0;
 
-            while (reader2.Read())
-            {
-                counter2++;
-                if (counter2 >= 2 && counter2 <= 1087) // from 2 to 1087
+                while (reader2.Read())
                 {
-                    // getting all prerequsites
-                    getAllPrerequisites(false, reader2);
+                    counter2++;
+                    if (counter2 >= 2 && counter2 <= 1087) // from 2 to 1087
+                    {
+                        // getting all prerequsites
+                        getAllPrerequisites(false, reader2);
 
+                    }
                 }
+                reader2.Close();
             }
+            
         }
+        
 
 
         public DbSet<CoursePlanner.Models.Class> Class { get; set; }
