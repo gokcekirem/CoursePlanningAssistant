@@ -120,7 +120,7 @@ namespace CoursePlanner.Scheduler
 
             List<Class> availableClassesListCopy = new List<Class>(availableClassesList);
 
-
+           
             Console.WriteLine("Before selection, the available class count was " + availableClassesList.Count());
 
             foreach (Class remainingClass in availableClassesListCopy)
@@ -133,15 +133,18 @@ namespace CoursePlanner.Scheduler
                                        where classAllSectionsID.ToList().Contains(m.SectionId)
                                        select m;
                 List<Section> classAllSectionsList = new List<Section>(classAllSections);
-
+              
                 var groupedClassSections = classAllSectionsList.GroupBy(sect => sect.Type);
+                
+               
 
                 foreach (var group in groupedClassSections)
                 {
                     bool validSectionForGroup = false;
                     foreach (var sect in group)
                     {
-                        if (availableSectionsList.Contains(sect))
+                        
+                        if (availableSectionsList.Any(t => t.SectionId == sect.SectionId))
                         {
                             validSectionForGroup = true;
                             break;
