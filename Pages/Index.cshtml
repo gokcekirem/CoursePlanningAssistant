@@ -2654,14 +2654,18 @@
                                     }
                                     selectedCourses = temp;
                                 }
+
+                                var sc = JSON.stringify(selectedCourses);
+                                console.log(sc);
+
                                 $.ajax({
                                     type: "POST",
-                                    url: "/Index?handler=Send",
+                                    url: "/Index?handler=SelectedCourses",
                                     beforeSend: function (xhr) {
                                         xhr.setRequestHeader("XSRF-TOKEN",
                                             $('input:hidden[name="__RequestVerificationToken"]').val());
                                     },
-                                    data: selectedCourses,
+                                    data: sc,
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
                                     success: function (response) {
@@ -2671,6 +2675,7 @@
                                         alert(response);
                                     }
                                 });
+
                                 console.log("\nShowing the selected courses:\n");
                                 if (selectedCourses.length > 0) {
                                     for (var i = 0; i < selectedCourses.length; i++) {
