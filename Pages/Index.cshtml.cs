@@ -44,11 +44,6 @@ namespace CoursePlanner.Pages
             _logger = logger;
         }
 
-        public static bool firstTime = true;
-        public static int tableLength;
-        public static int looped = 0;
-        public static List<Tuple<String, int>> choicesUntouched = new List<Tuple<String, int>>();
-        public static List<List<Section>> allTables = new List<List<Section>>();
 
         public void OnGet()
         {
@@ -388,15 +383,18 @@ namespace CoursePlanner.Pages
             List<Tuple<String, int>> choicesForRecursion = new List<Tuple<String, int>>(choices);
             List<Section> chosenClassAllSectionsList = RemoveFaultySections(choicesForRecursion[0]);
             choicesForRecursion.Remove(choicesForRecursion[0]);
+            List<List<Section>> resultingTables =  new List<List<Section>>();
             foreach (Section section in chosenClassAllSectionsList)
             {
                 List<Section> currentTable = new List<Section>();
                 currentTable.Add(section);
-                MakeTimetables(choicesForRecursion, currentTable, 0, choicesForRecursion.Count() - 1);
+                MakeTimetables(choicesForRecursion, currentTable, 0, choicesForRecursion.Count() - 1, resultingTables);
             }
+            ViewData["timetables"] = resultingTables;
+            ViewData["flag"] = "flag";
         }
 
-        public void MakeTimetables(List<Tuple<String, int>> choices, List<Section> currentTable, int depth, int choicesLastIndex)
+        public void MakeTimetables(List<Tuple<String, int>> choices, List<Section> currentTable, int depth, int choicesLastIndex, List<List<Section>> resultingTables)
         {
             List<Section> chosenClassAllSectionsList = RemoveFaultySections(choices[depth]);
             List<Section> currentTableForLoop = new List<Section>(currentTable);
@@ -417,15 +415,16 @@ namespace CoursePlanner.Pages
                     currentTableToPassDown.Add(section);
                     if (depth < choicesLastIndex)
                     {
-                        MakeTimetables(choices, currentTableToPassDown, depth + 1, choicesLastIndex);
+                        MakeTimetables(choices, currentTableToPassDown, depth + 1, choicesLastIndex, resultingTables);
                     }
                     else
                     {
-                        Console.WriteLine("---------------");
-                        foreach (Section selected in currentTableToPassDown)
-                        {
-                            Console.WriteLine(selected.ClassId + ": " + selected.Times);
-                        }
+                        resultingTables.Add(currentTableToPassDown);
+                        //Console.WriteLine("---------------");
+                        //foreach (Section selected in currentTableToPassDown)
+                        //{
+                        //    Console.WriteLine(selected.ClassId + ": " + selected.Times);
+                        //}
                     }
                 }
             }
