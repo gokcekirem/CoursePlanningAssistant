@@ -114,8 +114,6 @@ namespace CoursePlanner.Scheduler
             }
             Console.WriteLine("After one iterative selection of " + currentChoice.Item1 + " " + currentChoice.Item2 + " " + ", the available section count is " + availableSectionsList.Count());
 
-            //Console.WriteLine(Collides(section1, section2));
-
             //Initially we need the allClasses list, however, as we make choices we will only need to use the availableClassesList list
 
             List<Class> availableClassesListCopy = new List<Class>(availableClassesList);
