@@ -28,25 +28,21 @@ namespace CoursePlanner.Pages
 
         public List<Course> selectedCourses;
 
-        Dictionary<string, List<string>> collisionDictionary = new Dictionary<string, List<string>>();
+        private Dictionary<string, List<string>> collisionDictionary = new Dictionary<string, List<string>>();
 
-        bool listsInitialized = false;
+        private bool listsInitialized = false;
 
-        List<Section> allSectionsList;
-        List<Section> availableSectionsList;
-        List<Class> allClassesList;
-        List<Class> availableClassesList;
-        ArrayList choices;
+        private List<Section> allSectionsList;
+        private List<Section> availableSectionsList;
+        private List<Class> allClassesList;
+        private List<Class> availableClassesList;
+        private ArrayList choices;
 
         public IndexModel(ILogger<IndexModel> logger, CoursePlanner.Data.CoursePlannerContext context)
         {
             _context = context;
             _logger = logger;
         }
-        public JsonResult json;
-
-        public JArray jarray;
-
 
         public static bool firstTime = true;
         public static int tableLength;
@@ -244,16 +240,17 @@ namespace CoursePlanner.Pages
 
             if (!listsInitialized)
             {
-                ArrayList choices = new ArrayList();
+                Console.WriteLine("baris kardesimiz merka etmis buraya giri yo mu");
+                choices = new ArrayList();
                 var allSections = from m in _context.Section
                                   select m;
-                List<Section> allSectionsList = new List<Section>(allSections);
-                List<Section> availableSectionsList = new List<Section>(allSectionsList);
+                allSectionsList = new List<Section>(allSections);
+                availableSectionsList = new List<Section>(allSectionsList);
 
                 var allClasses = from m in _context.Class
                                  select m;
-                List<Class> allClassesList = new List<Class>(allClasses);
-                List<Class> availableClassesList = new List<Class>(allClassesList);
+                allClassesList = new List<Class>(allClasses);
+                availableClassesList = new List<Class>(allClassesList);
 
                 listsInitialized = true;
             }
@@ -464,8 +461,13 @@ namespace CoursePlanner.Pages
         {
             Console.WriteLine("\n\n\n\nWriting sc:");
             selectedCourses = sc;
-            if (selectedCourses.Count > 0)
-                Console.WriteLine(selectedCourses[0].Name + selectedCourses[0].Code);
+
+            int l = selectedCourses.Count();
+            if (selectedCourses.Count() > 0)
+            {
+                Console.WriteLine(selectedCourses[l - 1].Name + selectedCourses[l - 1].Code);
+                ClassSelected(selectedCourses[l - 1].Name + selectedCourses[l - 1].Code);
+            }
         }
     }
 
