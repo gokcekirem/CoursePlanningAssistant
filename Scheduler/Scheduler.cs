@@ -32,7 +32,7 @@ namespace CoursePlanner.Scheduler
         private Scheduler(CoursePlanner.Data.CoursePlannerContext context)
         {
 
-            initializeLists(context);
+            InitializeLists(context);
         }
 
         public static Scheduler SchedulerInstance(CoursePlanner.Data.CoursePlannerContext context)
@@ -44,7 +44,7 @@ namespace CoursePlanner.Scheduler
             return instance;
         }
 
-        public void initializeLists(CoursePlanner.Data.CoursePlannerContext context)
+        public void InitializeLists(CoursePlanner.Data.CoursePlannerContext context)
         {
           
             choices = new ArrayList();
@@ -66,7 +66,7 @@ namespace CoursePlanner.Scheduler
 
             var currentChoiceCode = classChoice;
 
-            instance.choices.Add(currentChoice);
+            choices.Add(currentChoice);
 
             //Console.WriteLine(currentChoice);
 
@@ -228,7 +228,7 @@ namespace CoursePlanner.Scheduler
         }
 
 
-        public void resetChoices()
+        public void ResetChoices()
         {
             instance = null;
         }
