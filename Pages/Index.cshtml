@@ -6,7 +6,17 @@
 
 @using Highsoft.Web.Mvc.Charts
 @using Highsoft.Web.Mvc.Charts.Rendering;
-
+<style>
+    input[type=submit] {
+        font-family: Georgia;
+        font-size: 20px;
+        background: #eac9fe;
+        border: none;
+        border-radius: 5px;
+        position: relative;
+        left: 50%;
+    }
+</style>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -19,6 +29,8 @@
 <form method="post" asp-page-handler="MakeTimetables">
     <input type="submit" value="Show Timetables">
 </form>
+
+
 
 @{
     var flag = ViewData["flag"] as string;
