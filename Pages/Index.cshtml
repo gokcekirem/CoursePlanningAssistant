@@ -2619,7 +2619,7 @@
             },
             tooltip: {
                 formatter: function () {
-                    var str = '<b>' + this.point.name + ': </b>' + this.point.value + ' students'
+                    var str = '<b>'+ this.series.name+' ' + this.point.name + ': </b>' + this.point.value + ' students'
                     if (this.point.prereq != null) {
                         str = str.concat(', prereq: ' + this.point.prereq);
                     }
