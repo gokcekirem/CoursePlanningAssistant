@@ -379,7 +379,7 @@ namespace CoursePlanner.Pages
             choices.Add(Tuple.Create("ECON", 100));
             choices.Add(Tuple.Create("INDR", 100));
             choices.Add(Tuple.Create("ASIU", 102));
-
+            //Console.WriteLine(selectedCourses.Count());
             List<Tuple<String, int>> choicesForRecursion = new List<Tuple<String, int>>(choices);
             List<Section> chosenClassAllSectionsList = RemoveFaultySections(choicesForRecursion[0]);
             choicesForRecursion.Remove(choicesForRecursion[0]);
@@ -460,7 +460,7 @@ namespace CoursePlanner.Pages
         {
             Console.WriteLine("\n\n\n\nWriting sc:");
             selectedCourses = sc;
-
+            
             int l = selectedCourses.Count();
             if (selectedCourses.Count() > 0)
             {

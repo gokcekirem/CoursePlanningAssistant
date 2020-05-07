@@ -47,19 +47,14 @@
                     <th>ClassID</th>
                     <th>Section Time</th>
                 </tr>
-                <tr>
-                    <td>@table[0].ClassId</td>
-                    <td>@table[0].Times</td>
-                </tr>
-                <tr>
-                    <td>@table[1].ClassId</td>
-                    <td>@table[1].Times</td>
-                </tr>
-                <tr>
-                    <td>@table[2].ClassId</td>
-                    <td>@table[2].Times</td>
-                </tr>
-            </table>
+                @foreach (CoursePlanner.Models.Section sect in table)
+                {
+                    <tr>
+                        <td>@sect.ClassId</td>
+                        <td>@sect.Times</td>
+                    </tr>
+                }
+                </table>
         }
     }
 }
