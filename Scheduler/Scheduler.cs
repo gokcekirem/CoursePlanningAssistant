@@ -28,7 +28,7 @@ namespace CoursePlanner.Scheduler
         private ArrayList choices;
 
         private static Scheduler instance = null;
-       
+
         private Scheduler(CoursePlanner.Data.CoursePlannerContext context)
         {
 
@@ -232,6 +232,11 @@ namespace CoursePlanner.Scheduler
         public void ResetChoices()
         {
             instance = null;
+        }
+
+        public Dictionary<string, List<string>> getCollisionDictionary()
+        {
+            return collisionDictionary;
         }
 
     }
