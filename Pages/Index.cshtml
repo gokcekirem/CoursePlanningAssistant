@@ -2567,7 +2567,41 @@
             }
         ]
 
-        Highcharts.chart('container', {
+        function reddy(subject, code, collision) {
+            console.log(chart.series.length);
+
+            for (var i = 0; i < chart.series.length; i++) {
+
+
+                if (chart.series[i].name == subject) {
+                    console.log(chart.series[i]);
+                    for (var j = 0; j < chart.series[i].data.length; j++) {
+
+                        //console.log(chart.series[i].data[j].name);
+                        if (chart.series[i].data[j].name == code) {
+
+                            if (chart.series[i].data[j].color == 'pink') {
+                                var col = chart.series[i].data[j].options.prereq + ", " + collision;
+                                chart.series[i].data[j].options.prereq = col;
+                                chart.series[i].data[j].update({ prereq: col });
+                            }
+                            else {
+                                chart.series[i].data[j].update({ color: 'pink' });
+                                var col = chart.series[i].data[j].options.prereq + " Collides with: " + collision;
+                                chart.series[i].data[j].options.prereq = col;
+                                chart.series[i].data[j].update({ prereq: col });
+                            }
+
+
+                        }
+                    }
+
+
+                }
+            }
+        };
+
+        var chart = Highcharts.chart('container', {
             chart: {
                 type: 'packedbubble',
                 height: '650',
@@ -2683,6 +2717,11 @@
                                         console.log(selectedCourses[i].name + selectedCourses[i].code);
                                     }
                                 }
+
+
+                                //after scheduling algorithm the class colors change
+                                // testing
+                                reddy("LAW", 303, "COMP491");
                             }
                         }
                     }
