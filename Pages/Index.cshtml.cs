@@ -49,10 +49,7 @@ namespace CoursePlanner.Pages
         public void OnPostMakeTimetables()
         {
             List<Tuple<String, int>> choices = new List<Tuple<String, int>>();
-            choices.Add(Tuple.Create("ECON", 100));
-            choices.Add(Tuple.Create("INDR", 100));
-            choices.Add(Tuple.Create("ASIU", 102));
-            //Console.WriteLine(selectedCourses.Count());
+            choices = scheduler.getChoices();
             List<Tuple<String, int>> choicesForRecursion = new List<Tuple<String, int>>(choices);
             List<Section> chosenClassAllSectionsList = RemoveFaultySections(choicesForRecursion[0]);
             choicesForRecursion.Remove(choicesForRecursion[0]);
@@ -127,6 +124,15 @@ namespace CoursePlanner.Pages
                 }
             }
             return chosenClassAllSectionsList;
+        }
+
+        public string getClassName(int classID)
+        {
+            var chosenClass = from m in _context.Class
+                              where classID == m.ClassId
+                              select m;
+            Class myClass = chosenClass.First();
+            return myClass.Subject + " " + myClass.Code;
         }
 
         public void OnPostSelectedCourses([FromBody]List<Course> sc)

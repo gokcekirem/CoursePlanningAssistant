@@ -45,14 +45,16 @@
             <table style="width:100%">
                 <tr>
                     <th>ClassID</th>
+                    <th>Section ID</th>
                     <th>Section Time</th>
                 </tr>
                 @foreach (CoursePlanner.Models.Section sect in table)
                 {
-                    <tr>
-                        <td>@sect.ClassId</td>
-                        <td>@sect.Times</td>
-                    </tr>
+            <tr>
+                <td>@Model.getClassName(sect.ClassId)</td>
+                <td>@sect.SectionId</td>
+                <td>@sect.Times</td>
+            </tr>
                 }
                 </table>
         }

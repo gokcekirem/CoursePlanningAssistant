@@ -25,7 +25,7 @@ namespace CoursePlanner.Scheduler
         private List<Section> availableSectionsList;
         private List<Class> allClassesList;
         private List<Class> availableClassesList;
-        private ArrayList choices;
+        private List<Tuple<string, int>> choices;
 
         private static Scheduler instance = null;
 
@@ -46,8 +46,8 @@ namespace CoursePlanner.Scheduler
 
         public void InitializeLists(CoursePlanner.Data.CoursePlannerContext context)
         {
-          
-            choices = new ArrayList();
+
+            choices = new List<Tuple<string, int>>();
             collisionDictionary = new Dictionary<string, List<string>>();
             var allSections = from m in context.Section
                               select m;
@@ -237,6 +237,11 @@ namespace CoursePlanner.Scheduler
         public Dictionary<string, List<string>> getCollisionDictionary()
         {
             return collisionDictionary;
+        }
+
+        public List<Tuple<string, int>> getChoices()
+        {
+            return choices;
         }
 
     }
