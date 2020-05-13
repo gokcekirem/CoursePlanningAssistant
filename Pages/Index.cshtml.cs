@@ -45,6 +45,11 @@ namespace CoursePlanner.Pages
 
         }
 
+        public void OnPostRefresh()
+        {
+            scheduler.ResetChoices();
+
+        }
       
         public void OnPostMakeTimetables()
         {
