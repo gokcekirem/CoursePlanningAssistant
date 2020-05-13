@@ -53,20 +53,28 @@ namespace CoursePlanner.Pages
       
         public void OnPostMakeTimetables()
         {
-            List<Tuple<String, int>> choices = new List<Tuple<String, int>>();
-            choices = scheduler.getChoices();
-            List<Tuple<String, int>> choicesForRecursion = new List<Tuple<String, int>>(choices);
-            List<Section> chosenClassAllSectionsList = RemoveFaultySections(choicesForRecursion[0]);
-            choicesForRecursion.Remove(choicesForRecursion[0]);
-            List<List<Section>> resultingTables =  new List<List<Section>>();
-            foreach (Section section in chosenClassAllSectionsList)
+            if (scheduler.getChoices().Count() > 0 )
             {
-                List<Section> currentTable = new List<Section>();
-                currentTable.Add(section);
-                MakeTimetables(choicesForRecursion, currentTable, 0, choicesForRecursion.Count() - 1, resultingTables);
+                List<Tuple<String, int>> choices = new List<Tuple<String, int>>();
+                choices = scheduler.getChoices();
+                List<Tuple<String, int>> choicesForRecursion = new List<Tuple<String, int>>(choices);
+                List<Section> chosenClassAllSectionsList = RemoveFaultySections(choicesForRecursion[0]);
+                choicesForRecursion.Remove(choicesForRecursion[0]);
+                List<List<Section>> resultingTables = new List<List<Section>>();
+                foreach (Section section in chosenClassAllSectionsList)
+                {
+                    List<Section> currentTable = new List<Section>();
+                    currentTable.Add(section);
+                    if (choicesForRecursion.Count() > 0)
+                        MakeTimetables(choicesForRecursion, currentTable, 0, choicesForRecursion.Count() - 1, resultingTables);
+                    else
+                        resultingTables.Add(currentTable);
+
+                }
+                ViewData["timetables"] = resultingTables;
+                ViewData["flag"] = "flag";
             }
-            ViewData["timetables"] = resultingTables;
-            ViewData["flag"] = "flag";
+           
         }
 
         public void MakeTimetables(List<Tuple<String, int>> choices, List<Section> currentTable, int depth, int choicesLastIndex, List<List<Section>> resultingTables)
