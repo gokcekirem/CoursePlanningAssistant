@@ -32,3019 +32,3020 @@
     <div id="container" align="left" style="width:1300px; height: 650px"></div>
 </figure>
 
-<form method="post" asp-page-handler="MakeTimetables">
-    <input type="submit" value="Show Timetables">
-</form>
+<div align="center" style="width:800px">
+    <form method="post" asp-page-handler="MakeTimetables">
+        <input type="submit" value="Show Timetables">
+    </form>
+</div>
 
 
-
-@{
-    var flag = ViewData["flag"] as string;
-    if (string.Compare(flag, "flag") == 0)
-    {
-        var count = 0;
-        var allTables = ViewData["timetables"] as List<List<CoursePlanner.Models.Section>>;
-        foreach (List<CoursePlanner.Models.Section> table in allTables)
+    @{
+        var flag = ViewData["flag"] as string;
+        if (string.Compare(flag, "flag") == 0)
         {
-            count += 1;
-            <h2>Timetable @count</h2>
-            <table style="width:100%">
-                <tr>
-                    <th>Class</th>
-                    <th>Section Time</th>
-                </tr>
-                @foreach (CoursePlanner.Models.Section sect in table)
-                {
+            var count = 0;
+            var allTables = ViewData["timetables"] as List<List<CoursePlanner.Models.Section>>;
+            foreach (List<CoursePlanner.Models.Section> table in allTables)
+            {
+                count += 1;
+                <h2>Timetable @count</h2>
+                <table style="width:100%">
                     <tr>
-                        <td>@Model.getClassName(sect.ClassId)</td>
-                        <td>@sect.Times</td>
+                        <th>Class</th>
+                        <th>Section Time</th>
                     </tr>
-                }
-            </table>
+                    @foreach (CoursePlanner.Models.Section sect in table)
+                    {
+                        <tr>
+                            <td>@Model.getClassName(sect.ClassId)</td>
+                            <td>@sect.Times</td>
+                        </tr>
+                    }
+                </table>
+            }
         }
     }
-}
 
-<script>
-    var selectedCourses = [];
+    <script>
+        var selectedCourses = [];
 
-    function reddy(subject, code, collision) {
-        //console.log(chart.series.length);
+        function reddy(subject, code, collision) {
+            //console.log(chart.series.length);
 
-        for (var i = 0; i < chart.series.length; i++) {
+            for (var i = 0; i < chart.series.length; i++) {
 
 
-            if (chart.series[i].name == subject) {
-                console.log(chart.series[i]);
-                for (var j = 0; j < chart.series[i].data.length; j++) {
+                if (chart.series[i].name == subject) {
+                    console.log(chart.series[i]);
+                    for (var j = 0; j < chart.series[i].data.length; j++) {
 
-                    //console.log(chart.series[i].data[j].name);
-                    if (chart.series[i].data[j].name == code) {
+                        //console.log(chart.series[i].data[j].name);
+                        if (chart.series[i].data[j].name == code) {
 
-                        if (chart.series[i].data[j].color == 'pink') {
-                            var col = chart.series[i].data[j].options.prereq + ", " + collision;
-                            chart.series[i].data[j].options.prereq = col;
-                            chart.series[i].data[j].update({ prereq: col });
+                            if (chart.series[i].data[j].color == 'pink') {
+                                var col = chart.series[i].data[j].options.prereq + ", " + collision;
+                                chart.series[i].data[j].options.prereq = col;
+                                chart.series[i].data[j].update({ prereq: col });
+                            }
+                            else {
+                                chart.series[i].data[j].update({ color: 'pink' });
+                                var col = chart.series[i].data[j].options.prereq + ", Conflicts with: " + collision;
+                                chart.series[i].data[j].options.prereq = col;
+                                chart.series[i].data[j].update({ prereq: col });
+                            }
+
+
                         }
-                        else {
-                            chart.series[i].data[j].update({ color: 'pink' });
-                            var col = chart.series[i].data[j].options.prereq + ", Conflicts with: " + collision;
-                            chart.series[i].data[j].options.prereq = col;
-                            chart.series[i].data[j].update({ prereq: col });
-                        }
-
-
                     }
+
+
                 }
-
-
             }
-        }
-    };
+        };
 
-    var json = [
-        {
-            "name": "ACCT",
-            "data": [
-                {
-                    "name": 321,
-                    "value": 47,
-                    "prereq": "  ACCT202 AND MFIN202"
-                },
-                {
-                    "name": 501,
-                    "value": 67,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 202,
-                    "value": 70,
-                    "prereq": "  ACCT201"
-                },
-                {
-                    "name": "ACCT",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ACWR",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 40,
-                    "prereq": null
-                },
-                {
-                    "name": 103,
-                    "value": 33,
-                    "prereq": "  ACWR101"
-                },
-                {
-                    "name": 104,
-                    "value": 30,
-                    "prereq": "  ACWR101"
-                },
-                {
-                    "name": 106,
-                    "value": 31,
-                    "prereq": "  ACWR101"
-                },
-                {
-                    "name": 107,
-                    "value": 30,
-                    "prereq": "  ACWR101"
-                },
-                {
-                    "name": "ACWR",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ALIS",
-            "data": [
-                {
-                    "name": 100,
-                    "value": 50,
-                    "prereq": null
-                },
-                {
-                    "name": "ALIS",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ARBC",
-            "data": [
-                {
-                    "name": 201,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 202,
-                    "value": 31,
-                    "prereq": "  ARBC201"
-                },
-                {
-                    "name": 301,
-                    "value": 18,
-                    "prereq": null
-                },
-                {
-                    "name": "ARBC",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ARHA",
-            "data": [
-                {
-                    "name": 121,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 315,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 318,
-                    "value": 26,
-                    "prereq": null
-                },
-                {
-                    "name": 407,
-                    "value": 24,
-                    "prereq": null
-                },
-                {
-                    "name": 422,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 440,
-                    "value": 12,
-                    "prereq": "  ARHA121"
-                },
-                {
-                    "name": 461,
-                    "value": 17,
-                    "prereq": null
-                },
-                {
-                    "name": 502,
-                    "value": 50,
-                    "prereq": null
-                },
-                {
-                    "name": 526,
-                    "value": 26,
-                    "prereq": null
-                },
-                {
-                    "name": 527,
-                    "value": 24,
-                    "prereq": null
-                },
-                {
-                    "name": 550,
-                    "value": 17,
-                    "prereq": null
-                },
-                {
-                    "name": "ARHA",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ARTS",
-            "data": [
-                {
-                    "name": 201,
-                    "value": 90,
-                    "prereq": null
-                },
-                {
-                    "name": 301,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 350,
-                    "value": 90,
-                    "prereq": null
-                },
-                {
-                    "name": "ARTS",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ASIU",
-            "data": [
-                {
-                    "name": 100,
-                    "value": 47,
-                    "prereq": null
-                },
-                {
-                    "name": 102,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": 104,
-                    "value": 40,
-                    "prereq": null
-                },
-                {
-                    "name": 109,
-                    "value": 44,
-                    "prereq": null
-                },
-                {
-                    "name": 111,
-                    "value": 45,
-                    "prereq": null
-                },
-                {
-                    "name": 121,
-                    "value": 66,
-                    "prereq": null
-                },
-                {
-                    "name": 115,
-                    "value": 47,
-                    "prereq": null
-                },
-                {
-                    "name": 118,
-                    "value": 50,
-                    "prereq": null
-                },
-                {
-                    "name": 119,
-                    "value": 33,
-                    "prereq": null
-                },
-                {
-                    "name": "ASIU",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "BUSA",
-            "data": [
-                {
-                    "name": 499,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": "BUSA",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "CHBI",
-            "data": [
-                {
-                    "name": 201,
-                    "value": 62,
-                    "prereq": "  CHEM102"
-                },
-                {
-                    "name": 300,
-                    "value": 104,
-                    "prereq": "  CHEM102 OR MBGE101"
-                },
-                {
-                    "name": 301,
-                    "value": 107,
-                    "prereq": "  MATH203 OR MATH203 OR MATH204 AND CHBI201"
-                },
-                {
-                    "name": 302,
-                    "value": 40,
-                    "prereq": "  CHBI301"
-                },
-                {
-                    "name": 303,
-                    "value": 48,
-                    "prereq": "  CHBI301"
-                },
-                {
-                    "name": 402,
-                    "value": 40,
-                    "prereq": "  CHBI303 AND CHBI308 AND ENGR201"
-                },
-                {
-                    "name": 403,
-                    "value": 47,
-                    "prereq": "  CHBI303 AND CHBI308"
-                },
-                {
-                    "name": 405,
-                    "value": 42,
-                    "prereq": "  CHEM102"
-                },
-                {
-                    "name": 415,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": 418,
-                    "value": 48,
-                    "prereq": "  MBGE300 OR CHBI300"
-                },
-                {
-                    "name": 501,
-                    "value": 24,
-                    "prereq": null
-                },
-                {
-                    "name": 502,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 510,
-                    "value": 18,
-                    "prereq": null
-                },
-                {
-                    "name": 503,
-                    "value": 24,
-                    "prereq": null
-                },
-                {
-                    "name": "CHBI",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "CHEM",
-            "data": [
-                {
-                    "name": 502,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 504,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 515,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 101,
-                    "value": 107,
-                    "prereq": null
-                },
-                {
-                    "name": 103,
-                    "value": 107,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 31,
-                    "prereq": "  CHEM102"
-                },
-                {
-                    "name": 206,
-                    "value": 75,
-                    "prereq": null
-                },
-                {
-                    "name": 301,
-                    "value": 60,
-                    "prereq": "  CHEM102"
-                },
-                {
-                    "name": 303,
-                    "value": 31,
-                    "prereq": "  CHEM102 AND MATH107"
-                },
-                {
-                    "name": 410,
-                    "value": 33,
-                    "prereq": "  CHEM302"
-                },
-                {
-                    "name": "CHEM",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "CHIN",
-            "data": [
-                {
-                    "name": 201,
-                    "value": 18,
-                    "prereq": null
-                },
-                {
-                    "name": 202,
-                    "value": 18,
-                    "prereq": "  CHIN201"
-                },
-                {
-                    "name": "CHIN",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "CMKT",
-            "data": [
-                {
-                    "name": 501,
-                    "value": 98,
-                    "prereq": null
-                },
-                {
-                    "name": "CMKT",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "CMSE",
-            "data": [
-                {
-                    "name": 501,
-                    "value": 47,
-                    "prereq": null
-                },
-                {
-                    "name": "CMSE",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "COMM",
-            "data": [
-                {
-                    "name": 202,
-                    "value": 44,
-                    "prereq": null
-                },
-                {
-                    "name": "COMM",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "COMP",
-            "data": [
-                {
-                    "name": 106,
-                    "value": 104,
-                    "prereq": null
-                },
-                {
-                    "name": 110,
-                    "value": 75,
-                    "prereq": null
-                },
-                {
-                    "name": 130,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 131,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 111,
-                    "value": 17,
-                    "prereq": null
-                },
-                {
-                    "name": 132,
-                    "value": 66,
-                    "prereq": "  COMP131 OR COMP130"
-                },
-                {
-                    "name": 198,
-                    "value": 28,
-                    "prereq": "  COMP132"
-                },
-                {
-                    "name": 200,
-                    "value": 104,
-                    "prereq": "  COMP106"
-                },
-                {
-                    "name": 301,
-                    "value": 75,
-                    "prereq": "  COMP200"
-                },
-                {
-                    "name": 302,
-                    "value": 70,
-                    "prereq": "  COMP132 OR COMP202"
-                },
-                {
-                    "name": 317,
-                    "value": 34,
-                    "prereq": "  ELEC204"
-                },
-                {
-                    "name": 319,
-                    "value": 30,
-                    "prereq": "  COMP202 OR COMP132"
-                },
-                {
-                    "name": 341,
-                    "value": 44,
-                    "prereq": "  ENGR200 OR ENGR201 OR MATH201 OR MATH211 OR MATH202"
-                },
-                {
-                    "name": 442,
-                    "value": 40,
-                    "prereq": "  COMP341"
-                },
-                {
-                    "name": 303,
-                    "value": 107,
-                    "prereq": "  ELEC204"
-                },
-                {
-                    "name": 450,
-                    "value": 48,
-                    "prereq": "  ENGR200 AND MATH107  COMP341 OR COMP421"
-                },
-                {
-                    "name": 491,
-                    "value": 31,
-                    "prereq": "  COMP202 AND COMP302"
-                },
-                {
-                    "name": 550,
-                    "value": 44,
-                    "prereq": null
-                },
-                {
-                    "name": 551,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": "COMP",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "CPAP",
-            "data": [
-                {
-                    "name": 100,
-                    "value": 105,
-                    "prereq": null
-                },
-                {
-                    "name": "CPAP",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "CSHS",
-            "data": [
-                {
-                    "name": 504,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 557,
-                    "value": 12,
-                    "prereq": null
-                },
-                {
-                    "name": "CSHS",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "DASC",
-            "data": [
-                {
-                    "name": 521,
-                    "value": 231,
-                    "prereq": null
-                },
-                {
-                    "name": 501,
-                    "value": 47,
-                    "prereq": null
-                },
-                {
-                    "name": "DASC",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "DTES",
-            "data": [
-                {
-                    "name": 551,
-                    "value": 25,
-                    "prereq": null
-                },
-                {
-                    "name": "DTES",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ECIR",
-            "data": [
-                {
-                    "name": 313,
-                    "value": 60,
-                    "prereq": "  INTL203"
-                },
-                {
-                    "name": 410,
-                    "value": 62,
-                    "prereq": null
-                },
-                {
-                    "name": "ECIR",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ECON",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 107,
-                    "prereq": null
-                },
-                {
-                    "name": 102,
-                    "value": 104,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 66,
-                    "prereq": "  ECON101 OR ECON100"
-                },
-                {
-                    "name": 100,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 202,
-                    "value": 107,
-                    "prereq": "  ECON102"
-                },
-                {
-                    "name": 311,
-                    "value": 107,
-                    "prereq": "  ECON201 OR ECON201 AND MATH201 OR ENGR200 OR ENGR201 OR MATH211 AND CPAP100 OR CPAP150 OR CPAP101"
-                },
-                {
-                    "name": 321,
-                    "value": 62,
-                    "prereq": "  ECON201"
-                },
-                {
-                    "name": 333,
-                    "value": 107,
-                    "prereq": "  ECON100 OR ECON110 OR ECON201 OR ECON201 OR ECON101"
-                },
-                {
-                    "name": 345,
-                    "value": 62,
-                    "prereq": "  ECON201"
-                },
-                {
-                    "name": 360,
-                    "value": 154,
-                    "prereq": "  ECON202 OR ECON202"
-                },
-                {
-                    "name": 451,
-                    "value": 44,
-                    "prereq": "  ECON101 AND ECON102"
-                },
-                {
-                    "name": 481,
-                    "value": 70,
-                    "prereq": "  ECON202"
-                },
-                {
-                    "name": 499,
-                    "value": 66,
-                    "prereq": "  ECON201 OR ECON201 AND ECON202 OR ECON202 AND ECON311"
-                },
-                {
-                    "name": 370,
-                    "value": 154,
-                    "prereq": "  ECON202 OR ECON202"
-                },
-                {
-                    "name": 430,
-                    "value": 27,
-                    "prereq": "  ECON201 OR ECON201 AND ECON333"
-                },
-                {
-                    "name": 501,
-                    "value": 18,
-                    "prereq": null
-                },
-                {
-                    "name": 503,
-                    "value": 24,
-                    "prereq": null
-                },
-                {
-                    "name": 507,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 513,
-                    "value": 12,
-                    "prereq": null
-                },
-                {
-                    "name": 511,
-                    "value": 28,
-                    "prereq": null
-                },
-                {
-                    "name": "ECON",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "EFIN",
-            "data": [
-                {
-                    "name": 301,
-                    "value": 66,
-                    "prereq": "  MFIN202"
-                },
-                {
-                    "name": 304,
-                    "value": 48,
-                    "prereq": "  MFIN202"
-                },
-                {
-                    "name": 403,
-                    "value": 30,
-                    "prereq": "  MFIN202"
-                },
-                {
-                    "name": "EFIN",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ELC",
-            "data": [
-                {
-                    "name": 1035,
-                    "value": 20,
-                    "prereq": null
-                },
-                {
-                    "name": 1036,
-                    "value": 20,
-                    "prereq": null
-                },
-                {
-                    "name": 1037,
-                    "value": 20,
-                    "prereq": null
-                },
-                {
-                    "name": 2003,
-                    "value": 22,
-                    "prereq": null
-                },
-                {
-                    "name": 2007,
-                    "value": 22,
-                    "prereq": null
-                },
-                {
-                    "name": 2017,
-                    "value": 22,
-                    "prereq": null
-                },
-                {
-                    "name": 3525,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 3526,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 3527,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 3528,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 4018,
-                    "value": 53,
-                    "prereq": null
-                },
-                {
-                    "name": 4019,
-                    "value": 53,
-                    "prereq": null
-                },
-                {
-                    "name": 4020,
-                    "value": 53,
-                    "prereq": null
-                },
-                {
-                    "name": 4025,
-                    "value": 53,
-                    "prereq": null
-                },
-                {
-                    "name": 1038,
-                    "value": 20,
-                    "prereq": null
-                },
-                {
-                    "name": 5506,
-                    "value": 53,
-                    "prereq": null
-                },
-                {
-                    "name": 5505,
-                    "value": 53,
-                    "prereq": null
-                },
-                {
-                    "name": 5509,
-                    "value": 53,
-                    "prereq": null
-                },
-                {
-                    "name": 8806,
-                    "value": 53,
-                    "prereq": null
-                },
-                {
-                    "name": "ELC",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ELEC",
-            "data": [
-                {
-                    "name": 198,
-                    "value": 25,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 104,
-                    "prereq": "  MATH107 AND MATH106"
-                },
-                {
-                    "name": 204,
-                    "value": 231,
-                    "prereq": null
-                },
-                {
-                    "name": 202,
-                    "value": 62,
-                    "prereq": "  MATH106 AND MATH107"
-                },
-                {
-                    "name": 301,
-                    "value": 104,
-                    "prereq": "  ELEC201 AND ELEC202"
-                },
-                {
-                    "name": 310,
-                    "value": 91,
-                    "prereq": "  ELEC202 AND ELEC201"
-                },
-                {
-                    "name": 312,
-                    "value": 33,
-                    "prereq": "  PHYS302 OR ELEC206"
-                },
-                {
-                    "name": 339,
-                    "value": 44,
-                    "prereq": null
-                },
-                {
-                    "name": 402,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 405,
-                    "value": 44,
-                    "prereq": "  ELEC301 OR ELEC304"
-                },
-                {
-                    "name": 418,
-                    "value": 47,
-                    "prereq": "  MATH106 AND MATH107"
-                },
-                {
-                    "name": 421,
-                    "value": 31,
-                    "prereq": "  ELEC206 OR PHYS302"
-                },
-                {
-                    "name": 430,
-                    "value": 32,
-                    "prereq": null
-                },
-                {
-                    "name": 438,
-                    "value": 31,
-                    "prereq": "  ELEC421 OR ELEC429"
-                },
-                {
-                    "name": 442,
-                    "value": 44,
-                    "prereq": null
-                },
-                {
-                    "name": 450,
-                    "value": 31,
-                    "prereq": "  ELEC410  ELEC406"
-                },
-                {
-                    "name": 518,
-                    "value": 47,
-                    "prereq": null
-                },
-                {
-                    "name": "ELEC",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ENGR",
-            "data": [
-                {
-                    "name": 200,
-                    "value": 107,
-                    "prereq": "  MATH106 OR MATH106"
-                },
-                {
-                    "name": 201,
-                    "value": 66,
-                    "prereq": " OR MATH106 OR MATH106"
-                },
-                {
-                    "name": 400,
-                    "value": 107,
-                    "prereq": "  MATH203 OR MATH203"
-                },
-                {
-                    "name": 429,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": "ENGR",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "EQUR",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 121,
-                    "value": 75,
-                    "prereq": null
-                },
-                {
-                    "name": "EQUR",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ETHC",
-            "data": [
-                {
-                    "name": 105,
-                    "value": 107,
-                    "prereq": null
-                },
-                {
-                    "name": 108,
-                    "value": 70,
-                    "prereq": null
-                },
-                {
-                    "name": 109,
-                    "value": 45,
-                    "prereq": null
-                },
-                {
-                    "name": 113,
-                    "value": 60,
-                    "prereq": null
-                },
-                {
-                    "name": "ETHC",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "EXCH",
-            "data": [
-                {
-                    "name": 301,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": "EXCH",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "FREN",
-            "data": [
-                {
-                    "name": 201,
-                    "value": 27,
-                    "prereq": null
-                },
-                {
-                    "name": 202,
-                    "value": 31,
-                    "prereq": "  FREN201"
-                },
-                {
-                    "name": "FREN",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "GERM",
-            "data": [
-                {
-                    "name": 201,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 202,
-                    "value": 30,
-                    "prereq": "  GERM201"
-                },
-                {
-                    "name": 301,
-                    "value": 31,
-                    "prereq": "  GERM202"
-                },
-                {
-                    "name": 302,
-                    "value": 30,
-                    "prereq": "  GERM301"
-                },
-                {
-                    "name": 401,
-                    "value": 31,
-                    "prereq": "  GERM302"
-                },
-                {
-                    "name": "GERM",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "GREK",
-            "data": [
-                {
-                    "name": 401,
-                    "value": 18,
-                    "prereq": null
-                },
-                {
-                    "name": "GREK",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "HIST",
-            "data": [
-                {
-                    "name": 103,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 203,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 217,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 300,
-                    "value": 231,
-                    "prereq": "  ACWR101"
-                },
-                {
-                    "name": 309,
-                    "value": 44,
-                    "prereq": null
-                },
-                {
-                    "name": 311,
-                    "value": 28,
-                    "prereq": null
-                },
-                {
-                    "name": 316,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 402,
-                    "value": 60,
-                    "prereq": null
-                },
-                {
-                    "name": 410,
-                    "value": 28,
-                    "prereq": null
-                },
-                {
-                    "name": 501,
-                    "value": 24,
-                    "prereq": null
-                },
-                {
-                    "name": "HIST",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "HUMS",
-            "data": [
-                {
-                    "name": 102,
-                    "value": 45,
-                    "prereq": null
-                },
-                {
-                    "name": 104,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": 105,
-                    "value": 40,
-                    "prereq": null
-                },
-                {
-                    "name": 109,
-                    "value": 65,
-                    "prereq": null
-                },
-                {
-                    "name": 129,
-                    "value": 44,
-                    "prereq": null
-                },
-                {
-                    "name": 130,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": 131,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 114,
-                    "value": 45,
-                    "prereq": null
-                },
-                {
-                    "name": 120,
-                    "value": 42,
-                    "prereq": null
-                },
-                {
-                    "name": 132,
-                    "value": 28,
-                    "prereq": null
-                },
-                {
-                    "name": "HUMS",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "INDR",
-            "data": [
-                {
-                    "name": 100,
-                    "value": 104,
-                    "prereq": null
-                },
-                {
-                    "name": 198,
-                    "value": 18,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 107,
-                    "prereq": "  MATH106"
-                },
-                {
-                    "name": 363,
-                    "value": 60,
-                    "prereq": "  INDR262 AND INDR201"
-                },
-                {
-                    "name": 420,
-                    "value": 29,
-                    "prereq": "  INDR262"
-                },
-                {
-                    "name": 343,
-                    "value": 107,
-                    "prereq": "  ENGR200 OR ENGR201 AND INDR262"
-                },
-                {
-                    "name": 430,
-                    "value": 75,
-                    "prereq": "  ENGR200 OR ENGR201 OR MATH201"
-                },
-                {
-                    "name": 440,
-                    "value": 50,
-                    "prereq": "  INDR262"
-                },
-                {
-                    "name": 473,
-                    "value": 48,
-                    "prereq": "  ENGR200"
-                },
-                {
-                    "name": 475,
-                    "value": 40,
-                    "prereq": "  ENGR200"
-                },
-                {
-                    "name": 481,
-                    "value": 107,
-                    "prereq": "  INDR372"
-                },
-                {
-                    "name": 483,
-                    "value": 33,
-                    "prereq": "  ENGR200 AND INDR262 AND INDR372"
-                },
-                {
-                    "name": 371,
-                    "value": 107,
-                    "prereq": "  INDR262"
-                },
-                {
-                    "name": 501,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 503,
-                    "value": 33,
-                    "prereq": null
-                },
-                {
-                    "name": 564,
-                    "value": 27,
-                    "prereq": null
-                },
-                {
-                    "name": "INDR",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "INTL",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 65,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 48,
-                    "prereq": "  INTL101 AND MATH201 OR ENGR200 OR ENGR201 AND CPAP150 OR CPAP101 OR COMP100 OR CPAP100"
-                },
-                {
-                    "name": 203,
-                    "value": 66,
-                    "prereq": "  INTL101"
-                },
-                {
-                    "name": 204,
-                    "value": 107,
-                    "prereq": "  INTL101"
-                },
-                {
-                    "name": 301,
-                    "value": 45,
-                    "prereq": null
-                },
-                {
-                    "name": 307,
-                    "value": 12,
-                    "prereq": null
-                },
-                {
-                    "name": 325,
-                    "value": 48,
-                    "prereq": "  INTL101 OR SOCI100 AND INTL204 OR INTL204"
-                },
-                {
-                    "name": 330,
-                    "value": 44,
-                    "prereq": "  INTL203 OR INTL204"
-                },
-                {
-                    "name": 374,
-                    "value": 154,
-                    "prereq": "  INTL203"
-                },
-                {
-                    "name": 375,
-                    "value": 60,
-                    "prereq": "  INTL101 AND INTL203 AND INTL204"
-                },
-                {
-                    "name": 401,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 450,
-                    "value": 65,
-                    "prereq": "  INTL101"
-                },
-                {
-                    "name": 380,
-                    "value": 65,
-                    "prereq": "  INTL203 AND INTL313 AND INTL204"
-                },
-                {
-                    "name": 421,
-                    "value": 45,
-                    "prereq": "  SOCI100 OR SOCI101 OR SOCI102 OR SOCI103 AND SOCI201 OR SOCI202 OR SOCI204 OR SOCI204 OR SOCI206 OR SOCI208"
-                },
-                {
-                    "name": 447,
-                    "value": 48,
-                    "prereq": "  INTL330  INTL203 OR INTL204 OR INTL204"
-                },
-                {
-                    "name": 475,
-                    "value": 47,
-                    "prereq": "  INTL101 AND INTL204"
-                },
-                {
-                    "name": 499,
-                    "value": 48,
-                    "prereq": "  INTL101 AND INTL201 AND INTL203 AND INTL204 AND INTL301 AND INTL308"
-                },
-                {
-                    "name": 601,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 504,
-                    "value": 24,
-                    "prereq": null
-                },
-                {
-                    "name": 501,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 531,
-                    "value": 12,
-                    "prereq": null
-                },
-                {
-                    "name": 550,
-                    "value": 65,
-                    "prereq": null
-                },
-                {
-                    "name": 600,
-                    "value": 18,
-                    "prereq": null
-                },
-                {
-                    "name": "INTL",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ISP",
-            "data": [
-                {
-                    "name": 450,
-                    "value": 66,
-                    "prereq": null
-                },
-                {
-                    "name": "ISP",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "ITAL",
-            "data": [
-                {
-                    "name": 201,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 202,
-                    "value": 30,
-                    "prereq": "  ITAL201"
-                },
-                {
-                    "name": 301,
-                    "value": 30,
-                    "prereq": "  ITAL202"
-                },
-                {
-                    "name": "ITAL",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "LANG",
-            "data": [
-                {
-                    "name": 290,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": "LANG",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "LATN",
-            "data": [
-                {
-                    "name": 401,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": "LATN",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "LAW",
-            "data": [
-                {
-                    "name": 103,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 105,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 111,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 75,
-                    "prereq": null
-                },
-                {
-                    "name": 205,
-                    "value": 104,
-                    "prereq": "  LAW105"
-                },
-                {
-                    "name": 207,
-                    "value": 66,
-                    "prereq": "  LAW103"
-                },
-                {
-                    "name": 221,
-                    "value": 154,
-                    "prereq": "  LAW104"
-                },
-                {
-                    "name": 301,
-                    "value": 104,
-                    "prereq": "  LAW105"
-                },
-                {
-                    "name": 303,
-                    "value": 154,
-                    "prereq": "  LAW206 AND LAW205"
-                },
-                {
-                    "name": 305,
-                    "value": 75,
-                    "prereq": "  LAW205"
-                },
-                {
-                    "name": 325,
-                    "value": 42,
-                    "prereq": null
-                },
-                {
-                    "name": 328,
-                    "value": 47,
-                    "prereq": null
-                },
-                {
-                    "name": 403,
-                    "value": 75,
-                    "prereq": "  LAW304"
-                },
-                {
-                    "name": 407,
-                    "value": 107,
-                    "prereq": "  LAW105 AND LAW205"
-                },
-                {
-                    "name": 409,
-                    "value": 154,
-                    "prereq": "  LAW303 AND LAW304"
-                },
-                {
-                    "name": 410,
-                    "value": 45,
-                    "prereq": null
-                },
-                {
-                    "name": 425,
-                    "value": 65,
-                    "prereq": "  LAW210 AND LAW306"
-                },
-                {
-                    "name": 430,
-                    "value": 45,
-                    "prereq": null
-                },
-                {
-                    "name": 433,
-                    "value": 70,
-                    "prereq": "  LAW205"
-                },
-                {
-                    "name": "LAW",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "LITR",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 26,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 32,
-                    "prereq": null
-                },
-                {
-                    "name": 210,
-                    "value": 27,
-                    "prereq": null
-                },
-                {
-                    "name": 303,
-                    "value": 30,
-                    "prereq": "  LITR111"
-                },
-                {
-                    "name": 316,
-                    "value": 24,
-                    "prereq": "  LITR216"
-                },
-                {
-                    "name": 357,
-                    "value": 32,
-                    "prereq": null
-                },
-                {
-                    "name": 441,
-                    "value": 42,
-                    "prereq": null
-                },
-                {
-                    "name": 499,
-                    "value": 10,
-                    "prereq": "  LITR442 OR LITR442"
-                },
-                {
-                    "name": "LITR",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MASE",
-            "data": [
-                {
-                    "name": 510,
-                    "value": 33,
-                    "prereq": null
-                },
-                {
-                    "name": 515,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 518,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": "MASE",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MATH",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 107,
-                    "prereq": null
-                },
-                {
-                    "name": 102,
-                    "value": 107,
-                    "prereq": null
-                },
-                {
-                    "name": 103,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 106,
-                    "value": 107,
-                    "prereq": null
-                },
-                {
-                    "name": 107,
-                    "value": 107,
-                    "prereq": "  MATH106 OR MATH106  MATH107"
-                },
-                {
-                    "name": 201,
-                    "value": 107,
-                    "prereq": "  MATH100 OR MATH101 OR MATH106"
-                },
-                {
-                    "name": 202,
-                    "value": 104,
-                    "prereq": null
-                },
-                {
-                    "name": 204,
-                    "value": 91,
-                    "prereq": null
-                },
-                {
-                    "name": 203,
-                    "value": 107,
-                    "prereq": "  MATH106 OR MATH106"
-                },
-                {
-                    "name": 205,
-                    "value": 30,
-                    "prereq": "  MATH103"
-                },
-                {
-                    "name": 211,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": 301,
-                    "value": 44,
-                    "prereq": "  MATH208"
-                },
-                {
-                    "name": 310,
-                    "value": 34,
-                    "prereq": "  MATH205"
-                },
-                {
-                    "name": 320,
-                    "value": 29,
-                    "prereq": "  MATH107"
-                },
-                {
-                    "name": 404,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": "MATH",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MAVA",
-            "data": [
-                {
-                    "name": 102,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 104,
-                    "value": 25,
-                    "prereq": null
-                },
-                {
-                    "name": 205,
-                    "value": 25,
-                    "prereq": "  MAVA104"
-                },
-                {
-                    "name": 206,
-                    "value": 33,
-                    "prereq": null
-                },
-                {
-                    "name": 207,
-                    "value": 30,
-                    "prereq": "  MAVA104"
-                },
-                {
-                    "name": 208,
-                    "value": 42,
-                    "prereq": "  MAVA200"
-                },
-                {
-                    "name": 210,
-                    "value": 30,
-                    "prereq": "  MAVA200"
-                },
-                {
-                    "name": 213,
-                    "value": 33,
-                    "prereq": null
-                },
-                {
-                    "name": 221,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 301,
-                    "value": 91,
-                    "prereq": "  MKTG201 AND MATH201 OR MATH211 OR ENGR200 OR ENGR201"
-                },
-                {
-                    "name": 303,
-                    "value": 62,
-                    "prereq": "  MKTG201"
-                },
-                {
-                    "name": 307,
-                    "value": 45,
-                    "prereq": null
-                },
-                {
-                    "name": 311,
-                    "value": 42,
-                    "prereq": "  MAVA208 AND MAVA200"
-                },
-                {
-                    "name": 316,
-                    "value": 33,
-                    "prereq": null
-                },
-                {
-                    "name": 319,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 323,
-                    "value": 30,
-                    "prereq": "  MAVA210 OR MAVA210 OR MAVA210 AND MAVA200"
-                },
-                {
-                    "name": 326,
-                    "value": 30,
-                    "prereq": "  MAVA208 AND MAVA200 OR MAVA200"
-                },
-                {
-                    "name": 327,
-                    "value": 30,
-                    "prereq": "  MAVA104 AND MAVA207"
-                },
-                {
-                    "name": 342,
-                    "value": 44,
-                    "prereq": "  PSYC100"
-                },
-                {
-                    "name": 406,
-                    "value": 62,
-                    "prereq": null
-                },
-                {
-                    "name": 418,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 420,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 430,
-                    "value": 33,
-                    "prereq": null
-                },
-                {
-                    "name": 432,
-                    "value": 25,
-                    "prereq": null
-                },
-                {
-                    "name": 433,
-                    "value": 42,
-                    "prereq": "  MAVA311"
-                },
-                {
-                    "name": 354,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": "MAVA",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MBGE",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": 200,
-                    "value": 107,
-                    "prereq": null
-                },
-                {
-                    "name": 203,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 300,
-                    "value": 104,
-                    "prereq": null
-                },
-                {
-                    "name": 301,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 343,
-                    "value": 34,
-                    "prereq": "  MBGE101"
-                },
-                {
-                    "name": 409,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 423,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 432,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 501,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": "MBGE",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MECH",
-            "data": [
-                {
-                    "name": 201,
-                    "value": 104,
-                    "prereq": "  PHYS101 AND MATH106"
-                },
-                {
-                    "name": 203,
-                    "value": 105,
-                    "prereq": null
-                },
-                {
-                    "name": 303,
-                    "value": 62,
-                    "prereq": null
-                },
-                {
-                    "name": 350,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 401,
-                    "value": 60,
-                    "prereq": "  MECH201 OR MECH201 OR MECH201 AND MECH206 AND MECH301 AND MECH302 AND MECH304"
-                },
-                {
-                    "name": 408,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": 409,
-                    "value": 32,
-                    "prereq": "  MECH202 OR MECH202 AND MECH203 AND MECH204 AND MECH306"
-                },
-                {
-                    "name": 411,
-                    "value": 32,
-                    "prereq": "  MATH203 OR MATH203 AND MATH204"
-                },
-                {
-                    "name": 421,
-                    "value": 29,
-                    "prereq": "  MATH204 AND MECH301"
-                },
-                {
-                    "name": 427,
-                    "value": 42,
-                    "prereq": "  MECH302 OR CHBI302"
-                },
-                {
-                    "name": 443,
-                    "value": 24,
-                    "prereq": null
-                },
-                {
-                    "name": 462,
-                    "value": 30,
-                    "prereq": "  MECH202 OR MECH202"
-                },
-                {
-                    "name": 444,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": "MECH",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MEDI",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 107,
-                    "prereq": null
-                },
-                {
-                    "name": 110,
-                    "value": 107,
-                    "prereq": null
-                },
-                {
-                    "name": 120,
-                    "value": 70,
-                    "prereq": null
-                },
-                {
-                    "name": "MEDI",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MFIN",
-            "data": [
-                {
-                    "name": 202,
-                    "value": 104,
-                    "prereq": "  ECON100 OR ECON101 AND ACCT201 AND CPAP100 OR CPAP101 OR CPAP150 OR COMP100"
-                },
-                {
-                    "name": 304,
-                    "value": 48,
-                    "prereq": "  MFIN202"
-                },
-                {
-                    "name": 662,
-                    "value": 18,
-                    "prereq": null
-                },
-                {
-                    "name": "MFIN",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MGIS",
-            "data": [
-                {
-                    "name": 301,
-                    "value": 75,
-                    "prereq": "  CPAP100 OR CPAP101 OR CPAP150 AND MATH201"
-                },
-                {
-                    "name": "MGIS",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MGMT",
-            "data": [
-                {
-                    "name": 335,
-                    "value": 47,
-                    "prereq": "  ACCT202"
-                },
-                {
-                    "name": 348,
-                    "value": 44,
-                    "prereq": null
-                },
-                {
-                    "name": 351,
-                    "value": 62,
-                    "prereq": null
-                },
-                {
-                    "name": 421,
-                    "value": 10,
-                    "prereq": null
-                },
-                {
-                    "name": 671,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 901,
-                    "value": 98,
-                    "prereq": null
-                },
-                {
-                    "name": 911,
-                    "value": 98,
-                    "prereq": null
-                },
-                {
-                    "name": 411,
-                    "value": 60,
-                    "prereq": null
-                },
-                {
-                    "name": 432,
-                    "value": 104,
-                    "prereq": null
-                },
-                {
-                    "name": 445,
-                    "value": 60,
-                    "prereq": null
-                },
-                {
-                    "name": 513,
-                    "value": 67,
-                    "prereq": null
-                },
-                {
-                    "name": "MGMT",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MKTG",
-            "data": [
-                {
-                    "name": 302,
-                    "value": 48,
-                    "prereq": "  MKTG201"
-                },
-                {
-                    "name": 432,
-                    "value": 104,
-                    "prereq": null
-                },
-                {
-                    "name": 551,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 665,
-                    "value": 10,
-                    "prereq": null
-                },
-                {
-                    "name": "MKTG",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "MUSC",
-            "data": [
-                {
-                    "name": 200,
-                    "value": 17,
-                    "prereq": null
-                },
-                {
-                    "name": "MUSC",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "NURS",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 50,
-                    "prereq": null
-                },
-                {
-                    "name": "NURS",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "OPSM",
-            "data": [
-                {
-                    "name": 501,
-                    "value": 98,
-                    "prereq": null
-                },
-                {
-                    "name": 302,
-                    "value": 107,
-                    "prereq": "  MATH201 AND CPAP100 OR CPAP101 OR CPAP150 OR COMP100"
-                },
-                {
-                    "name": 305,
-                    "value": 65,
-                    "prereq": "  OPSM301 OR OPSM302"
-                },
-                {
-                    "name": "OPSM",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "PHIL",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": 213,
-                    "value": 45,
-                    "prereq": null
-                },
-                {
-                    "name": 215,
-                    "value": 28,
-                    "prereq": null
-                },
-                {
-                    "name": 311,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 338,
-                    "value": 33,
-                    "prereq": "  PHIL101"
-                },
-                {
-                    "name": 404,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 450,
-                    "value": 50,
-                    "prereq": null
-                },
-                {
-                    "name": 500,
-                    "value": 21,
-                    "prereq": null
-                },
-                {
-                    "name": "PHIL",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "PHYS",
-            "data": [
-                {
-                    "name": 101,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 102,
-                    "value": 91,
-                    "prereq": null
-                },
-                {
-                    "name": 123,
-                    "value": 91,
-                    "prereq": null
-                },
-                {
-                    "name": 205,
-                    "value": 29,
-                    "prereq": "  PHYS101"
-                },
-                {
-                    "name": 301,
-                    "value": 33,
-                    "prereq": "  PHYS205 OR CHEM103"
-                },
-                {
-                    "name": 312,
-                    "value": 33,
-                    "prereq": "  PHYS302 OR ELEC206"
-                },
-                {
-                    "name": 401,
-                    "value": 33,
-                    "prereq": "  PHYS206 AND CHEM103"
-                },
-                {
-                    "name": 414,
-                    "value": 30,
-                    "prereq": "  MATH203 AND MATH204"
-                },
-                {
-                    "name": 501,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 503,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 550,
-                    "value": 24,
-                    "prereq": null
-                },
-                {
-                    "name": "PHYS",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "PSYC",
-            "data": [
-                {
-                    "name": 100,
-                    "value": 231,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 62,
-                    "prereq": "  PSYC100 AND CPAP100 OR CPAP101"
-                },
-                {
-                    "name": 205,
-                    "value": 47,
-                    "prereq": "  PSYC100"
-                },
-                {
-                    "name": 204,
-                    "value": 107,
-                    "prereq": "  PSYC100"
-                },
-                {
-                    "name": 210,
-                    "value": 154,
-                    "prereq": "  CPAP100 OR CPAP150 AND PSYC100"
-                },
-                {
-                    "name": 220,
-                    "value": 44,
-                    "prereq": "  PSYC100"
-                },
-                {
-                    "name": 301,
-                    "value": 45,
-                    "prereq": "  PSYC201 AND MATH201 OR MATH202"
-                },
-                {
-                    "name": 302,
-                    "value": 50,
-                    "prereq": null
-                },
-                {
-                    "name": 206,
-                    "value": 47,
-                    "prereq": "  PSYC206  PSYC100  PSYC100"
-                },
-                {
-                    "name": 208,
-                    "value": 48,
-                    "prereq": "  SOCI100 OR SOCI101 OR SOCI102 OR SOCI103"
-                },
-                {
-                    "name": 303,
-                    "value": 48,
-                    "prereq": "  PSYC305"
-                },
-                {
-                    "name": 306,
-                    "value": 231,
-                    "prereq": "  PSYC100"
-                },
-                {
-                    "name": 357,
-                    "value": 42,
-                    "prereq": "  PSYC100"
-                },
-                {
-                    "name": 372,
-                    "value": 62,
-                    "prereq": null
-                },
-                {
-                    "name": 402,
-                    "value": 34,
-                    "prereq": "  PSYC100"
-                },
-                {
-                    "name": 434,
-                    "value": 48,
-                    "prereq": "  PSYC100"
-                },
-                {
-                    "name": 501,
-                    "value": 26,
-                    "prereq": null
-                },
-                {
-                    "name": 521,
-                    "value": 18,
-                    "prereq": null
-                },
-                {
-                    "name": 542,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": 550,
-                    "value": 50,
-                    "prereq": null
-                },
-                {
-                    "name": 552,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 305,
-                    "value": 48,
-                    "prereq": "  PSYC305  PSYC210"
-                },
-                {
-                    "name": "PSYC",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "QMBU",
-            "data": [
-                {
-                    "name": 301,
-                    "value": 66,
-                    "prereq": "  MATH201 OR ENGR201 OR ENGR200 OR MATH211 AND CPAP100 OR CPAP101 OR COMP100 OR CPAP150  CPAP100 OR CPAP101 OR CPAP150"
-                },
-                {
-                    "name": 310,
-                    "value": 48,
-                    "prereq": "  CPAP100 OR CPAP101 OR CPAP150 OR COMP100"
-                },
-                {
-                    "name": "QMBU",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "RUSS",
-            "data": [
-                {
-                    "name": 201,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 202,
-                    "value": 32,
-                    "prereq": "  RUSS201"
-                },
-                {
-                    "name": 301,
-                    "value": 32,
-                    "prereq": "  RUSS202"
-                },
-                {
-                    "name": "RUSS",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "SCIE",
-            "data": [
-                {
-                    "name": 103,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 108,
-                    "value": 154,
-                    "prereq": null
-                },
-                {
-                    "name": 459,
-                    "value": 12,
-                    "prereq": null
-                },
-                {
-                    "name": "SCIE",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "SOCI",
-            "data": [
-                {
-                    "name": 100,
-                    "value": 45,
-                    "prereq": null
-                },
-                {
-                    "name": 211,
-                    "value": 28,
-                    "prereq": null
-                },
-                {
-                    "name": 220,
-                    "value": 62,
-                    "prereq": null
-                },
-                {
-                    "name": 301,
-                    "value": 31,
-                    "prereq": "  SOCI100 OR SOCI101 OR SOCI102 OR SOCI102 OR SOCI102 OR SOCI103 OR SOCI103 AND SOCI201 AND MATH202"
-                },
-                {
-                    "name": 311,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 312,
-                    "value": 31,
-                    "prereq": "  SOCI100  SOCI100"
-                },
-                {
-                    "name": 314,
-                    "value": 60,
-                    "prereq": null
-                },
-                {
-                    "name": 315,
-                    "value": 26,
-                    "prereq": null
-                },
-                {
-                    "name": 340,
-                    "value": 29,
-                    "prereq": "  SOCI100"
-                },
-                {
-                    "name": 354,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 355,
-                    "value": 29,
-                    "prereq": "  SOCI100"
-                },
-                {
-                    "name": 402,
-                    "value": 62,
-                    "prereq": null
-                },
-                {
-                    "name": 452,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 503,
-                    "value": 40,
-                    "prereq": null
-                },
-                {
-                    "name": 552,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 501,
-                    "value": 18,
-                    "prereq": null
-                },
-                {
-                    "name": "SOCI",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "SOSC",
-            "data": [
-                {
-                    "name": 105,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": 110,
-                    "value": 70,
-                    "prereq": null
-                },
-                {
-                    "name": 111,
-                    "value": 28,
-                    "prereq": null
-                },
-                {
-                    "name": 119,
-                    "value": 44,
-                    "prereq": null
-                },
-                {
-                    "name": "SOSC",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "SPAN",
-            "data": [
-                {
-                    "name": 201,
-                    "value": 29,
-                    "prereq": null
-                },
-                {
-                    "name": 202,
-                    "value": 29,
-                    "prereq": "  SPAN201"
-                },
-                {
-                    "name": 301,
-                    "value": 18,
-                    "prereq": "  SPAN202"
-                },
-                {
-                    "name": 302,
-                    "value": 34,
-                    "prereq": "  SPAN301"
-                },
-                {
-                    "name": "SPAN",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "TECH",
-            "data": [
-                {
-                    "name": 514,
-                    "value": 48,
-                    "prereq": null
-                },
-                {
-                    "name": "TECH",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "TLIT",
-            "data": [
-                {
-                    "name": 202,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 217,
-                    "value": 30,
-                    "prereq": null
-                },
-                {
-                    "name": 240,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": "TLIT",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "TURK",
-            "data": [
-                {
-                    "name": 100,
-                    "value": 34,
-                    "prereq": null
-                },
-                {
-                    "name": 300,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 403,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 201,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": "TURK",
-                    "value": 100
-                }
-            ]
-        },
-        {
-            "name": "UNIV",
-            "data": [
-                {
-                    "name": 121,
-                    "value": 31,
-                    "prereq": null
-                },
-                {
-                    "name": 123,
-                    "value": 28,
-                    "prereq": null
-                },
-                {
-                    "name": "UNIV",
-                    "value": 100
-                }
-            ]
-        }
-    ]
-
-    var chart = Highcharts.chart('container', {
-        chart: {
-            type: 'packedbubble',
-            height: '650',
-            width: '1300',
-            marginRight: 200
-        },
-        legend: {
-            align: 'left',
-            verticalAlign: 'middle',
-            width: 200,
-            itemWidth: 100
-        },
-        title: {
-            text: 'Fall 2019'
-        },
-        tooltip: {
-            formatter: function () {
-                var str = ""
-                if (this.series.name != this.point.name) {
-                    str = '<b>' + this.series.name + ' ' + this.point.name + ': </b>' + this.point.value + ' students';
-
-                    if (this.point.prereq != null) {
-                        str = str.concat(', Prerequisites:' + this.point.prereq);
+        var json = [
+            {
+                "name": "ACCT",
+                "data": [
+                    {
+                        "name": 321,
+                        "value": 47,
+                        "prereq": "  ACCT202 AND MFIN202"
+                    },
+                    {
+                        "name": 501,
+                        "value": 67,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 202,
+                        "value": 70,
+                        "prereq": "  ACCT201"
+                    },
+                    {
+                        "name": "ACCT",
+                        "value": 100
                     }
-                } else {
-                    str = '<b>' + this.series.name + ' </b>';
-                }
-                return str;
-            }
-        },
-        plotOptions: {
-            series: {
-                visible: false,
+                ]
             },
-            packedbubble: {
-                //allowPointSelect: true,
-                //selected: false,
-                minSize: '10%',
-                maxSize: '150%',
-                zMin: 0,
-                zMax: 1000,
-                layoutAlgorithm: {
-                    gravitationalConstant: 0.05,
-                    friction: -0.9,
-                    splitSeries: true,
-                    seriesInteraction: false,
-                    dragBetweenSeries: false,
-                    parentNodeLimit: true
-                },
-                dataLabels: {
-                    enabled: true,
-                    formatter: function () {
-                        if (this.series.name == this.point.name) {
-                            return '<b>' + (this.point.name) + '</b>';
+            {
+                "name": "ACWR",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 40,
+                        "prereq": null
+                    },
+                    {
+                        "name": 103,
+                        "value": 33,
+                        "prereq": "  ACWR101"
+                    },
+                    {
+                        "name": 104,
+                        "value": 30,
+                        "prereq": "  ACWR101"
+                    },
+                    {
+                        "name": 106,
+                        "value": 31,
+                        "prereq": "  ACWR101"
+                    },
+                    {
+                        "name": 107,
+                        "value": 30,
+                        "prereq": "  ACWR101"
+                    },
+                    {
+                        "name": "ACWR",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ALIS",
+                "data": [
+                    {
+                        "name": 100,
+                        "value": 50,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ALIS",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ARBC",
+                "data": [
+                    {
+                        "name": 201,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 202,
+                        "value": 31,
+                        "prereq": "  ARBC201"
+                    },
+                    {
+                        "name": 301,
+                        "value": 18,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ARBC",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ARHA",
+                "data": [
+                    {
+                        "name": 121,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 315,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 318,
+                        "value": 26,
+                        "prereq": null
+                    },
+                    {
+                        "name": 407,
+                        "value": 24,
+                        "prereq": null
+                    },
+                    {
+                        "name": 422,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 440,
+                        "value": 12,
+                        "prereq": "  ARHA121"
+                    },
+                    {
+                        "name": 461,
+                        "value": 17,
+                        "prereq": null
+                    },
+                    {
+                        "name": 502,
+                        "value": 50,
+                        "prereq": null
+                    },
+                    {
+                        "name": 526,
+                        "value": 26,
+                        "prereq": null
+                    },
+                    {
+                        "name": 527,
+                        "value": 24,
+                        "prereq": null
+                    },
+                    {
+                        "name": 550,
+                        "value": 17,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ARHA",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ARTS",
+                "data": [
+                    {
+                        "name": 201,
+                        "value": 90,
+                        "prereq": null
+                    },
+                    {
+                        "name": 301,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 350,
+                        "value": 90,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ARTS",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ASIU",
+                "data": [
+                    {
+                        "name": 100,
+                        "value": 47,
+                        "prereq": null
+                    },
+                    {
+                        "name": 102,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": 104,
+                        "value": 40,
+                        "prereq": null
+                    },
+                    {
+                        "name": 109,
+                        "value": 44,
+                        "prereq": null
+                    },
+                    {
+                        "name": 111,
+                        "value": 45,
+                        "prereq": null
+                    },
+                    {
+                        "name": 121,
+                        "value": 66,
+                        "prereq": null
+                    },
+                    {
+                        "name": 115,
+                        "value": 47,
+                        "prereq": null
+                    },
+                    {
+                        "name": 118,
+                        "value": 50,
+                        "prereq": null
+                    },
+                    {
+                        "name": 119,
+                        "value": 33,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ASIU",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "BUSA",
+                "data": [
+                    {
+                        "name": 499,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": "BUSA",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "CHBI",
+                "data": [
+                    {
+                        "name": 201,
+                        "value": 62,
+                        "prereq": "  CHEM102"
+                    },
+                    {
+                        "name": 300,
+                        "value": 104,
+                        "prereq": "  CHEM102 OR MBGE101"
+                    },
+                    {
+                        "name": 301,
+                        "value": 107,
+                        "prereq": "  MATH203 OR MATH203 OR MATH204 AND CHBI201"
+                    },
+                    {
+                        "name": 302,
+                        "value": 40,
+                        "prereq": "  CHBI301"
+                    },
+                    {
+                        "name": 303,
+                        "value": 48,
+                        "prereq": "  CHBI301"
+                    },
+                    {
+                        "name": 402,
+                        "value": 40,
+                        "prereq": "  CHBI303 AND CHBI308 AND ENGR201"
+                    },
+                    {
+                        "name": 403,
+                        "value": 47,
+                        "prereq": "  CHBI303 AND CHBI308"
+                    },
+                    {
+                        "name": 405,
+                        "value": 42,
+                        "prereq": "  CHEM102"
+                    },
+                    {
+                        "name": 415,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": 418,
+                        "value": 48,
+                        "prereq": "  MBGE300 OR CHBI300"
+                    },
+                    {
+                        "name": 501,
+                        "value": 24,
+                        "prereq": null
+                    },
+                    {
+                        "name": 502,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 510,
+                        "value": 18,
+                        "prereq": null
+                    },
+                    {
+                        "name": 503,
+                        "value": 24,
+                        "prereq": null
+                    },
+                    {
+                        "name": "CHBI",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "CHEM",
+                "data": [
+                    {
+                        "name": 502,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 504,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 515,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 101,
+                        "value": 107,
+                        "prereq": null
+                    },
+                    {
+                        "name": 103,
+                        "value": 107,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 31,
+                        "prereq": "  CHEM102"
+                    },
+                    {
+                        "name": 206,
+                        "value": 75,
+                        "prereq": null
+                    },
+                    {
+                        "name": 301,
+                        "value": 60,
+                        "prereq": "  CHEM102"
+                    },
+                    {
+                        "name": 303,
+                        "value": 31,
+                        "prereq": "  CHEM102 AND MATH107"
+                    },
+                    {
+                        "name": 410,
+                        "value": 33,
+                        "prereq": "  CHEM302"
+                    },
+                    {
+                        "name": "CHEM",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "CHIN",
+                "data": [
+                    {
+                        "name": 201,
+                        "value": 18,
+                        "prereq": null
+                    },
+                    {
+                        "name": 202,
+                        "value": 18,
+                        "prereq": "  CHIN201"
+                    },
+                    {
+                        "name": "CHIN",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "CMKT",
+                "data": [
+                    {
+                        "name": 501,
+                        "value": 98,
+                        "prereq": null
+                    },
+                    {
+                        "name": "CMKT",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "CMSE",
+                "data": [
+                    {
+                        "name": 501,
+                        "value": 47,
+                        "prereq": null
+                    },
+                    {
+                        "name": "CMSE",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "COMM",
+                "data": [
+                    {
+                        "name": 202,
+                        "value": 44,
+                        "prereq": null
+                    },
+                    {
+                        "name": "COMM",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "COMP",
+                "data": [
+                    {
+                        "name": 106,
+                        "value": 104,
+                        "prereq": null
+                    },
+                    {
+                        "name": 110,
+                        "value": 75,
+                        "prereq": null
+                    },
+                    {
+                        "name": 130,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 131,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 111,
+                        "value": 17,
+                        "prereq": null
+                    },
+                    {
+                        "name": 132,
+                        "value": 66,
+                        "prereq": "  COMP131 OR COMP130"
+                    },
+                    {
+                        "name": 198,
+                        "value": 28,
+                        "prereq": "  COMP132"
+                    },
+                    {
+                        "name": 200,
+                        "value": 104,
+                        "prereq": "  COMP106"
+                    },
+                    {
+                        "name": 301,
+                        "value": 75,
+                        "prereq": "  COMP200"
+                    },
+                    {
+                        "name": 302,
+                        "value": 70,
+                        "prereq": "  COMP132 OR COMP202"
+                    },
+                    {
+                        "name": 317,
+                        "value": 34,
+                        "prereq": "  ELEC204"
+                    },
+                    {
+                        "name": 319,
+                        "value": 30,
+                        "prereq": "  COMP202 OR COMP132"
+                    },
+                    {
+                        "name": 341,
+                        "value": 44,
+                        "prereq": "  ENGR200 OR ENGR201 OR MATH201 OR MATH211 OR MATH202"
+                    },
+                    {
+                        "name": 442,
+                        "value": 40,
+                        "prereq": "  COMP341"
+                    },
+                    {
+                        "name": 303,
+                        "value": 107,
+                        "prereq": "  ELEC204"
+                    },
+                    {
+                        "name": 450,
+                        "value": 48,
+                        "prereq": "  ENGR200 AND MATH107  COMP341 OR COMP421"
+                    },
+                    {
+                        "name": 491,
+                        "value": 31,
+                        "prereq": "  COMP202 AND COMP302"
+                    },
+                    {
+                        "name": 550,
+                        "value": 44,
+                        "prereq": null
+                    },
+                    {
+                        "name": 551,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": "COMP",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "CPAP",
+                "data": [
+                    {
+                        "name": 100,
+                        "value": 105,
+                        "prereq": null
+                    },
+                    {
+                        "name": "CPAP",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "CSHS",
+                "data": [
+                    {
+                        "name": 504,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 557,
+                        "value": 12,
+                        "prereq": null
+                    },
+                    {
+                        "name": "CSHS",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "DASC",
+                "data": [
+                    {
+                        "name": 521,
+                        "value": 231,
+                        "prereq": null
+                    },
+                    {
+                        "name": 501,
+                        "value": 47,
+                        "prereq": null
+                    },
+                    {
+                        "name": "DASC",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "DTES",
+                "data": [
+                    {
+                        "name": 551,
+                        "value": 25,
+                        "prereq": null
+                    },
+                    {
+                        "name": "DTES",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ECIR",
+                "data": [
+                    {
+                        "name": 313,
+                        "value": 60,
+                        "prereq": "  INTL203"
+                    },
+                    {
+                        "name": 410,
+                        "value": 62,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ECIR",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ECON",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 107,
+                        "prereq": null
+                    },
+                    {
+                        "name": 102,
+                        "value": 104,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 66,
+                        "prereq": "  ECON101 OR ECON100"
+                    },
+                    {
+                        "name": 100,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 202,
+                        "value": 107,
+                        "prereq": "  ECON102"
+                    },
+                    {
+                        "name": 311,
+                        "value": 107,
+                        "prereq": "  ECON201 OR ECON201 AND MATH201 OR ENGR200 OR ENGR201 OR MATH211 AND CPAP100 OR CPAP150 OR CPAP101"
+                    },
+                    {
+                        "name": 321,
+                        "value": 62,
+                        "prereq": "  ECON201"
+                    },
+                    {
+                        "name": 333,
+                        "value": 107,
+                        "prereq": "  ECON100 OR ECON110 OR ECON201 OR ECON201 OR ECON101"
+                    },
+                    {
+                        "name": 345,
+                        "value": 62,
+                        "prereq": "  ECON201"
+                    },
+                    {
+                        "name": 360,
+                        "value": 154,
+                        "prereq": "  ECON202 OR ECON202"
+                    },
+                    {
+                        "name": 451,
+                        "value": 44,
+                        "prereq": "  ECON101 AND ECON102"
+                    },
+                    {
+                        "name": 481,
+                        "value": 70,
+                        "prereq": "  ECON202"
+                    },
+                    {
+                        "name": 499,
+                        "value": 66,
+                        "prereq": "  ECON201 OR ECON201 AND ECON202 OR ECON202 AND ECON311"
+                    },
+                    {
+                        "name": 370,
+                        "value": 154,
+                        "prereq": "  ECON202 OR ECON202"
+                    },
+                    {
+                        "name": 430,
+                        "value": 27,
+                        "prereq": "  ECON201 OR ECON201 AND ECON333"
+                    },
+                    {
+                        "name": 501,
+                        "value": 18,
+                        "prereq": null
+                    },
+                    {
+                        "name": 503,
+                        "value": 24,
+                        "prereq": null
+                    },
+                    {
+                        "name": 507,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 513,
+                        "value": 12,
+                        "prereq": null
+                    },
+                    {
+                        "name": 511,
+                        "value": 28,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ECON",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "EFIN",
+                "data": [
+                    {
+                        "name": 301,
+                        "value": 66,
+                        "prereq": "  MFIN202"
+                    },
+                    {
+                        "name": 304,
+                        "value": 48,
+                        "prereq": "  MFIN202"
+                    },
+                    {
+                        "name": 403,
+                        "value": 30,
+                        "prereq": "  MFIN202"
+                    },
+                    {
+                        "name": "EFIN",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ELC",
+                "data": [
+                    {
+                        "name": 1035,
+                        "value": 20,
+                        "prereq": null
+                    },
+                    {
+                        "name": 1036,
+                        "value": 20,
+                        "prereq": null
+                    },
+                    {
+                        "name": 1037,
+                        "value": 20,
+                        "prereq": null
+                    },
+                    {
+                        "name": 2003,
+                        "value": 22,
+                        "prereq": null
+                    },
+                    {
+                        "name": 2007,
+                        "value": 22,
+                        "prereq": null
+                    },
+                    {
+                        "name": 2017,
+                        "value": 22,
+                        "prereq": null
+                    },
+                    {
+                        "name": 3525,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 3526,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 3527,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 3528,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 4018,
+                        "value": 53,
+                        "prereq": null
+                    },
+                    {
+                        "name": 4019,
+                        "value": 53,
+                        "prereq": null
+                    },
+                    {
+                        "name": 4020,
+                        "value": 53,
+                        "prereq": null
+                    },
+                    {
+                        "name": 4025,
+                        "value": 53,
+                        "prereq": null
+                    },
+                    {
+                        "name": 1038,
+                        "value": 20,
+                        "prereq": null
+                    },
+                    {
+                        "name": 5506,
+                        "value": 53,
+                        "prereq": null
+                    },
+                    {
+                        "name": 5505,
+                        "value": 53,
+                        "prereq": null
+                    },
+                    {
+                        "name": 5509,
+                        "value": 53,
+                        "prereq": null
+                    },
+                    {
+                        "name": 8806,
+                        "value": 53,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ELC",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ELEC",
+                "data": [
+                    {
+                        "name": 198,
+                        "value": 25,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 104,
+                        "prereq": "  MATH107 AND MATH106"
+                    },
+                    {
+                        "name": 204,
+                        "value": 231,
+                        "prereq": null
+                    },
+                    {
+                        "name": 202,
+                        "value": 62,
+                        "prereq": "  MATH106 AND MATH107"
+                    },
+                    {
+                        "name": 301,
+                        "value": 104,
+                        "prereq": "  ELEC201 AND ELEC202"
+                    },
+                    {
+                        "name": 310,
+                        "value": 91,
+                        "prereq": "  ELEC202 AND ELEC201"
+                    },
+                    {
+                        "name": 312,
+                        "value": 33,
+                        "prereq": "  PHYS302 OR ELEC206"
+                    },
+                    {
+                        "name": 339,
+                        "value": 44,
+                        "prereq": null
+                    },
+                    {
+                        "name": 402,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 405,
+                        "value": 44,
+                        "prereq": "  ELEC301 OR ELEC304"
+                    },
+                    {
+                        "name": 418,
+                        "value": 47,
+                        "prereq": "  MATH106 AND MATH107"
+                    },
+                    {
+                        "name": 421,
+                        "value": 31,
+                        "prereq": "  ELEC206 OR PHYS302"
+                    },
+                    {
+                        "name": 430,
+                        "value": 32,
+                        "prereq": null
+                    },
+                    {
+                        "name": 438,
+                        "value": 31,
+                        "prereq": "  ELEC421 OR ELEC429"
+                    },
+                    {
+                        "name": 442,
+                        "value": 44,
+                        "prereq": null
+                    },
+                    {
+                        "name": 450,
+                        "value": 31,
+                        "prereq": "  ELEC410  ELEC406"
+                    },
+                    {
+                        "name": 518,
+                        "value": 47,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ELEC",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ENGR",
+                "data": [
+                    {
+                        "name": 200,
+                        "value": 107,
+                        "prereq": "  MATH106 OR MATH106"
+                    },
+                    {
+                        "name": 201,
+                        "value": 66,
+                        "prereq": " OR MATH106 OR MATH106"
+                    },
+                    {
+                        "name": 400,
+                        "value": 107,
+                        "prereq": "  MATH203 OR MATH203"
+                    },
+                    {
+                        "name": 429,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ENGR",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "EQUR",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 121,
+                        "value": 75,
+                        "prereq": null
+                    },
+                    {
+                        "name": "EQUR",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ETHC",
+                "data": [
+                    {
+                        "name": 105,
+                        "value": 107,
+                        "prereq": null
+                    },
+                    {
+                        "name": 108,
+                        "value": 70,
+                        "prereq": null
+                    },
+                    {
+                        "name": 109,
+                        "value": 45,
+                        "prereq": null
+                    },
+                    {
+                        "name": 113,
+                        "value": 60,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ETHC",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "EXCH",
+                "data": [
+                    {
+                        "name": 301,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": "EXCH",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "FREN",
+                "data": [
+                    {
+                        "name": 201,
+                        "value": 27,
+                        "prereq": null
+                    },
+                    {
+                        "name": 202,
+                        "value": 31,
+                        "prereq": "  FREN201"
+                    },
+                    {
+                        "name": "FREN",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "GERM",
+                "data": [
+                    {
+                        "name": 201,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 202,
+                        "value": 30,
+                        "prereq": "  GERM201"
+                    },
+                    {
+                        "name": 301,
+                        "value": 31,
+                        "prereq": "  GERM202"
+                    },
+                    {
+                        "name": 302,
+                        "value": 30,
+                        "prereq": "  GERM301"
+                    },
+                    {
+                        "name": 401,
+                        "value": 31,
+                        "prereq": "  GERM302"
+                    },
+                    {
+                        "name": "GERM",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "GREK",
+                "data": [
+                    {
+                        "name": 401,
+                        "value": 18,
+                        "prereq": null
+                    },
+                    {
+                        "name": "GREK",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "HIST",
+                "data": [
+                    {
+                        "name": 103,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 203,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 217,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 300,
+                        "value": 231,
+                        "prereq": "  ACWR101"
+                    },
+                    {
+                        "name": 309,
+                        "value": 44,
+                        "prereq": null
+                    },
+                    {
+                        "name": 311,
+                        "value": 28,
+                        "prereq": null
+                    },
+                    {
+                        "name": 316,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 402,
+                        "value": 60,
+                        "prereq": null
+                    },
+                    {
+                        "name": 410,
+                        "value": 28,
+                        "prereq": null
+                    },
+                    {
+                        "name": 501,
+                        "value": 24,
+                        "prereq": null
+                    },
+                    {
+                        "name": "HIST",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "HUMS",
+                "data": [
+                    {
+                        "name": 102,
+                        "value": 45,
+                        "prereq": null
+                    },
+                    {
+                        "name": 104,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": 105,
+                        "value": 40,
+                        "prereq": null
+                    },
+                    {
+                        "name": 109,
+                        "value": 65,
+                        "prereq": null
+                    },
+                    {
+                        "name": 129,
+                        "value": 44,
+                        "prereq": null
+                    },
+                    {
+                        "name": 130,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": 131,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 114,
+                        "value": 45,
+                        "prereq": null
+                    },
+                    {
+                        "name": 120,
+                        "value": 42,
+                        "prereq": null
+                    },
+                    {
+                        "name": 132,
+                        "value": 28,
+                        "prereq": null
+                    },
+                    {
+                        "name": "HUMS",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "INDR",
+                "data": [
+                    {
+                        "name": 100,
+                        "value": 104,
+                        "prereq": null
+                    },
+                    {
+                        "name": 198,
+                        "value": 18,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 107,
+                        "prereq": "  MATH106"
+                    },
+                    {
+                        "name": 363,
+                        "value": 60,
+                        "prereq": "  INDR262 AND INDR201"
+                    },
+                    {
+                        "name": 420,
+                        "value": 29,
+                        "prereq": "  INDR262"
+                    },
+                    {
+                        "name": 343,
+                        "value": 107,
+                        "prereq": "  ENGR200 OR ENGR201 AND INDR262"
+                    },
+                    {
+                        "name": 430,
+                        "value": 75,
+                        "prereq": "  ENGR200 OR ENGR201 OR MATH201"
+                    },
+                    {
+                        "name": 440,
+                        "value": 50,
+                        "prereq": "  INDR262"
+                    },
+                    {
+                        "name": 473,
+                        "value": 48,
+                        "prereq": "  ENGR200"
+                    },
+                    {
+                        "name": 475,
+                        "value": 40,
+                        "prereq": "  ENGR200"
+                    },
+                    {
+                        "name": 481,
+                        "value": 107,
+                        "prereq": "  INDR372"
+                    },
+                    {
+                        "name": 483,
+                        "value": 33,
+                        "prereq": "  ENGR200 AND INDR262 AND INDR372"
+                    },
+                    {
+                        "name": 371,
+                        "value": 107,
+                        "prereq": "  INDR262"
+                    },
+                    {
+                        "name": 501,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 503,
+                        "value": 33,
+                        "prereq": null
+                    },
+                    {
+                        "name": 564,
+                        "value": 27,
+                        "prereq": null
+                    },
+                    {
+                        "name": "INDR",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "INTL",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 65,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 48,
+                        "prereq": "  INTL101 AND MATH201 OR ENGR200 OR ENGR201 AND CPAP150 OR CPAP101 OR COMP100 OR CPAP100"
+                    },
+                    {
+                        "name": 203,
+                        "value": 66,
+                        "prereq": "  INTL101"
+                    },
+                    {
+                        "name": 204,
+                        "value": 107,
+                        "prereq": "  INTL101"
+                    },
+                    {
+                        "name": 301,
+                        "value": 45,
+                        "prereq": null
+                    },
+                    {
+                        "name": 307,
+                        "value": 12,
+                        "prereq": null
+                    },
+                    {
+                        "name": 325,
+                        "value": 48,
+                        "prereq": "  INTL101 OR SOCI100 AND INTL204 OR INTL204"
+                    },
+                    {
+                        "name": 330,
+                        "value": 44,
+                        "prereq": "  INTL203 OR INTL204"
+                    },
+                    {
+                        "name": 374,
+                        "value": 154,
+                        "prereq": "  INTL203"
+                    },
+                    {
+                        "name": 375,
+                        "value": 60,
+                        "prereq": "  INTL101 AND INTL203 AND INTL204"
+                    },
+                    {
+                        "name": 401,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 450,
+                        "value": 65,
+                        "prereq": "  INTL101"
+                    },
+                    {
+                        "name": 380,
+                        "value": 65,
+                        "prereq": "  INTL203 AND INTL313 AND INTL204"
+                    },
+                    {
+                        "name": 421,
+                        "value": 45,
+                        "prereq": "  SOCI100 OR SOCI101 OR SOCI102 OR SOCI103 AND SOCI201 OR SOCI202 OR SOCI204 OR SOCI204 OR SOCI206 OR SOCI208"
+                    },
+                    {
+                        "name": 447,
+                        "value": 48,
+                        "prereq": "  INTL330  INTL203 OR INTL204 OR INTL204"
+                    },
+                    {
+                        "name": 475,
+                        "value": 47,
+                        "prereq": "  INTL101 AND INTL204"
+                    },
+                    {
+                        "name": 499,
+                        "value": 48,
+                        "prereq": "  INTL101 AND INTL201 AND INTL203 AND INTL204 AND INTL301 AND INTL308"
+                    },
+                    {
+                        "name": 601,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 504,
+                        "value": 24,
+                        "prereq": null
+                    },
+                    {
+                        "name": 501,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 531,
+                        "value": 12,
+                        "prereq": null
+                    },
+                    {
+                        "name": 550,
+                        "value": 65,
+                        "prereq": null
+                    },
+                    {
+                        "name": 600,
+                        "value": 18,
+                        "prereq": null
+                    },
+                    {
+                        "name": "INTL",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ISP",
+                "data": [
+                    {
+                        "name": 450,
+                        "value": 66,
+                        "prereq": null
+                    },
+                    {
+                        "name": "ISP",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "ITAL",
+                "data": [
+                    {
+                        "name": 201,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 202,
+                        "value": 30,
+                        "prereq": "  ITAL201"
+                    },
+                    {
+                        "name": 301,
+                        "value": 30,
+                        "prereq": "  ITAL202"
+                    },
+                    {
+                        "name": "ITAL",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "LANG",
+                "data": [
+                    {
+                        "name": 290,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": "LANG",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "LATN",
+                "data": [
+                    {
+                        "name": 401,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": "LATN",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "LAW",
+                "data": [
+                    {
+                        "name": 103,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 105,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 111,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 75,
+                        "prereq": null
+                    },
+                    {
+                        "name": 205,
+                        "value": 104,
+                        "prereq": "  LAW105"
+                    },
+                    {
+                        "name": 207,
+                        "value": 66,
+                        "prereq": "  LAW103"
+                    },
+                    {
+                        "name": 221,
+                        "value": 154,
+                        "prereq": "  LAW104"
+                    },
+                    {
+                        "name": 301,
+                        "value": 104,
+                        "prereq": "  LAW105"
+                    },
+                    {
+                        "name": 303,
+                        "value": 154,
+                        "prereq": "  LAW206 AND LAW205"
+                    },
+                    {
+                        "name": 305,
+                        "value": 75,
+                        "prereq": "  LAW205"
+                    },
+                    {
+                        "name": 325,
+                        "value": 42,
+                        "prereq": null
+                    },
+                    {
+                        "name": 328,
+                        "value": 47,
+                        "prereq": null
+                    },
+                    {
+                        "name": 403,
+                        "value": 75,
+                        "prereq": "  LAW304"
+                    },
+                    {
+                        "name": 407,
+                        "value": 107,
+                        "prereq": "  LAW105 AND LAW205"
+                    },
+                    {
+                        "name": 409,
+                        "value": 154,
+                        "prereq": "  LAW303 AND LAW304"
+                    },
+                    {
+                        "name": 410,
+                        "value": 45,
+                        "prereq": null
+                    },
+                    {
+                        "name": 425,
+                        "value": 65,
+                        "prereq": "  LAW210 AND LAW306"
+                    },
+                    {
+                        "name": 430,
+                        "value": 45,
+                        "prereq": null
+                    },
+                    {
+                        "name": 433,
+                        "value": 70,
+                        "prereq": "  LAW205"
+                    },
+                    {
+                        "name": "LAW",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "LITR",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 26,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 32,
+                        "prereq": null
+                    },
+                    {
+                        "name": 210,
+                        "value": 27,
+                        "prereq": null
+                    },
+                    {
+                        "name": 303,
+                        "value": 30,
+                        "prereq": "  LITR111"
+                    },
+                    {
+                        "name": 316,
+                        "value": 24,
+                        "prereq": "  LITR216"
+                    },
+                    {
+                        "name": 357,
+                        "value": 32,
+                        "prereq": null
+                    },
+                    {
+                        "name": 441,
+                        "value": 42,
+                        "prereq": null
+                    },
+                    {
+                        "name": 499,
+                        "value": 10,
+                        "prereq": "  LITR442 OR LITR442"
+                    },
+                    {
+                        "name": "LITR",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MASE",
+                "data": [
+                    {
+                        "name": 510,
+                        "value": 33,
+                        "prereq": null
+                    },
+                    {
+                        "name": 515,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 518,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": "MASE",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MATH",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 107,
+                        "prereq": null
+                    },
+                    {
+                        "name": 102,
+                        "value": 107,
+                        "prereq": null
+                    },
+                    {
+                        "name": 103,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 106,
+                        "value": 107,
+                        "prereq": null
+                    },
+                    {
+                        "name": 107,
+                        "value": 107,
+                        "prereq": "  MATH106 OR MATH106  MATH107"
+                    },
+                    {
+                        "name": 201,
+                        "value": 107,
+                        "prereq": "  MATH100 OR MATH101 OR MATH106"
+                    },
+                    {
+                        "name": 202,
+                        "value": 104,
+                        "prereq": null
+                    },
+                    {
+                        "name": 204,
+                        "value": 91,
+                        "prereq": null
+                    },
+                    {
+                        "name": 203,
+                        "value": 107,
+                        "prereq": "  MATH106 OR MATH106"
+                    },
+                    {
+                        "name": 205,
+                        "value": 30,
+                        "prereq": "  MATH103"
+                    },
+                    {
+                        "name": 211,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": 301,
+                        "value": 44,
+                        "prereq": "  MATH208"
+                    },
+                    {
+                        "name": 310,
+                        "value": 34,
+                        "prereq": "  MATH205"
+                    },
+                    {
+                        "name": 320,
+                        "value": 29,
+                        "prereq": "  MATH107"
+                    },
+                    {
+                        "name": 404,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": "MATH",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MAVA",
+                "data": [
+                    {
+                        "name": 102,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 104,
+                        "value": 25,
+                        "prereq": null
+                    },
+                    {
+                        "name": 205,
+                        "value": 25,
+                        "prereq": "  MAVA104"
+                    },
+                    {
+                        "name": 206,
+                        "value": 33,
+                        "prereq": null
+                    },
+                    {
+                        "name": 207,
+                        "value": 30,
+                        "prereq": "  MAVA104"
+                    },
+                    {
+                        "name": 208,
+                        "value": 42,
+                        "prereq": "  MAVA200"
+                    },
+                    {
+                        "name": 210,
+                        "value": 30,
+                        "prereq": "  MAVA200"
+                    },
+                    {
+                        "name": 213,
+                        "value": 33,
+                        "prereq": null
+                    },
+                    {
+                        "name": 221,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 301,
+                        "value": 91,
+                        "prereq": "  MKTG201 AND MATH201 OR MATH211 OR ENGR200 OR ENGR201"
+                    },
+                    {
+                        "name": 303,
+                        "value": 62,
+                        "prereq": "  MKTG201"
+                    },
+                    {
+                        "name": 307,
+                        "value": 45,
+                        "prereq": null
+                    },
+                    {
+                        "name": 311,
+                        "value": 42,
+                        "prereq": "  MAVA208 AND MAVA200"
+                    },
+                    {
+                        "name": 316,
+                        "value": 33,
+                        "prereq": null
+                    },
+                    {
+                        "name": 319,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 323,
+                        "value": 30,
+                        "prereq": "  MAVA210 OR MAVA210 OR MAVA210 AND MAVA200"
+                    },
+                    {
+                        "name": 326,
+                        "value": 30,
+                        "prereq": "  MAVA208 AND MAVA200 OR MAVA200"
+                    },
+                    {
+                        "name": 327,
+                        "value": 30,
+                        "prereq": "  MAVA104 AND MAVA207"
+                    },
+                    {
+                        "name": 342,
+                        "value": 44,
+                        "prereq": "  PSYC100"
+                    },
+                    {
+                        "name": 406,
+                        "value": 62,
+                        "prereq": null
+                    },
+                    {
+                        "name": 418,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 420,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 430,
+                        "value": 33,
+                        "prereq": null
+                    },
+                    {
+                        "name": 432,
+                        "value": 25,
+                        "prereq": null
+                    },
+                    {
+                        "name": 433,
+                        "value": 42,
+                        "prereq": "  MAVA311"
+                    },
+                    {
+                        "name": 354,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": "MAVA",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MBGE",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": 200,
+                        "value": 107,
+                        "prereq": null
+                    },
+                    {
+                        "name": 203,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 300,
+                        "value": 104,
+                        "prereq": null
+                    },
+                    {
+                        "name": 301,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 343,
+                        "value": 34,
+                        "prereq": "  MBGE101"
+                    },
+                    {
+                        "name": 409,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 423,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 432,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 501,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": "MBGE",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MECH",
+                "data": [
+                    {
+                        "name": 201,
+                        "value": 104,
+                        "prereq": "  PHYS101 AND MATH106"
+                    },
+                    {
+                        "name": 203,
+                        "value": 105,
+                        "prereq": null
+                    },
+                    {
+                        "name": 303,
+                        "value": 62,
+                        "prereq": null
+                    },
+                    {
+                        "name": 350,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 401,
+                        "value": 60,
+                        "prereq": "  MECH201 OR MECH201 OR MECH201 AND MECH206 AND MECH301 AND MECH302 AND MECH304"
+                    },
+                    {
+                        "name": 408,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": 409,
+                        "value": 32,
+                        "prereq": "  MECH202 OR MECH202 AND MECH203 AND MECH204 AND MECH306"
+                    },
+                    {
+                        "name": 411,
+                        "value": 32,
+                        "prereq": "  MATH203 OR MATH203 AND MATH204"
+                    },
+                    {
+                        "name": 421,
+                        "value": 29,
+                        "prereq": "  MATH204 AND MECH301"
+                    },
+                    {
+                        "name": 427,
+                        "value": 42,
+                        "prereq": "  MECH302 OR CHBI302"
+                    },
+                    {
+                        "name": 443,
+                        "value": 24,
+                        "prereq": null
+                    },
+                    {
+                        "name": 462,
+                        "value": 30,
+                        "prereq": "  MECH202 OR MECH202"
+                    },
+                    {
+                        "name": 444,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": "MECH",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MEDI",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 107,
+                        "prereq": null
+                    },
+                    {
+                        "name": 110,
+                        "value": 107,
+                        "prereq": null
+                    },
+                    {
+                        "name": 120,
+                        "value": 70,
+                        "prereq": null
+                    },
+                    {
+                        "name": "MEDI",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MFIN",
+                "data": [
+                    {
+                        "name": 202,
+                        "value": 104,
+                        "prereq": "  ECON100 OR ECON101 AND ACCT201 AND CPAP100 OR CPAP101 OR CPAP150 OR COMP100"
+                    },
+                    {
+                        "name": 304,
+                        "value": 48,
+                        "prereq": "  MFIN202"
+                    },
+                    {
+                        "name": 662,
+                        "value": 18,
+                        "prereq": null
+                    },
+                    {
+                        "name": "MFIN",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MGIS",
+                "data": [
+                    {
+                        "name": 301,
+                        "value": 75,
+                        "prereq": "  CPAP100 OR CPAP101 OR CPAP150 AND MATH201"
+                    },
+                    {
+                        "name": "MGIS",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MGMT",
+                "data": [
+                    {
+                        "name": 335,
+                        "value": 47,
+                        "prereq": "  ACCT202"
+                    },
+                    {
+                        "name": 348,
+                        "value": 44,
+                        "prereq": null
+                    },
+                    {
+                        "name": 351,
+                        "value": 62,
+                        "prereq": null
+                    },
+                    {
+                        "name": 421,
+                        "value": 10,
+                        "prereq": null
+                    },
+                    {
+                        "name": 671,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 901,
+                        "value": 98,
+                        "prereq": null
+                    },
+                    {
+                        "name": 911,
+                        "value": 98,
+                        "prereq": null
+                    },
+                    {
+                        "name": 411,
+                        "value": 60,
+                        "prereq": null
+                    },
+                    {
+                        "name": 432,
+                        "value": 104,
+                        "prereq": null
+                    },
+                    {
+                        "name": 445,
+                        "value": 60,
+                        "prereq": null
+                    },
+                    {
+                        "name": 513,
+                        "value": 67,
+                        "prereq": null
+                    },
+                    {
+                        "name": "MGMT",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MKTG",
+                "data": [
+                    {
+                        "name": 302,
+                        "value": 48,
+                        "prereq": "  MKTG201"
+                    },
+                    {
+                        "name": 432,
+                        "value": 104,
+                        "prereq": null
+                    },
+                    {
+                        "name": 551,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 665,
+                        "value": 10,
+                        "prereq": null
+                    },
+                    {
+                        "name": "MKTG",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "MUSC",
+                "data": [
+                    {
+                        "name": 200,
+                        "value": 17,
+                        "prereq": null
+                    },
+                    {
+                        "name": "MUSC",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "NURS",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 50,
+                        "prereq": null
+                    },
+                    {
+                        "name": "NURS",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "OPSM",
+                "data": [
+                    {
+                        "name": 501,
+                        "value": 98,
+                        "prereq": null
+                    },
+                    {
+                        "name": 302,
+                        "value": 107,
+                        "prereq": "  MATH201 AND CPAP100 OR CPAP101 OR CPAP150 OR COMP100"
+                    },
+                    {
+                        "name": 305,
+                        "value": 65,
+                        "prereq": "  OPSM301 OR OPSM302"
+                    },
+                    {
+                        "name": "OPSM",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "PHIL",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": 213,
+                        "value": 45,
+                        "prereq": null
+                    },
+                    {
+                        "name": 215,
+                        "value": 28,
+                        "prereq": null
+                    },
+                    {
+                        "name": 311,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 338,
+                        "value": 33,
+                        "prereq": "  PHIL101"
+                    },
+                    {
+                        "name": 404,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 450,
+                        "value": 50,
+                        "prereq": null
+                    },
+                    {
+                        "name": 500,
+                        "value": 21,
+                        "prereq": null
+                    },
+                    {
+                        "name": "PHIL",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "PHYS",
+                "data": [
+                    {
+                        "name": 101,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 102,
+                        "value": 91,
+                        "prereq": null
+                    },
+                    {
+                        "name": 123,
+                        "value": 91,
+                        "prereq": null
+                    },
+                    {
+                        "name": 205,
+                        "value": 29,
+                        "prereq": "  PHYS101"
+                    },
+                    {
+                        "name": 301,
+                        "value": 33,
+                        "prereq": "  PHYS205 OR CHEM103"
+                    },
+                    {
+                        "name": 312,
+                        "value": 33,
+                        "prereq": "  PHYS302 OR ELEC206"
+                    },
+                    {
+                        "name": 401,
+                        "value": 33,
+                        "prereq": "  PHYS206 AND CHEM103"
+                    },
+                    {
+                        "name": 414,
+                        "value": 30,
+                        "prereq": "  MATH203 AND MATH204"
+                    },
+                    {
+                        "name": 501,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 503,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 550,
+                        "value": 24,
+                        "prereq": null
+                    },
+                    {
+                        "name": "PHYS",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "PSYC",
+                "data": [
+                    {
+                        "name": 100,
+                        "value": 231,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 62,
+                        "prereq": "  PSYC100 AND CPAP100 OR CPAP101"
+                    },
+                    {
+                        "name": 205,
+                        "value": 47,
+                        "prereq": "  PSYC100"
+                    },
+                    {
+                        "name": 204,
+                        "value": 107,
+                        "prereq": "  PSYC100"
+                    },
+                    {
+                        "name": 210,
+                        "value": 154,
+                        "prereq": "  CPAP100 OR CPAP150 AND PSYC100"
+                    },
+                    {
+                        "name": 220,
+                        "value": 44,
+                        "prereq": "  PSYC100"
+                    },
+                    {
+                        "name": 301,
+                        "value": 45,
+                        "prereq": "  PSYC201 AND MATH201 OR MATH202"
+                    },
+                    {
+                        "name": 302,
+                        "value": 50,
+                        "prereq": null
+                    },
+                    {
+                        "name": 206,
+                        "value": 47,
+                        "prereq": "  PSYC206  PSYC100  PSYC100"
+                    },
+                    {
+                        "name": 208,
+                        "value": 48,
+                        "prereq": "  SOCI100 OR SOCI101 OR SOCI102 OR SOCI103"
+                    },
+                    {
+                        "name": 303,
+                        "value": 48,
+                        "prereq": "  PSYC305"
+                    },
+                    {
+                        "name": 306,
+                        "value": 231,
+                        "prereq": "  PSYC100"
+                    },
+                    {
+                        "name": 357,
+                        "value": 42,
+                        "prereq": "  PSYC100"
+                    },
+                    {
+                        "name": 372,
+                        "value": 62,
+                        "prereq": null
+                    },
+                    {
+                        "name": 402,
+                        "value": 34,
+                        "prereq": "  PSYC100"
+                    },
+                    {
+                        "name": 434,
+                        "value": 48,
+                        "prereq": "  PSYC100"
+                    },
+                    {
+                        "name": 501,
+                        "value": 26,
+                        "prereq": null
+                    },
+                    {
+                        "name": 521,
+                        "value": 18,
+                        "prereq": null
+                    },
+                    {
+                        "name": 542,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": 550,
+                        "value": 50,
+                        "prereq": null
+                    },
+                    {
+                        "name": 552,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 305,
+                        "value": 48,
+                        "prereq": "  PSYC305  PSYC210"
+                    },
+                    {
+                        "name": "PSYC",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "QMBU",
+                "data": [
+                    {
+                        "name": 301,
+                        "value": 66,
+                        "prereq": "  MATH201 OR ENGR201 OR ENGR200 OR MATH211 AND CPAP100 OR CPAP101 OR COMP100 OR CPAP150  CPAP100 OR CPAP101 OR CPAP150"
+                    },
+                    {
+                        "name": 310,
+                        "value": 48,
+                        "prereq": "  CPAP100 OR CPAP101 OR CPAP150 OR COMP100"
+                    },
+                    {
+                        "name": "QMBU",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "RUSS",
+                "data": [
+                    {
+                        "name": 201,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 202,
+                        "value": 32,
+                        "prereq": "  RUSS201"
+                    },
+                    {
+                        "name": 301,
+                        "value": 32,
+                        "prereq": "  RUSS202"
+                    },
+                    {
+                        "name": "RUSS",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "SCIE",
+                "data": [
+                    {
+                        "name": 103,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 108,
+                        "value": 154,
+                        "prereq": null
+                    },
+                    {
+                        "name": 459,
+                        "value": 12,
+                        "prereq": null
+                    },
+                    {
+                        "name": "SCIE",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "SOCI",
+                "data": [
+                    {
+                        "name": 100,
+                        "value": 45,
+                        "prereq": null
+                    },
+                    {
+                        "name": 211,
+                        "value": 28,
+                        "prereq": null
+                    },
+                    {
+                        "name": 220,
+                        "value": 62,
+                        "prereq": null
+                    },
+                    {
+                        "name": 301,
+                        "value": 31,
+                        "prereq": "  SOCI100 OR SOCI101 OR SOCI102 OR SOCI102 OR SOCI102 OR SOCI103 OR SOCI103 AND SOCI201 AND MATH202"
+                    },
+                    {
+                        "name": 311,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 312,
+                        "value": 31,
+                        "prereq": "  SOCI100  SOCI100"
+                    },
+                    {
+                        "name": 314,
+                        "value": 60,
+                        "prereq": null
+                    },
+                    {
+                        "name": 315,
+                        "value": 26,
+                        "prereq": null
+                    },
+                    {
+                        "name": 340,
+                        "value": 29,
+                        "prereq": "  SOCI100"
+                    },
+                    {
+                        "name": 354,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 355,
+                        "value": 29,
+                        "prereq": "  SOCI100"
+                    },
+                    {
+                        "name": 402,
+                        "value": 62,
+                        "prereq": null
+                    },
+                    {
+                        "name": 452,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 503,
+                        "value": 40,
+                        "prereq": null
+                    },
+                    {
+                        "name": 552,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 501,
+                        "value": 18,
+                        "prereq": null
+                    },
+                    {
+                        "name": "SOCI",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "SOSC",
+                "data": [
+                    {
+                        "name": 105,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": 110,
+                        "value": 70,
+                        "prereq": null
+                    },
+                    {
+                        "name": 111,
+                        "value": 28,
+                        "prereq": null
+                    },
+                    {
+                        "name": 119,
+                        "value": 44,
+                        "prereq": null
+                    },
+                    {
+                        "name": "SOSC",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "SPAN",
+                "data": [
+                    {
+                        "name": 201,
+                        "value": 29,
+                        "prereq": null
+                    },
+                    {
+                        "name": 202,
+                        "value": 29,
+                        "prereq": "  SPAN201"
+                    },
+                    {
+                        "name": 301,
+                        "value": 18,
+                        "prereq": "  SPAN202"
+                    },
+                    {
+                        "name": 302,
+                        "value": 34,
+                        "prereq": "  SPAN301"
+                    },
+                    {
+                        "name": "SPAN",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "TECH",
+                "data": [
+                    {
+                        "name": 514,
+                        "value": 48,
+                        "prereq": null
+                    },
+                    {
+                        "name": "TECH",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "TLIT",
+                "data": [
+                    {
+                        "name": 202,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 217,
+                        "value": 30,
+                        "prereq": null
+                    },
+                    {
+                        "name": 240,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": "TLIT",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "TURK",
+                "data": [
+                    {
+                        "name": 100,
+                        "value": 34,
+                        "prereq": null
+                    },
+                    {
+                        "name": 300,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 403,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 201,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": "TURK",
+                        "value": 100
+                    }
+                ]
+            },
+            {
+                "name": "UNIV",
+                "data": [
+                    {
+                        "name": 121,
+                        "value": 31,
+                        "prereq": null
+                    },
+                    {
+                        "name": 123,
+                        "value": 28,
+                        "prereq": null
+                    },
+                    {
+                        "name": "UNIV",
+                        "value": 100
+                    }
+                ]
+            }
+        ]
+
+        var chart = Highcharts.chart('container', {
+            chart: {
+                type: 'packedbubble',
+                height: '650',
+                width: '1300',
+                marginRight: 200
+            },
+            legend: {
+                align: 'left',
+                verticalAlign: 'middle',
+                width: 200,
+                itemWidth: 100
+            },
+            title: {
+                text: 'Fall 2019'
+            },
+            tooltip: {
+                formatter: function () {
+                    var str = ""
+                    if (this.series.name != this.point.name) {
+                        str = '<b>' + this.series.name + ' ' + this.point.name + ': </b>' + this.point.value + ' students';
+
+                        if (this.point.prereq != null) {
+                            str = str.concat(', Prerequisites:' + this.point.prereq);
                         }
-                        else {
-                            return this.point.name;
+                    } else {
+                        str = '<b>' + this.series.name + ' </b>';
+                    }
+                    return str;
+                }
+            },
+            plotOptions: {
+                series: {
+                    visible: false,
+                },
+                packedbubble: {
+                    //allowPointSelect: true,
+                    //selected: false,
+                    minSize: '10%',
+                    maxSize: '150%',
+                    zMin: 0,
+                    zMax: 1000,
+                    layoutAlgorithm: {
+                        gravitationalConstant: 0.05,
+                        friction: -0.9,
+                        splitSeries: true,
+                        seriesInteraction: false,
+                        dragBetweenSeries: false,
+                        parentNodeLimit: true
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function () {
+                            if (this.series.name == this.point.name) {
+                                return '<b>' + (this.point.name) + '</b>';
+                            }
+                            else {
+                                return this.point.name;
+                            }
+                        },
+                        style: {
+                            color: 'black',
+                            textOutline: 'none',
+                            fontWeight: 'normal'
+
                         }
                     },
-                    style: {
-                        color: 'black',
-                        textOutline: 'none',
-                        fontWeight: 'normal'
+                    point: {
+                        //selected: false,
+                        events: {
+                            click: function (e) {
 
-                    }
-                },
-                point: {
-                    //selected: false,
-                    events: {
-                        click: function (e) {
+                                if (this.series.name != this.name) { // must not be subject labelled bubbles
+                                    var course = { name: this.series.name, code: this.name, color: this.color };
+                                    var len = selectedCourses.length;
+                                    //if its not selected, select it
+                                    if (this.color != 'white') {
+                                        selectedCourses[len] = course;
+                                        this.update({ color: 'white' });
+                                        console.log(
+                                            "Selected course: " + selectedCourses[len].name + selectedCourses[len].code
+                                            + " tot:" + (len + 1));
+                                    } /*else { // if its selected, deselect it
+                                            var temp = [];
+                                            var t = 0;
+                                            for (var i = 0; i < len; i++) {
+                                                if (selectedCourses[i].name == course.name && selectedCourses[i].code == course.code) {
 
-                            if (this.series.name != this.name) { // must not be subject labelled bubbles
-                                var course = { name: this.series.name, code: this.name, color: this.color };
-                                var len = selectedCourses.length;
-                                //if its not selected, select it
-                                if (this.color != 'white') {
-                                    selectedCourses[len] = course;
-                                    this.update({ color: 'white' });
-                                    console.log(
-                                        "Selected course: " + selectedCourses[len].name + selectedCourses[len].code
-                                        + " tot:" + (len + 1));
-                                } /*else { // if its selected, deselect it
-                                        var temp = [];
-                                        var t = 0;
-                                        for (var i = 0; i < len; i++) {
-                                            if (selectedCourses[i].name == course.name && selectedCourses[i].code == course.code) {
-
-                                                this.update({ color: selectedCourses[i].color });
-                                                console.log("Deselecting");
-                                                // skipping this one
-                                            } else {
-                                                temp[t] = selectedCourses[i];
-                                                t++;
+                                                    this.update({ color: selectedCourses[i].color });
+                                                    console.log("Deselecting");
+                                                    // skipping this one
+                                                } else {
+                                                    temp[t] = selectedCourses[i];
+                                                    t++;
+                                                }
                                             }
+                                            selectedCourses = temp;
+                                        }*/
+                                    var sc = JSON.stringify(selectedCourses);
+                                    console.log(sc);
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/Index?handler=SelectedCourses",
+                                        beforeSend: function (xhr) {
+                                            xhr.setRequestHeader("XSRF-TOKEN",
+                                                $('input:hidden[name="__RequestVerificationToken"]').val());
+                                        },
+                                        data: sc,
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function (response) {
+                                            alert(response);
+                                        },
+                                        failure: function (response) {
+                                            alert(response);
                                         }
-                                        selectedCourses = temp;
-                                    }*/
-                                var sc = JSON.stringify(selectedCourses);
-                                console.log(sc);
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/Index?handler=SelectedCourses",
-                                    beforeSend: function (xhr) {
-                                        xhr.setRequestHeader("XSRF-TOKEN",
-                                            $('input:hidden[name="__RequestVerificationToken"]').val());
-                                    },
-                                    data: sc,
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: function (response) {
-                                        alert(response);
-                                    },
-                                    failure: function (response) {
-                                        alert(response);
+                                    });
+                                    console.log("\nShowing the selected courses:\n");
+                                    if (selectedCourses.length > 0) {
+                                        for (var i = 0; i < selectedCourses.length; i++) {
+                                            console.log(selectedCourses[i].name + selectedCourses[i].code);
+                                        }
                                     }
-                                });
-                                console.log("\nShowing the selected courses:\n");
-                                if (selectedCourses.length > 0) {
-                                    for (var i = 0; i < selectedCourses.length; i++) {
-                                        console.log(selectedCourses[i].name + selectedCourses[i].code);
-                                    }
+                                    //after scheduling algorithm the class colors change
+                                    // testing
+                                    reddy("LAW", 303, "COMP491");
                                 }
-                                //after scheduling algorithm the class colors change
-                                // testing
-                                reddy("LAW", 303, "COMP491");
                             }
                         }
                     }
                 }
-            }
-        },
-        series: json,
-    });
-</script>
+            },
+            series: json,
+        });
+    </script>
