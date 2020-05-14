@@ -3040,6 +3040,20 @@
                                     //after scheduling algorithm the class colors change
                                     // testing
                                     reddy("LAW", 303, "COMP491");
+
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "/Index?handler=Dict",
+                                        contentType: "application/json",
+                                        dataType: "json",
+                                        success: function (response) {
+                                            var dict = response;
+                                            console.log(dict);
+                                        },
+                                        failure: function (response) {
+                                            alert(response);
+                                        }
+                                    });
                                 }
                             }
                         }
