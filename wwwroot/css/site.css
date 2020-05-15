@@ -70,10 +70,6 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-th {
-    text-align: left;
-}
-
 .highcharts-figure, .highcharts-data-table table {
     min-width: 320px;
     max-width: 800px;
