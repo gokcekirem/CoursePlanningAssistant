@@ -88,7 +88,6 @@ namespace CoursePlanner.Scheduler
 
             var groupedSections = chosenClassAllSectionsList.GroupBy(sect => sect.Type);
             List<Section> availableSectionsListCopy = new List<Section>(availableSectionsList);
-            Console.WriteLine("Before selection, the available section count was " + availableSectionsList.Count());
             foreach (Section remainingSection in availableSectionsListCopy)
             {
                 foreach (var group in groupedSections)
@@ -96,7 +95,7 @@ namespace CoursePlanner.Scheduler
                     bool validSectionForGroup = false;
                     foreach (var sect in group)
                     {
-                        Console.WriteLine("Looking for collision in " + remainingSection.SectionId);
+                        
                         if (!Collides(sect, remainingSection))
                         {
                             validSectionForGroup = true;
@@ -105,21 +104,15 @@ namespace CoursePlanner.Scheduler
                     }
                     if (!validSectionForGroup)
                     {
-                        Console.WriteLine("All the " + group.Key + " sections of the chosen class and this section collided.");
-                        Console.WriteLine("Deleting sectionID " + remainingSection.SectionId + " because of collision");
-                        availableSectionsList.Remove(remainingSection);
+                       availableSectionsList.Remove(remainingSection);
                         break;
                     }
                 }
             }
-            Console.WriteLine("After one iterative selection of " + currentChoice.Item1 + " " + currentChoice.Item2 + " " + ", the available section count is " + availableSectionsList.Count());
-
+           
             //Initially we need the allClasses list, however, as we make choices we will only need to use the availableClassesList list
 
             List<Class> availableClassesListCopy = new List<Class>(availableClassesList);
-
-           
-            Console.WriteLine("Before selection, the available class count was " + availableClassesList.Count());
 
             foreach (Class remainingClass in availableClassesListCopy)
             {
@@ -150,8 +143,6 @@ namespace CoursePlanner.Scheduler
                     }
                     if (!validSectionForGroup)
                     {
-                        Console.WriteLine("All the " + group.Key + " sections of " + remainingClass.Subject + " " + remainingClass.Code + " was removed as it collided with previous choices.");
-                        Console.WriteLine("Deleting classID " + remainingClass.ClassId + " with Code: " + remainingClass.Subject + " " + remainingClass.Code + " from the available classes list...");
                         var remainingClassCode = remainingClass.Subject + remainingClass.Code;
                         if (collisionDictionary.ContainsKey(remainingClassCode))
                         {
@@ -164,23 +155,6 @@ namespace CoursePlanner.Scheduler
                         availableClassesList.Remove(remainingClass);
                         break;
                     }
-                }
-            }
-
-            Console.WriteLine("After one iterative selection, the available class count is " + availableClassesList.Count());
-            Console.WriteLine("Printing remaining classes...");
-            foreach (Class avail in availableClassesList)
-            {
-                Console.WriteLine(avail.Subject + " " + avail.Code);
-            }
-
-
-            foreach (KeyValuePair<string, List<string>> kvp in collisionDictionary)
-            {
-                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-                foreach (string asd in kvp.Value)
-                {
-                    Console.WriteLine(asd);
                 }
             }
         }
@@ -222,7 +196,6 @@ namespace CoursePlanner.Scheduler
             }
             if ((start1 < end2) && (end1 > start2))
             {
-                Console.WriteLine("There was a collision.");
                 return true;
             }
             return false;
