@@ -68,6 +68,7 @@
 
     <script>
         var selectedCourses = [];
+        var canClick = true;
 
         function reddy(subject, code, collision) {
             //console.log(chart.series.length);
@@ -76,7 +77,7 @@
 
 
                 if (chart.series[i].name == subject) {
-                    console.log(chart.series[i]);
+                    //console.log(chart.series[i]);
                     for (var j = 0; j < chart.series[i].data.length; j++) {
 
                         //console.log(chart.series[i].data[j].name);
@@ -2985,18 +2986,71 @@
                         //selected: false,
                         events: {
                             click: function (e) {
+                                if (canClick) {
+                                    if (this.series.name != this.name) { // must not be subject labelled bubbles
+                                        var course = { name: this.series.name, code: this.name, color: this.color };
+                                        var len = selectedCourses.length;
+                                        //if its not selected, select it
+                                        if (this.color != 'white') {
+                                            canClick = false;
+                                            selectedCourses[len] = course;
+                                            this.update({ color: 'white' });
 
-                                if (this.series.name != this.name) { // must not be subject labelled bubbles
-                                    var course = { name: this.series.name, code: this.name, color: this.color };
-                                    var len = selectedCourses.length;
-                                    //if its not selected, select it
-                                    if (this.color != 'white') {
-                                        selectedCourses[len] = course;
-                                        this.update({ color: 'white' });
-                                        console.log(
-                                            "Selected course: " + selectedCourses[len].name + selectedCourses[len].code
-                                            + " tot:" + (len + 1));
-                                    } /*else { // if its selected, deselect it
+                                            var sc = JSON.stringify(selectedCourses);
+                                            //console.log(sc);
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/Index?handler=SelectedCourses",
+                                                beforeSend: function (xhr) {
+                                                    xhr.setRequestHeader("XSRF-TOKEN",
+                                                        $('input:hidden[name="__RequestVerificationToken"]').val());
+                                                },
+                                                data: sc,
+                                                contentType: "application/json; charset=utf-8",
+                                                dataType: "json",
+                                                success: function (response) {
+                                                    alert(response);
+                                                },
+                                                failure: function (response) {
+                                                    alert(response);
+                                                }
+                                            });
+
+                                            //console.log("\nShowing the selected courses:\n");
+                                            //if (selectedCourses.length > 0) {
+                                            //    for (var i = 0; i < selectedCourses.length; i++) {
+                                            //        console.log(selectedCourses[i].name + selectedCourses[i].code);
+                                            //    }
+                                            //}
+
+                                            setTimeout(() => {
+
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "/Index?handler=Dict",
+                                                    contentType: "application/json",
+                                                    dataType: "json",
+                                                    success: function (response) {
+                                                        var dict = response;
+                                                        for (var course in dict) {
+                                                            var subject = course.substring(0, course.length - 3);
+                                                            var code = course.substring(course.length - 3, course.length);
+                                                            var collided = dict[course][0];
+                                                            var len = selectedCourses.length - 1;
+                                                            if (selectedCourses[len].name != subject || selectedCourses[len].code != code) {
+                                                                reddy(subject, code, collided);
+                                                            }
+                                                        }
+                                                    },
+                                                    failure: function (response) {
+                                                        alert(response);
+                                                    }
+                                                });
+
+                                                canClick = true;
+                                            }, 3000);
+
+                                        } /*else { // if its selected, deselect it
                                             var temp = [];
                                             var t = 0;
                                             for (var i = 0; i < len; i++) {
@@ -3012,61 +3066,7 @@
                                             }
                                             selectedCourses = temp;
                                         }*/
-                                    var sc = JSON.stringify(selectedCourses);
-                                    console.log(sc);
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "/Index?handler=SelectedCourses",
-                                        beforeSend: function (xhr) {
-                                            xhr.setRequestHeader("XSRF-TOKEN",
-                                                $('input:hidden[name="__RequestVerificationToken"]').val());
-                                        },
-                                        data: sc,
-                                        contentType: "application/json; charset=utf-8",
-                                        dataType: "json",
-                                        success: function (response) {
-                                            alert(response);
-                                        },
-                                        failure: function (response) {
-                                            alert(response);
-                                        }
-                                    });
-                                    console.log("\nShowing the selected courses:\n");
-                                    if (selectedCourses.length > 0) {
-                                        for (var i = 0; i < selectedCourses.length; i++) {
-                                            console.log(selectedCourses[i].name + selectedCourses[i].code);
-                                        }
                                     }
-                                    //after scheduling algorithm the class colors change
-                                    // testing
-                                    
-
-                                    setTimeout(() => {
-
-                                        $.ajax({
-                                        type: "GET",
-                                        url: "/Index?handler=Dict",
-                                        contentType: "application/json",
-                                        dataType: "json",
-                                        success: function (response) {
-                                            var dict = response;
-                                            for (var course in dict) {
-                                                var subject = course.substring(0, course.length - 3);
-                                                var code = course.substring(course.length - 3, course.length);
-                                                var collided = dict[course][0];
-                                                var len = selectedCourses.length - 1;
-                                                if (selectedCourses[len].name != subject || selectedCourses[len].code != code) {
-                                                    reddy(subject, code, collided);
-                                                }
-                                            }
-                                        },
-                                        failure: function (response) {
-                                            alert(response);
-                                        }
-                                        });
-
-                                    }, 3000);
-                                    
                                 }
                             }
                         }
