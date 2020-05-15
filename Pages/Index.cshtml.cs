@@ -160,6 +160,11 @@ namespace CoursePlanner.Pages
                 scheduler.ClassSelected(selectedCourses[l - 1].Name + selectedCourses[l - 1].Code, _context);
             }
         }
+
+        public JsonResult OnGetDict()
+        {
+            return new JsonResult(scheduler.getCollisionDictionary());
+        }
     }
 
     public class Course
