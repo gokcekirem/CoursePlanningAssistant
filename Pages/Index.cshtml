@@ -3054,7 +3054,10 @@
                                                 var subject = course.substring(0, course.length - 3);
                                                 var code = course.substring(course.length - 3, course.length);
                                                 var collided = dict[course][0];
-                                                reddy(subject, code, collided);
+                                                var len = selectedCourses.length - 1;
+                                                if (selectedCourses[len].name != subject || selectedCourses[len].code != code) {
+                                                    reddy(subject, code, collided);
+                                                }
                                             }
                                         },
                                         failure: function (response) {
