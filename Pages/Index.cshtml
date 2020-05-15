@@ -3050,18 +3050,19 @@
                                         dataType: "json",
                                         success: function (response) {
                                             var dict = response;
-                                            console.log(dict);
+                                            for (var course in dict) {
+                                                var subject = course.substring(0, course.length - 3);
+                                                var code = course.substring(course.length - 3, course.length);
+                                                var collided = dict[course][0];
+                                                reddy(subject, code, collided);
+                                            }
                                         },
                                         failure: function (response) {
                                             alert(response);
                                         }
                                         });
 
-                                        // þimdi dict i dolaþ ve reddy
-                                        reddy("LAW", 303, "COMP491");
-
-
-                                    }, 10000);
+                                    }, 3000);
                                     
                                 }
                             }
