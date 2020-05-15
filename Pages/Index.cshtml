@@ -3039,9 +3039,11 @@
                                     }
                                     //after scheduling algorithm the class colors change
                                     // testing
-                                    reddy("LAW", 303, "COMP491");
+                                    
 
-                                    $.ajax({
+                                    setTimeout(() => {
+
+                                        $.ajax({
                                         type: "GET",
                                         url: "/Index?handler=Dict",
                                         contentType: "application/json",
@@ -3053,7 +3055,14 @@
                                         failure: function (response) {
                                             alert(response);
                                         }
-                                    });
+                                        });
+
+                                        // þimdi dict i dolaþ ve reddy
+                                        reddy("LAW", 303, "COMP491");
+
+
+                                    }, 10000);
+                                    
                                 }
                             }
                         }
