@@ -1,20 +1,13 @@
 
 using CoursePlanner.Models;
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
-using CoursePlanner.Scheduler;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.ComponentModel;
 
 namespace CoursePlanner.Pages
 {
@@ -48,41 +41,29 @@ namespace CoursePlanner.Pages
         public void OnPostRefresh()
         {
             scheduler.ResetChoices();
-
         }
       
         public void OnPostMakeTimetables()
         {
             if (scheduler.getChoices().Any())
             {
-                List<Tuple<String, int>> choices = new List<Tuple<String, int>>();
+                List<Tuple<string, int>> choices = new List<Tuple<string, int>>();
                 choices = scheduler.getChoices();
-                //List<Tuple<String, int>> choicesForRecursion = new List<Tuple<String, int>>(choices);
                 foreach (Tuple<string, int> choice in choices)
                 {
                     RemoveFaultySections(choice);
                 }
-                //List<Section> chosenClassAllSectionsList = RemoveFaultySections(choicesForRecursion[0]);
-                //var groupedSections = chosenClassAllSectionsList.GroupBy(sect => sect.Type);
-                //choicesForRecursion.Remove(choicesForRecursion[0]);
                 List<List<Section>> resultingTables = new List<List<Section>>();
 
                     foreach (Section section in sectionsDividedToGroups[0])
                     {
                             List<Section> currentTable = new List<Section>();
                             currentTable.Add(section);
-                            //if (choicesForRecursion.Count() > 0)
-                            //{
                             MakeTimetables(currentTable, 1, resultingTables);
-                            //}
-                            //else
-                            //{
-                            //    resultingTables.Add(currentTable);
-                            //}
-                        
                     }
-                
+                List<string> times = new List<string>() {"8.30-9.45", "10.00-11.15", "11.30-12.45", "13.00-14.15", "14.30-15.45", "16.00-17.15", "17.30-18.45"};
                 ViewData["timetables"] = resultingTables;
+                ViewData["times"] = times;
                 ViewData["flag"] = "flag";
             }
            
@@ -90,8 +71,6 @@ namespace CoursePlanner.Pages
 
         public void MakeTimetables(List<Section> currentTable, int depth, List<List<Section>> resultingTables)
         {
-            //List<Section> chosenClassAllSectionsList = RemoveFaultySections(choices[depth]);
-            //var groupedSections = chosenClassAllSectionsList.GroupBy(sect => sect.Type);
             List<Section> currentTableForLoop = new List<Section>(currentTable);
                 
                 foreach (Section section in sectionsDividedToGroups[depth])
@@ -116,21 +95,12 @@ namespace CoursePlanner.Pages
                             else
                             {
                                 resultingTables.Add(currentTableToPassDown);
-                                //Console.WriteLine("---------------");
-                                //foreach (Section selected in currentTableToPassDown)
-                                //{
-                                //    Console.WriteLine(selected.ClassId + ": " + selected.Times);
-                                //}
                             }
                         }
-                    
-                    
                 }
-            
-
         }
 
-        public void RemoveFaultySections(Tuple<String, int> choice)
+        public void RemoveFaultySections(Tuple<string, int> choice)
         {
             var chosenClassID = from m in _context.Class
                                 where m.Subject == choice.Item1
