@@ -27,7 +27,7 @@ namespace CoursePlanner.Pages
         private readonly ILogger<IndexModel> _logger;
 
         public List<Course> selectedCourses;
-
+        List<List<Section>> sectionsDividedToGroups = new List<List<Section>>();
 
         public CoursePlanner.Scheduler.Scheduler scheduler;
         
@@ -53,67 +53,84 @@ namespace CoursePlanner.Pages
       
         public void OnPostMakeTimetables()
         {
-            if (scheduler.getChoices().Count() > 0 )
+            if (scheduler.getChoices().Any())
             {
                 List<Tuple<String, int>> choices = new List<Tuple<String, int>>();
                 choices = scheduler.getChoices();
-                List<Tuple<String, int>> choicesForRecursion = new List<Tuple<String, int>>(choices);
-                List<Section> chosenClassAllSectionsList = RemoveFaultySections(choicesForRecursion[0]);
-                choicesForRecursion.Remove(choicesForRecursion[0]);
-                List<List<Section>> resultingTables = new List<List<Section>>();
-                foreach (Section section in chosenClassAllSectionsList)
+                //List<Tuple<String, int>> choicesForRecursion = new List<Tuple<String, int>>(choices);
+                foreach (Tuple<string, int> choice in choices)
                 {
-                    List<Section> currentTable = new List<Section>();
-                    currentTable.Add(section);
-                    if (choicesForRecursion.Count() > 0)
-                        MakeTimetables(choicesForRecursion, currentTable, 0, choicesForRecursion.Count() - 1, resultingTables);
-                    else
-                        resultingTables.Add(currentTable);
-
+                    RemoveFaultySections(choice);
                 }
+                //List<Section> chosenClassAllSectionsList = RemoveFaultySections(choicesForRecursion[0]);
+                //var groupedSections = chosenClassAllSectionsList.GroupBy(sect => sect.Type);
+                //choicesForRecursion.Remove(choicesForRecursion[0]);
+                List<List<Section>> resultingTables = new List<List<Section>>();
+
+                    foreach (Section section in sectionsDividedToGroups[0])
+                    {
+                            List<Section> currentTable = new List<Section>();
+                            currentTable.Add(section);
+                            //if (choicesForRecursion.Count() > 0)
+                            //{
+                            MakeTimetables(currentTable, 1, resultingTables);
+                            //}
+                            //else
+                            //{
+                            //    resultingTables.Add(currentTable);
+                            //}
+                        
+                    }
+                
                 ViewData["timetables"] = resultingTables;
                 ViewData["flag"] = "flag";
             }
            
         }
 
-        public void MakeTimetables(List<Tuple<String, int>> choices, List<Section> currentTable, int depth, int choicesLastIndex, List<List<Section>> resultingTables)
+        public void MakeTimetables(List<Section> currentTable, int depth, List<List<Section>> resultingTables)
         {
-            List<Section> chosenClassAllSectionsList = RemoveFaultySections(choices[depth]);
+            //List<Section> chosenClassAllSectionsList = RemoveFaultySections(choices[depth]);
+            //var groupedSections = chosenClassAllSectionsList.GroupBy(sect => sect.Type);
             List<Section> currentTableForLoop = new List<Section>(currentTable);
-            foreach (Section section in chosenClassAllSectionsList)
-            {
-                bool intersects = false;
-                foreach (Section tableSection in currentTableForLoop)
+                
+                foreach (Section section in sectionsDividedToGroups[depth])
                 {
-                    if (scheduler.Collides(section, tableSection))
-                    {
-                        intersects = true;
-                        break;
-                    }
+                        bool intersects = false;
+                        foreach (Section tableSection in currentTableForLoop)
+                        {
+                            if (scheduler.Collides(section, tableSection))
+                            {
+                                intersects = true;
+                                break;
+                            }
+                        }
+                        if (!intersects)
+                        {
+                            List<Section> currentTableToPassDown = new List<Section>(currentTable);
+                            currentTableToPassDown.Add(section);
+                            if (depth < sectionsDividedToGroups.Count() - 1)
+                            {
+                                MakeTimetables(currentTableToPassDown, depth + 1, resultingTables);
+                            }
+                            else
+                            {
+                                resultingTables.Add(currentTableToPassDown);
+                                //Console.WriteLine("---------------");
+                                //foreach (Section selected in currentTableToPassDown)
+                                //{
+                                //    Console.WriteLine(selected.ClassId + ": " + selected.Times);
+                                //}
+                            }
+                        }
+                    
+                    
                 }
-                if (!intersects)
-                {
-                    List<Section> currentTableToPassDown = new List<Section>(currentTable);
-                    currentTableToPassDown.Add(section);
-                    if (depth < choicesLastIndex)
-                    {
-                        MakeTimetables(choices, currentTableToPassDown, depth + 1, choicesLastIndex, resultingTables);
-                    }
-                    else
-                    {
-                        resultingTables.Add(currentTableToPassDown);
-                        //Console.WriteLine("---------------");
-                        //foreach (Section selected in currentTableToPassDown)
-                        //{
-                        //    Console.WriteLine(selected.ClassId + ": " + selected.Times);
-                        //}
-                    }
-                }
-            }
+            
+
         }
 
-        public List<Section> RemoveFaultySections(Tuple<String, int> choice)
+        public void RemoveFaultySections(Tuple<String, int> choice)
         {
             var chosenClassID = from m in _context.Class
                                 where m.Subject == choice.Item1
@@ -136,7 +153,20 @@ namespace CoursePlanner.Pages
                     Console.WriteLine("Removed: " + section);
                 }
             }
-            return chosenClassAllSectionsList;
+            var groupedSections = chosenClassAllSectionsList.GroupBy(section => section.Type);
+            foreach (var group in groupedSections)
+            {
+                List<Section> sectionByGroups = new List<Section>();
+                foreach (Section section in chosenClassAllSectionsList)
+                {
+                    if(group.Key == section.Type)
+                    {
+                        sectionByGroups.Add(section);
+                    }
+                }
+                sectionsDividedToGroups.Add(sectionByGroups);
+            }
+            Console.WriteLine(sectionsDividedToGroups);
         }
 
         public string getClassName(int classID)
