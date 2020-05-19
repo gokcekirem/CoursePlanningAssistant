@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel;
+using Highsoft.Web.Mvc.Charts;
 
 namespace CoursePlanner.Pages
 {
@@ -51,7 +52,7 @@ namespace CoursePlanner.Pages
                 choices = scheduler.getChoices();
                 foreach (Tuple<string, int> choice in choices)
                 {
-                    RemoveFaultySections(choice);
+                    RemoveFaultySectionsAndGroup(choice);
                 }
                 List<List<Section>> resultingTables = new List<List<Section>>();
 
@@ -61,9 +62,7 @@ namespace CoursePlanner.Pages
                             currentTable.Add(section);
                             MakeTimetables(currentTable, 1, resultingTables);
                     }
-                List<string> times = new List<string>() {"8.30-9.45", "10.00-11.15", "11.30-12.45", "13.00-14.15", "14.30-15.45", "16.00-17.15", "17.30-18.45"};
-                ViewData["timetables"] = resultingTables;
-                ViewData["times"] = times;
+                TimetableFormatting(resultingTables);
                 ViewData["flag"] = "flag";
             }
            
@@ -100,7 +99,7 @@ namespace CoursePlanner.Pages
                 }
         }
 
-        public void RemoveFaultySections(Tuple<string, int> choice)
+        public void RemoveFaultySectionsAndGroup(Tuple<string, int> choice)
         {
             var chosenClassID = from m in _context.Class
                                 where m.Subject == choice.Item1
@@ -137,6 +136,49 @@ namespace CoursePlanner.Pages
                 sectionsDividedToGroups.Add(sectionByGroups);
             }
             Console.WriteLine(sectionsDividedToGroups);
+        }
+
+        public void TimetableFormatting(List<List<Section>> resultingTable)
+        {
+            List<string> times = new List<string>() { "8:30-9:45", "10:0-11:15", "11:30-12:45", "13:0-14:15", "14:30-15:45", "16:0-17:15", "17:30-18:45" };
+            List<List<List<string>>> formattedTimetable = new List<List<List<string>>>();
+            foreach (List<Section> table in resultingTable)
+            {
+                List<List<string>> formattedTable = new List<List<string>>();
+                foreach (string time in times)
+                {
+                    List<string> timetableRow = new List<string> { time, " ", " ", " ", " ", " " };
+                    foreach (Section section in table)
+                    {
+                        if (section.Times.Contains(time.Substring(0, 5)) || section.Times.Contains(time.Substring(time.Length - 5, 5)))
+                        {
+                            if (section.Times.Contains("Mon"))
+                            {
+                                timetableRow[1] = getClassName(section.ClassId) + "-" + section.Type;
+                            }
+                            if (section.Times.Contains("Tue"))
+                            {
+                                timetableRow[2] = getClassName(section.ClassId) + "-" + section.Type;
+                            }
+                            if (section.Times.Contains("Wed"))
+                            {
+                                timetableRow[3] = getClassName(section.ClassId) + "-" + section.Type;
+                            }
+                            if (section.Times.Contains("Thu"))
+                            {
+                                timetableRow[4] = getClassName(section.ClassId) + "-" + section.Type;
+                            }
+                            if (section.Times.Contains("Fri"))
+                            {
+                                timetableRow[5] = getClassName(section.ClassId) + "-" + section.Type;
+                            }
+                        }
+                    }
+                    formattedTable.Add(timetableRow);
+                }
+                formattedTimetable.Add(formattedTable);
+            }
+            ViewData["tables"] = formattedTimetable;
         }
 
         public string getClassName(int classID)
