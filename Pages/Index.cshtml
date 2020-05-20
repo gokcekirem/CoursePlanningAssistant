@@ -27,15 +27,10 @@
         margin: 25px 0;
         table-layout: fixed;
         width: 100%;
-        max-width: 400px;
     }
 
     .timetable thead tr {
         background-color: #eac9fe;
-    }
-
-    .timetable td {
-        width: 50%;
     }
 
     .timetable th,
@@ -83,26 +78,40 @@
         if (string.Compare(flag, "flag") == 0)
         {
             var count = 0;
-            var allTables = ViewData["timetables"] as List<List<CoursePlanner.Models.Section>>;
-            foreach (List<CoursePlanner.Models.Section> table in allTables)
+            var allTables = ViewData["tables"] as List<List<List<string>>>;
+            foreach (List<List<string>> table in allTables)
             {
                 count += 1;
                 <h2>Timetable @count</h2>
                 <table class="timetable">
+                    <colgroup>
+                        <col style="width:150px" />
+                        <col style="width:150px" />
+                        <col style="width:150px" />
+                        <col style="width:150px" />
+                        <col style="width:150px" />
+                        <col style="width:150px" />
+                    </colgroup>
                     <thead>
-                    <tr>
-                        <th>Class</th>
-                        <th>Section Time</th>
-                    </tr>
+                        <tr>
+                            <th></th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    @foreach (CoursePlanner.Models.Section sect in table)
-                    {
+                        @foreach (List<string> row in table)
+                        {
                         <tr>
-                            <td>@Model.getClassName(sect.ClassId)</td>
-                            <td>@sect.Times</td>
+                            @foreach (string element in row)
+                            {
+                            <td>@element</td>
+                            }
                         </tr>
-                    }
+                        }
                     </tbody>
                 </table>
             }
