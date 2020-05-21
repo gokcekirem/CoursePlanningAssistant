@@ -108,39 +108,65 @@
                         <tr>
                             @foreach (string element in row)
                             {
-                            <td>@element</td>
+                                switch (element)
+                                {
+                                    case "8:30-9:45":
+                                        <td>08.30-09.45</td>
+                                        break;
+                                    case "10:0-11:15":
+                                        <td>10.00-11.15</td>
+                                        break;
+                                    case "11:30-12:45":
+                                        <td>11.30-12.45</td>
+                                        break;
+                                    case "13:0-14:15":
+                                        <td>13.00-14.15</td>
+                                        break;
+                                    case "14:30-15:45":
+                                        <td>14.30-15.45</td>
+                                        break;
+                                    case "16:0-17:15":
+                                        <td>16.00-17.15</td>
+                                        break;
+                                    case "17:30-18:45":
+                                        <td>17.30-18.45</td>
+                                        break;
+                                    default:
+                                        <td>@element</td>
+                                        break;
+                                }
                             }
                         </tr>
                         }
                     </tbody>
                 </table>
             }
-        }
-    }
+                                }
+                            }
 
     <script>
         var selectedCourses = [];
-        var canClick = true;
+                            var canClick = true;
 
-        function reddy(subject, code, collision) {
-            //console.log(chart.series.length);
+                            function reddy(subject, code, collision) {
+                                //console.log(chart.series.length);
 
-            for (var i = 0; i < chart.series.length; i++) {
+                                for (var i = 0; i < chart.series.length; i++) {
 
 
-                if (chart.series[i].name == subject) {
-                    //console.log(chart.series[i]);
-                    for (var j = 0; j < chart.series[i].data.length; j++) {
+                                    if (chart.series[i].name == subject) {
+                                        //console.log(chart.series[i]);
+                                        for (var j = 0; j < chart.series[i].data.length; j++) {
 
-                        //console.log(chart.series[i].data[j].name);
-                        if (chart.series[i].data[j].name == code) {
-                            //if (chart.series[i].data[j].color == 'pink') {
-                            //    var col = chart.series[i].data[j].options.prereq + ", " + collision;
-                            //    chart.series[i].data[j].options.prereq = col;
-                            //    chart.series[i].data[j].update({ prereq: col });
-                            //}
-                            if (chart.series[i].data[j].color != 'white' && 'pink') {
-                                chart.series[i].data[j].update({ color: 'pink' });
+                                            //console.log(chart.series[i].data[j].name);
+                                            if (chart.series[i].data[j].name == code) {
+                                                //if (chart.series[i].data[j].color == 'pink') {
+                                                //    var col = chart.series[i].data[j].options.prereq + ", " + collision;
+                                                //    chart.series[i].data[j].options.prereq = col;
+                                                //    chart.series[i].data[j].update({ prereq: col });
+                                                //}
+                                                if (chart.series[i].data[j].color != 'white' && 'pink') {
+                                                    chart.series[i].data[j].update({ color: 'pink' });
                                 var col = chart.series[i].data[j].options.prereq + ", Conflicts with: " + collision;
                                 chart.series[i].data[j].options.prereq = col;
                                 chart.series[i].data[j].update({ prereq: col });

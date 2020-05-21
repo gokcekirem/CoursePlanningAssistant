@@ -60,7 +60,14 @@ namespace CoursePlanner.Pages
                     {
                             List<Section> currentTable = new List<Section>();
                             currentTable.Add(section);
-                            MakeTimetables(currentTable, 1, resultingTables);
+                            if (sectionsDividedToGroups.Count() > 1)
+                            {
+                                MakeTimetables(currentTable, 1, resultingTables);
+                            }
+                            else
+                            {
+                                resultingTables.Add(currentTable);
+                            }
                     }
                 TimetableFormatting(resultingTables);
                 ViewData["flag"] = "flag";
@@ -154,23 +161,23 @@ namespace CoursePlanner.Pages
                         {
                             if (section.Times.Contains("Mon"))
                             {
-                                timetableRow[1] = getClassName(section.ClassId) + "-" + section.Type;
+                                timetableRow[1] = getClassName(section.ClassId) + "-" + section.Type + "-" + section.SectionId;
                             }
                             if (section.Times.Contains("Tue"))
                             {
-                                timetableRow[2] = getClassName(section.ClassId) + "-" + section.Type;
+                                timetableRow[2] = getClassName(section.ClassId) + "-" + section.Type + "-" + section.SectionId;
                             }
                             if (section.Times.Contains("Wed"))
                             {
-                                timetableRow[3] = getClassName(section.ClassId) + "-" + section.Type;
+                                timetableRow[3] = getClassName(section.ClassId) + "-" + section.Type + "-" + section.SectionId;
                             }
                             if (section.Times.Contains("Thu"))
                             {
-                                timetableRow[4] = getClassName(section.ClassId) + "-" + section.Type;
+                                timetableRow[4] = getClassName(section.ClassId) + "-" + section.Type + "-" + section.SectionId;
                             }
                             if (section.Times.Contains("Fri"))
                             {
-                                timetableRow[5] = getClassName(section.ClassId) + "-" + section.Type;
+                                timetableRow[5] = getClassName(section.ClassId) + "-" + section.Type + "-" + section.SectionId;
                             }
                         }
                     }
