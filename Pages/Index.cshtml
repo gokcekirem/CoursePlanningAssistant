@@ -50,12 +50,11 @@
                 border-bottom: 2px solid #eac9fe;
             }
 </style>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <div align="right" style="width:950px">
     <form method="post" asp-page-handler="Refresh">
@@ -146,10 +145,8 @@
 }
 
 <script>
-    var selectedCourses = [];
 
     var canClick = true;
-
     var chart;
 
     function reddy(subject, code, collision) {
@@ -183,7 +180,7 @@
         }
     };
 
-
+    //
     var options = {
         chart: {
             type: 'packedbubble',
@@ -257,24 +254,24 @@
                         click: function (e) {
                             if (canClick) {
                                 if (this.series.name != this.name) { // must not be subject labelled bubbles
-                                    var course = { name: this.series.name, code: this.name, color: this.color };
-                                    var len = selectedCourses.length;
+                                    
                                     //if its not selected, select it
                                     if (this.color != 'white') {
                                         canClick = false;
-                                        selectedCourses[len] = course;
                                         this.update({ color: 'white' });
-                                        
-                                        var sc = JSON.stringify(selectedCourses);
+
+                                        var sc = "" + this.series.name + this.name;
+
+                                        var sc1 = JSON.stringify(sc);
                                         //console.log(sc);
                                         $.ajax({
                                             type: "POST",
-                                            url: "/Index?handler=SelectedCourses",
+                                            url: "/Index?handler=SelectedCourse",
                                             beforeSend: function (xhr) {
                                                 xhr.setRequestHeader("XSRF-TOKEN",
                                                     $('input:hidden[name="__RequestVerificationToken"]').val());
                                             },
-                                            data: sc,
+                                            data: sc1,
                                             contentType: "application/json; charset=utf-8",
                                             dataType: "json",
                                             success: function (response) {
@@ -284,13 +281,6 @@
                                                 alert(response);
                                             }
                                         });
-
-                                        //console.log("\nShowing the selected courses:\n");
-                                        //if (selectedCourses.length > 0) {
-                                        //    for (var i = 0; i < selectedCourses.length; i++) {
-                                        //        console.log(selectedCourses[i].name + selectedCourses[i].code);
-                                        //    }
-                                        //}
 
                                         setTimeout(() => {
 
@@ -305,7 +295,7 @@
                                                         var subject = course.substring(0, course.length - 3);
                                                         var code = course.substring(course.length - 3, course.length);
                                                         var collided = dict[course][0];
-                                                        var len = selectedCourses.length - 1;
+                                                        
                                                         reddy(subject, code, collided);
                                                     }
                                                 },
@@ -317,22 +307,7 @@
                                             canClick = true;
                                         }, 3000);
 
-                                    } /*else { // if its selected, deselect it
-                                            var temp = [];
-                                            var t = 0;
-                                            for (var i = 0; i < len; i++) {
-                                                if (selectedCourses[i].name == course.name && selectedCourses[i].code == course.code) {
-
-                                                    this.update({ color: selectedCourses[i].color });
-                                                    console.log("Deselecting");
-                                                    // skipping this one
-                                                } else {
-                                                    temp[t] = selectedCourses[i];
-                                                    t++;
-                                                }
-                                            }
-                                            selectedCourses = temp;
-                                        }*/
+                                    } 
                                 }
                             }
                         }

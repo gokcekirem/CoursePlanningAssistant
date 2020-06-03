@@ -26,7 +26,6 @@ namespace CoursePlanner.Pages
 
         public JsonResult json;
 
-        public List<Course> selectedCourses;
         List<List<Section>> sectionsDividedToGroups = new List<List<Section>>();
 
         public CoursePlanner.Scheduler.Scheduler scheduler;
@@ -292,16 +291,16 @@ namespace CoursePlanner.Pages
             return myClass.Subject + " " + myClass.Code;
         }
 
-        public void OnPostSelectedCourses([FromBody]List<Course> sc)
+        public void OnPostSelectedCourse([FromBody]string sc)
         {
             Console.WriteLine("\n\n\n\nWriting sc:");
-            selectedCourses = sc;
             
-            int l = selectedCourses.Count();
-            if (selectedCourses.Count() > 0)
+            Console.WriteLine("STUFF: "+sc);
+
+            if (sc != null)
             {
-                Console.WriteLine(selectedCourses[l - 1].Name + selectedCourses[l - 1].Code);
-                scheduler.ClassSelected(selectedCourses[l - 1].Name + selectedCourses[l - 1].Code, _context);
+                Console.WriteLine(sc);
+                scheduler.ClassSelected(sc, _context);
             }
         }
 
@@ -309,13 +308,6 @@ namespace CoursePlanner.Pages
         {
             return new JsonResult(scheduler.getCollisionDictionary());
         }
-    }
-
-    public class Course
-    {
-        public string Name { get; set; }
-        public int Code { get; set; }
-        public string Color { get; set; }
     }
 
     public class Bubble
