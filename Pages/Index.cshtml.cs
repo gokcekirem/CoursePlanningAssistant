@@ -9,6 +9,10 @@ using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel;
 using Highsoft.Web.Mvc.Charts;
+using System.Text;
+using System.IO;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace CoursePlanner.Pages
 {
@@ -20,7 +24,8 @@ namespace CoursePlanner.Pages
 
         private readonly ILogger<IndexModel> _logger;
 
-        public List<Course> selectedCourses;
+        public JsonResult json;
+
         List<List<Section>> sectionsDividedToGroups = new List<List<Section>>();
 
         public CoursePlanner.Scheduler.Scheduler scheduler;
@@ -33,9 +38,98 @@ namespace CoursePlanner.Pages
             scheduler = Scheduler.Scheduler.SchedulerInstance(context); ;
         }
 
-
         public void OnGet()
         {
+
+        }
+
+        public JsonResult OnGetBubble()
+        {
+            // 0: start with the lecture sections
+            var lecSections = from s in _context.Section
+                              where s.Type == "LEC"
+                              where s.Capacity > 0
+                              select s.ClassId;
+
+            // 1st part 
+
+            var subjects = from c in _context.Class
+                           where lecSections.ToList().Contains(c.ClassId)
+                           select c.Subject;
+
+            List<string> sortedClassList = new List<string>(subjects);
+            sortedClassList.Sort();
+            HashSet<string> unique_subjects = new HashSet<string>(sortedClassList);
+            /*foreach (string s in unique_subjects)
+            {
+                Console.WriteLine(s);
+            }
+            Console.WriteLine(unique_subjects.Count());*/
+
+            // 2nd part
+
+            var classes = from c in _context.Class
+                          where lecSections.ToList().Contains(c.ClassId)
+                          select c; // subject, code, capacity, prerequisite
+
+            List<Class> classesList = new List<Class>(classes);
+            HashSet<Class> unique_classes = new HashSet<Class>(classes);
+            Console.WriteLine(unique_classes.Count());
+
+            // 3rd part : the combination
+            List<Bubble> bubble_data = new List<Bubble>();
+
+            // 3.1 add the subjects to bubble data
+            foreach (string s in unique_subjects)
+            {
+                Bubble bubble = new Bubble();
+                bubble.name = s;
+
+                BubbleClass subjectBubble = new BubbleClass();
+                subjectBubble.name = s;
+                subjectBubble.value = 100;
+                subjectBubble.prereq = null;
+                bubble.data = new List<BubbleClass>();
+
+                bubble.data.Add(subjectBubble);
+
+                bubble_data.Add(bubble);
+            }
+
+            // 3.2 add the bubble classes to designated subjects
+            foreach (Class c in unique_classes)
+            {
+                BubbleClass bubbleClass = new BubbleClass();
+                bubbleClass.name = c.Code.ToString();
+                bubbleClass.value = _context.Section.Where(s => s.ClassId.Equals(c.ClassId)).FirstOrDefault<Section>().Capacity;
+                bubbleClass.prereq = c.Prerequisite;
+
+                string designated_subject = c.Subject;
+
+                foreach(Bubble b in bubble_data)
+                {
+                    if (designated_subject.Equals(b.name))
+                    {
+                        b.data.Add(bubbleClass);
+                    }
+                }
+            }
+
+            // 4th part: out
+
+            /* JSON WRITER WORKS AS WELL
+             * 
+             * JsonSerializer serializer = new JsonSerializer();
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+
+            using (StreamWriter sw = new StreamWriter(@"Pages/bubble_json.json"))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, bubble_data);
+            }*/
+
+            return new JsonResult(bubble_data);
+
 
         }
 
@@ -197,16 +291,16 @@ namespace CoursePlanner.Pages
             return myClass.Subject + " " + myClass.Code;
         }
 
-        public void OnPostSelectedCourses([FromBody]List<Course> sc)
+        public void OnPostSelectedCourse([FromBody]string sc)
         {
             Console.WriteLine("\n\n\n\nWriting sc:");
-            selectedCourses = sc;
             
-            int l = selectedCourses.Count();
-            if (selectedCourses.Count() > 0)
+            Console.WriteLine("STUFF: "+sc);
+
+            if (sc != null)
             {
-                Console.WriteLine(selectedCourses[l - 1].Name + selectedCourses[l - 1].Code);
-                scheduler.ClassSelected(selectedCourses[l - 1].Name + selectedCourses[l - 1].Code, _context);
+                Console.WriteLine(sc);
+                scheduler.ClassSelected(sc, _context);
             }
         }
 
@@ -216,11 +310,17 @@ namespace CoursePlanner.Pages
         }
     }
 
-    public class Course
+    public class Bubble
     {
-        public string Name { get; set; }
-        public int Code { get; set; }
-        public string Color { get; set; }
+        public string name { get; set; }
+        public List<BubbleClass> data { get; set; }
+    }
+
+    public class BubbleClass
+    {
+        public string name { get; set; }
+        public int value { get; set; }
+        public string prereq { get; set; }
     }
 }
 
