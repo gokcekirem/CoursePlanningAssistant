@@ -10,6 +10,12 @@ Course Planning Assistant for Computer Engineering Design Course at Koç Univers
 
 ## Before 
 
+You can either
+
+- Copy the mdf file in the [Database](Database) folder to your Windows user's root folder, typically C:\Users\Name1
+
+Or
+
 - To uptade the database, after cloning run Update-Database command in Package Manager Console of Visual Studio. It will create a local database.
 
 - The local database is initally empty, you will need to fill it.
